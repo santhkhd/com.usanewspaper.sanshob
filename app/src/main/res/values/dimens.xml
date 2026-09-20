@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="drawer_item_icon_size">24dp</dimen>
+    <dimen name="drawer_item_text_size">15sp</dimen>
+    <dimen name="spacing_small">7dp</dimen>
+    <dimen name="spacing_medium">10dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="spacing_xxlarge">40dp</dimen>
+    <dimen name="corner_radius">10dp</dimen>
+    <dimen name="no_corner_radius">0dp</dimen>
+    <dimen name="corner_radius_medium">20dp</dimen>
+    <dimen name="corner_radius_large">30dp</dimen>
+    <dimen name="corner_radius_navigation_drawer">30dp</dimen>
+    <dimen name="no_margin">0dp</dimen>
+    <dimen name="toolbar_elevation">0dp</dimen>
+    <dimen name="native_ad_stroke_width">0dp</dimen>
+
+</resources>

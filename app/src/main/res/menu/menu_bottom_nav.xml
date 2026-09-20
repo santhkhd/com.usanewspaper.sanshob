@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_bottom_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_bottom_channels"
+        android:icon="@drawable/ic_live_tv"
+        android:title="Channels" />
+
+    <item
+        android:id="@+id/nav_bottom_add"
+        android:icon="@drawable/ic_newspaper"
+        android:title="States" />
+
+    <item
+        android:id="@+id/nav_bottom_categories"
+        android:icon="@drawable/ic_rss_feed"
+        android:title="News Feed" />
+
+    <item
+        android:id="@+id/nav_bottom_saved"
+        android:icon="@drawable/ic_nav_you"
+        android:title="Saved" />
+
+</menu>

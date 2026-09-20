@@ -1,0 +1,222 @@
+[
+  {
+    "title": "The Atlanta Journal-Constitution",
+    "provider": "web",
+    "arguments": [
+      "https://www.ajc.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=ajc.com",
+    "year": "Georgia",
+    "genre": "Atlanta",
+    "rating": "State Flagship Daily"
+  },
+  {
+    "title": "The Augusta Chronicle",
+    "provider": "web",
+    "arguments": [
+      "https://www.augustachronicle.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=augustachronicle.com",
+    "year": "Georgia",
+    "genre": "Augusta",
+    "rating": "Oldest GA Newspaper"
+  },
+  {
+    "title": "Savannah Morning News",
+    "provider": "web",
+    "arguments": [
+      "https://www.savannahnow.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=savannahnow.com",
+    "year": "Georgia",
+    "genre": "Savannah",
+    "rating": "Coastal GA Flagship Daily"
+  },
+  {
+    "title": "The Telegraph",
+    "provider": "web",
+    "arguments": [
+      "https://www.macon.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=macon.com",
+    "year": "Georgia",
+    "genre": "Macon",
+    "rating": "Central Georgia Daily"
+  },
+  {
+    "title": "Columbus Ledger-Enquirer",
+    "provider": "web",
+    "arguments": [
+      "https://www.ledger-enquirer.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=ledger-enquirer.com",
+    "year": "Georgia",
+    "genre": "Columbus",
+    "rating": "Daily"
+  },
+  {
+    "title": "Athens Banner-Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.onlineathens.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=onlineathens.com",
+    "year": "Georgia",
+    "genre": "Athens",
+    "rating": "UGA Daily"
+  },
+  {
+    "title": "The Brunswick News",
+    "provider": "web",
+    "arguments": [
+      "https://www.thebrunswicknews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=thebrunswicknews.com",
+    "year": "Georgia",
+    "genre": "Brunswick",
+    "rating": "Golden Isles Daily"
+  },
+  {
+    "title": "Rome News-Tribune",
+    "provider": "web",
+    "arguments": [
+      "https://www.northwestgeorgianews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=northwestgeorgianews.com",
+    "year": "Georgia",
+    "genre": "Rome",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Valdosta Daily Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.valdostadailytimes.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=valdostadailytimes.com",
+    "year": "Georgia",
+    "genre": "Valdosta",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Albany Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.albanyherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=albanyherald.com",
+    "year": "Georgia",
+    "genre": "Albany",
+    "rating": "Southwest GA Daily"
+  },
+  {
+    "title": "The Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.gainesvilletimes.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=gainesvilletimes.com",
+    "year": "Georgia",
+    "genre": "Gainesville",
+    "rating": "North GA Daily"
+  },
+  {
+    "title": "Marietta Daily Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.mdjonline.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mdjonline.com",
+    "year": "Georgia",
+    "genre": "Marietta",
+    "rating": "Cobb County Daily"
+  },
+  {
+    "title": "Gwinnett Daily Post",
+    "provider": "web",
+    "arguments": [
+      "https://www.gwinnettdailypost.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=gwinnettdailypost.com",
+    "year": "Georgia",
+    "genre": "Lawrenceville",
+    "rating": "Metro Atlanta Daily"
+  },
+  {
+    "title": "The Daily Citizen",
+    "provider": "web",
+    "arguments": [
+      "https://www.daltondailycitizen.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=daltondailycitizen.com",
+    "year": "Georgia",
+    "genre": "Dalton",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Newnan Times-Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.times-herald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=times-herald.com",
+    "year": "Georgia",
+    "genre": "Newnan",
+    "rating": "Daily"
+  },
+  {
+    "title": "Statesboro Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.statesboroherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=statesboroherald.com",
+    "year": "Georgia",
+    "genre": "Statesboro",
+    "rating": "Daily"
+  },
+  {
+    "title": "Thomasville Times-Enterprise",
+    "provider": "web",
+    "arguments": [
+      "https://www.timesenterprise.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=timesenterprise.com",
+    "year": "Georgia",
+    "genre": "Thomasville",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Moultrie Observer",
+    "provider": "web",
+    "arguments": [
+      "https://www.moultrieobserver.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=moultrieobserver.com",
+    "year": "Georgia",
+    "genre": "Moultrie",
+    "rating": "Daily"
+  },
+  {
+    "title": "Tifton Gazette",
+    "provider": "web",
+    "arguments": [
+      "https://www.tiftongazette.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=tiftongazette.com",
+    "year": "Georgia",
+    "genre": "Tifton",
+    "rating": "Daily"
+  },
+  {
+    "title": "Cherokee Tribune & Ledger-News",
+    "provider": "web",
+    "arguments": [
+      "https://www.tribuneledgernews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=tribuneledgernews.com",
+    "year": "Georgia",
+    "genre": "Canton",
+    "rating": "Daily"
+  }
+]

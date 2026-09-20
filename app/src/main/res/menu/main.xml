@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        android:title="Search Videos"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/menu_ai_prompts"
+        android:title="🤖 AI News Prompts (ChatGPT &amp; Gemini)"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_add_newspaper"
+        android:title="📰 Add Newspaper"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_add_channel"
+        android:title="➕ Add Channel / Playlist"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_settings"
+        android:title="@string/menu_settings"
+        android:visible="true" />
+
+
+    <item
+        android:id="@+id/menu_share"
+        android:title="@string/menu_share"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_rate"
+        android:title="@string/menu_rate"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_more"
+        android:title="@string/menu_more"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_privacy"
+        android:title="@string/menu_privacy"
+        android:visible="true" />
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/menu_about"
+        android:visible="true" />
+
+</menu>

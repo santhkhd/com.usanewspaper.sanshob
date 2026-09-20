@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_category_section_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Current category"
+    android:textSize="12sp"
+    android:textStyle="bold"
+    android:textColor="@color/colorAccent"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="14dp"
+    android:paddingBottom="6dp" />

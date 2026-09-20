@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinema Vault - Premium Details</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        },
+                        accent: '#FFD700',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(155, 155, 155, 0.3);
+            border-radius: 20px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(155, 155, 155, 0.5);
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dark .glass {
+            background: rgba(20, 20, 25, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .premium-gradient {
+            background: linear-gradient(135deg, #e11d48 0%, #881337 100%);
+        }
+
+        .movie-card-placeholder {
+            background: linear-gradient(45deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .active-nav {
+            background: rgba(225, 29, 72, 0.1);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#f8fafc] dark:bg-[#0a0a0c] text-slate-900 dark:text-slate-100 min-h-screen transition-colors duration-500 pb-24 selection:bg-primary-500 selection:text-white">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 premium-gradient rounded-xl flex items-center justify-center shadow-lg shadow-primary-500/20">
+                    <i data-lucide="play" class="text-white fill-current w-5 h-5"></i>
+                </div>
+                <div>
+                    <h1
+                        class="text-xl sm:text-2xl font-display font-extrabold tracking-tight leading-none bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-600 dark:from-white dark:to-slate-400">
+                        TVC</h1>
+                    <p class="text-[10px] font-bold tracking-[0.2em] text-primary-600 uppercase">Premium Vault</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 sm:gap-4">
+                <a href="favorites.html"
+                    class="p-2 sm:p-3 rounded-2xl glass hover:bg-white/10 dark:hover:bg-white/5 transition-all text-slate-500 hover:text-primary-500 group relative">
+                    <i data-lucide="heart" class="w-5 h-5 group-hover:fill-current"></i>
+                    <span
+                        class="absolute top-0 right-0 w-2 h-2 bg-primary-500 rounded-full border-2 border-[#f8fafc] dark:border-[#0a0a0c]"></span>
+                </a>
+                <button id="themeToggle"
+                    class="p-2 sm:p-3 rounded-2xl glass hover:bg-white/10 dark:hover:bg-white/5 transition-all text-slate-500 dark:text-amber-400">
+                    <i data-lucide="moon" class="hidden dark:block w-5 h-5"></i>
+                    <i data-lucide="sun" class="block dark:hidden w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="app" class="max-w-7xl mx-auto px-4 sm:px-8 pt-32 min-h-screen">
+        <div class="flex flex-col items-center justify-center py-32 space-y-4">
+            <div
+                class="w-16 h-16 border-4 border-slate-200 dark:border-slate-800 border-t-primary-500 rounded-full animate-spin">
+            </div>
+            <p class="text-sm font-bold text-slate-400 animate-pulse">Accessing Secure Records...</p>
+        </div>
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[90%] sm:w-auto">
+        <div
+            class="glass rounded-[2rem] p-2 flex items-center justify-around sm:justify-center sm:gap-4 border border-white/10 shadow-2xl">
+            <a href="index.html"
+                class="nav-item flex items-center gap-2 px-6 py-3 rounded-2xl text-slate-500 hover:text-primary-500 transition-all">
+                <i data-lucide="home" class="w-5 h-5"></i>
+                <span class="hidden sm:inline font-bold text-sm">Home</span>
+            </a>
+            <a href="cast.html"
+                class="nav-item flex items-center gap-2 px-6 py-3 rounded-2xl text-slate-500 hover:text-primary-500 transition-all">
+                <i data-lucide="users" class="w-5 h-5"></i>
+                <span class="hidden sm:inline font-bold text-sm">Cast</span>
+            </a>
+            <a href="years.html"
+                class="nav-item flex items-center gap-2 px-6 py-3 rounded-2xl text-slate-500 hover:text-primary-500 transition-all">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+                <span class="hidden sm:inline font-bold text-sm">Years</span>
+            </a>
+            <a href="genres.html"
+                class="nav-item flex items-center gap-2 px-6 py-3 rounded-2xl text-slate-500 hover:text-primary-500 transition-all">
+                <i data-lucide="clapperboard" class="w-5 h-5"></i>
+                <span class="hidden sm:inline font-bold text-sm">Genres</span>
+            </a>
+        </div>
+    </nav>
+
+    <script type="module" src="app.js?v=premium_01"></script>
+</body>
+
+</html>

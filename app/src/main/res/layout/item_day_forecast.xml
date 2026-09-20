@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="66dp"
+    android:layout_height="96dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_market_pill"
+    android:padding="6dp"
+    android:layout_marginEnd="6dp">
+
+    <TextView
+        android:id="@+id/tv_forecast_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/img_forecast_icon"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:src="@drawable/ic_wb_sunny"
+        app:tint="#F59E0B"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:id="@+id/tv_forecast_high"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="82°"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_forecast_low"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="65°"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="10sp" />
+
+</LinearLayout>

@@ -1,0 +1,145 @@
+[
+  {
+    "title": "Portland Press Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.pressherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=pressherald.com",
+    "year": "Maine",
+    "genre": "Portland",
+    "rating": "State Flagship Daily"
+  },
+  {
+    "title": "Bangor Daily News",
+    "provider": "web",
+    "arguments": [
+      "https://www.bangordailynews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=bangordailynews.com",
+    "year": "Maine",
+    "genre": "Bangor",
+    "rating": "Top Northern ME Daily"
+  },
+  {
+    "title": "Sun Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.sunjournal.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=sunjournal.com",
+    "year": "Maine",
+    "genre": "Lewiston-Auburn",
+    "rating": "Central Maine Daily"
+  },
+  {
+    "title": "Kennebec Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.centralmaine.com/kennebec-journal"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=centralmaine.com",
+    "year": "Maine",
+    "genre": "Augusta",
+    "rating": "State Capital Daily"
+  },
+  {
+    "title": "Morning Sentinel",
+    "provider": "web",
+    "arguments": [
+      "https://www.centralmaine.com/morning-sentinel"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=centralmaine.com",
+    "year": "Maine",
+    "genre": "Waterville",
+    "rating": "Central ME Daily"
+  },
+  {
+    "title": "Journal Tribune",
+    "provider": "web",
+    "arguments": [
+      "https://www.journaltribune.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=journaltribune.com",
+    "year": "Maine",
+    "genre": "Biddeford",
+    "rating": "York County"
+  },
+  {
+    "title": "The Times Record",
+    "provider": "web",
+    "arguments": [
+      "https://www.timesrecord.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=timesrecord.com",
+    "year": "Maine",
+    "genre": "Brunswick",
+    "rating": "Midcoast Daily"
+  },
+  {
+    "title": "The Ellsworth American",
+    "provider": "web",
+    "arguments": [
+      "https://www.ellsworthamerican.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=ellsworthamerican.com",
+    "year": "Maine",
+    "genre": "Ellsworth",
+    "rating": "Weekly"
+  },
+  {
+    "title": "Mount Desert Islander",
+    "provider": "web",
+    "arguments": [
+      "https://www.mdislander.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mdislander.com",
+    "year": "Maine",
+    "genre": "Bar Harbor",
+    "rating": "Weekly"
+  },
+  {
+    "title": "The Forecaster",
+    "provider": "web",
+    "arguments": [
+      "https://www.pressherald.com/theforecaster"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=pressherald.com",
+    "year": "Maine",
+    "genre": "Greater Portland",
+    "rating": "Weekly Community"
+  },
+  {
+    "title": "Courier-Gazette",
+    "provider": "web",
+    "arguments": [
+      "https://www.knox.villagesoup.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=knox.villagesoup.com",
+    "year": "Maine",
+    "genre": "Rockland",
+    "rating": "Weekly"
+  },
+  {
+    "title": "Boothbay Register",
+    "provider": "web",
+    "arguments": [
+      "https://www.boothbayregister.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=boothbayregister.com",
+    "year": "Maine",
+    "genre": "Boothbay Harbor",
+    "rating": "Weekly"
+  },
+  {
+    "title": "The Lincoln County News",
+    "provider": "web",
+    "arguments": [
+      "https://www.lcnme.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=lcnme.com",
+    "year": "Maine",
+    "genre": "Damariscotta",
+    "rating": "Weekly"
+  }
+]

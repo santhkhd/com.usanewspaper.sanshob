@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_rounded"
+    android:padding="24dp">
+
+    <!-- App Launcher Icon with Rounded Container -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/img_rating_logo"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Image.Rounded"
+        android:layout_marginBottom="14dp" />
+
+    <!-- Dialog Title -->
+    <TextView
+        android:id="@+id/txt_rating_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enjoying the App?"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/txt_rating_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your 5-star rating helps us keep bringing you fresh Malayalam movies, songs, news &amp; comedy for free!"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="13sp"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:lineSpacingExtra="2dp" />
+
+    <!-- Interactive 5-Star Row -->
+    <LinearLayout
+        android:id="@+id/layout_stars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:id="@+id/star_1"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_star_filled"
+            android:padding="4dp"
+            android:contentDescription="1 Star"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/star_2"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_star_filled"
+            android:padding="4dp"
+            android:contentDescription="2 Stars"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/star_3"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_star_filled"
+            android:padding="4dp"
+            android:contentDescription="3 Stars"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/star_4"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_star_filled"
+            android:padding="4dp"
+            android:contentDescription="4 Stars"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <ImageView
+            android:id="@+id/star_5"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_star_filled"
+            android:padding="4dp"
+            android:contentDescription="5 Stars"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <!-- Star Feedback Label -->
+    <TextView
+        android:id="@+id/txt_star_feedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⭐⭐⭐⭐⭐ Loved it!"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Primary Action: Rate 5 Stars on Google Play -->
+    <Button
+        android:id="@+id/btn_rate_play_store"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="⭐ Rate 5 Stars on Google Play"
+        android:textColor="@color/color_white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_btn_accent"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Secondary Action: Remind Me Later -->
+    <TextView
+        android:id="@+id/btn_rate_later"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remind Me Later"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="13sp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <!-- Never Ask Again (Subtle) -->
+    <TextView
+        android:id="@+id/btn_rate_never"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't ask again"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="11sp"
+        android:alpha="0.6"
+        android:padding="4dp"
+        android:layout_marginTop="4dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>

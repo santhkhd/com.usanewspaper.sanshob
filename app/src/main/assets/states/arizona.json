@@ -1,0 +1,200 @@
+[
+  {
+    "title": "The Arizona Republic",
+    "provider": "web",
+    "arguments": [
+      "https://www.azcentral.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=azcentral.com",
+    "year": "Arizona",
+    "genre": "Phoenix",
+    "rating": "State Flagship Daily"
+  },
+  {
+    "title": "Arizona Daily Star",
+    "provider": "web",
+    "arguments": [
+      "https://www.tucson.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=tucson.com",
+    "year": "Arizona",
+    "genre": "Tucson",
+    "rating": "Top Metro Daily"
+  },
+  {
+    "title": "East Valley Tribune",
+    "provider": "web",
+    "arguments": [
+      "https://www.eastvalleytribune.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=eastvalleytribune.com",
+    "year": "Arizona",
+    "genre": "Mesa / Tempe / Chandler",
+    "rating": "Regional"
+  },
+  {
+    "title": "Arizona Daily Sun",
+    "provider": "web",
+    "arguments": [
+      "https://www.azdailysun.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=azdailysun.com",
+    "year": "Arizona",
+    "genre": "Flagstaff",
+    "rating": "Top Daily"
+  },
+  {
+    "title": "The Daily Courier",
+    "provider": "web",
+    "arguments": [
+      "https://www.dcourier.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=dcourier.com",
+    "year": "Arizona",
+    "genre": "Prescott",
+    "rating": "Daily"
+  },
+  {
+    "title": "Yuma Sun",
+    "provider": "web",
+    "arguments": [
+      "https://www.yumasun.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=yumasun.com",
+    "year": "Arizona",
+    "genre": "Yuma",
+    "rating": "Daily"
+  },
+  {
+    "title": "Today's News-Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.havasunews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=havasunews.com",
+    "year": "Arizona",
+    "genre": "Lake Havasu City",
+    "rating": "Daily"
+  },
+  {
+    "title": "Sierra Vista Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.myheraldreview.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=myheraldreview.com",
+    "year": "Arizona",
+    "genre": "Sierra Vista",
+    "rating": "Daily"
+  },
+  {
+    "title": "Casa Grande Dispatch",
+    "provider": "web",
+    "arguments": [
+      "https://www.pinalcentral.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=pinalcentral.com",
+    "year": "Arizona",
+    "genre": "Casa Grande",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Kingman Miner",
+    "provider": "web",
+    "arguments": [
+      "https://www.kdminer.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=kdminer.com",
+    "year": "Arizona",
+    "genre": "Kingman",
+    "rating": "Daily"
+  },
+  {
+    "title": "White Mountain Independent",
+    "provider": "web",
+    "arguments": [
+      "https://www.wmicentral.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=wmicentral.com",
+    "year": "Arizona",
+    "genre": "Show Low",
+    "rating": "Semi-Weekly"
+  },
+  {
+    "title": "Sedona Red Rock News",
+    "provider": "web",
+    "arguments": [
+      "https://www.redrocknews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=redrocknews.com",
+    "year": "Arizona",
+    "genre": "Sedona",
+    "rating": "Semi-Weekly"
+  },
+  {
+    "title": "Payson Roundup",
+    "provider": "web",
+    "arguments": [
+      "https://www.paysonroundup.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=paysonroundup.com",
+    "year": "Arizona",
+    "genre": "Payson",
+    "rating": "Semi-Weekly"
+  },
+  {
+    "title": "Verde Independent",
+    "provider": "web",
+    "arguments": [
+      "https://www.verdenews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=verdenews.com",
+    "year": "Arizona",
+    "genre": "Cottonwood",
+    "rating": "Weekly"
+  },
+  {
+    "title": "Ahwatukee Foothills News",
+    "provider": "web",
+    "arguments": [
+      "https://www.ahwatukee.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=ahwatukee.com",
+    "year": "Arizona",
+    "genre": "Phoenix",
+    "rating": "Weekly"
+  },
+  {
+    "title": "Scottsdale Progress",
+    "provider": "web",
+    "arguments": [
+      "https://www.scottsdaleprogress.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=scottsdaleprogress.com",
+    "year": "Arizona",
+    "genre": "Scottsdale",
+    "rating": "Weekly"
+  },
+  {
+    "title": "Navajo Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.navajotimes.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=navajotimes.com",
+    "year": "Arizona",
+    "genre": "Window Rock",
+    "rating": "Official Tribal Weekly"
+  },
+  {
+    "title": "Green Valley News",
+    "provider": "web",
+    "arguments": [
+      "https://www.gvnews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=gvnews.com",
+    "year": "Arizona",
+    "genre": "Green Valley",
+    "rating": "Semi-Weekly"
+  }
+]

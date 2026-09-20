@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="categoryCardBackground" format="color|reference" />
+    <attr name="categoryCardTextColor" format="color|reference" />
+    <attr name="squircleCardBackground" format="color|reference" />
+    <attr name="squircleCardStroke" format="color|reference" />
+</resources>

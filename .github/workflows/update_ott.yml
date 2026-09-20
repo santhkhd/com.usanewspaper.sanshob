@@ -1,0 +1,32 @@
+name: Auto-Sync Malayalam OTT Releases
+
+on:
+  schedule:
+    # Runs daily at 02:00 UTC
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Sync OTT Releases from TMDB & JustWatch
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        run: |
+          python scripts/sync_malayalam_ott.py
+
+      - name: Commit & Push Updated OTT JSON
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add app/src/main/assets/ott_releases_malayalam.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update Malayalam OTT releases feed [skip ci]" && git push)

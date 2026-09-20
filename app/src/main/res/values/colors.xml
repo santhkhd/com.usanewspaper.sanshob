@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Fresh Modern Cinematic Theme (Light) -->
+    <color name="color_light_primary">#E11D48</color>
+    <color name="color_light_status_bar">#BE123C</color>
+    <color name="color_light_accent">#E11D48</color>
+    <color name="colorAccent">#E11D48</color>
+    <color name="color_light_background">#F8FAFC</color>
+    <color name="color_light_navigation_drawer">#FFFFFF</color>
+    <color name="color_light_progress_indicator">#E11D48</color>
+    <color name="color_light_native_ad_background">#F1F5F9</color>
+    <color name="color_light_title_toolbar">#FFFFFF</color>
+    <color name="color_light_text">#0F172A</color>
+    <color name="color_light_text_primary">#0F172A</color>
+    <color name="color_light_text_secondary">#64748B</color>
+
+    <!-- Fresh Modern Cinematic Theme (Dark - Deep Obsidian / Ruby) -->
+    <color name="color_dark_status_bar">#070A10</color>
+    <color name="color_dark_toolbar">#0D131F</color>
+    <color name="color_dark_accent">#E11D48</color>
+    <color name="color_dark_background">#070A10</color>
+    <color name="color_dark_navigation_drawer">#0D131F</color>
+    <color name="color_dark_progress_indicator">#E11D48</color>
+    <color name="color_dark_native_ad_background">#131B2B</color>
+    <color name="color_dark_title_toolbar">#FFFFFF</color>
+    <color name="color_dark_text">#E2E8F0</color>
+    <color name="color_dark_text_primary">#FFFFFF</color>
+    <color name="color_dark_text_secondary">#94A3B8</color>
+    <color name="color_dark_dialog">#131B2B</color>
+
+    <!-- Accents & UI Elements -->
+    <color name="color_gold">#FFB800</color>
+    <color name="color_emerald">#00C896</color>
+    <color name="color_indigo">#6366F1</color>
+    <color name="color_card_dark">#101726</color>
+    <color name="color_card_border">#1E293B</color>
+    <color name="color_stroke_native_ad">#E11D48</color>
+    <color name="color_selected_item">#25E11D48</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_separator">#1E293B</color>
+    <color name="color_dialog_background_light">#FFFFFF</color>
+    <color name="color_dialog_background_dark">#0D131F</color>
+    <color name="color_ripple_white">#33FFFFFF</color>
+    <color name="color_squircle_card_bg_light">#F1F3F6</color>
+    <color name="color_squircle_card_stroke_light">#E5E7EB</color>
+    <color name="color_squircle_card_bg_dark">#121926</color>
+    <color name="color_squircle_card_stroke_dark">#1E293B</color>
+
+</resources>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="6dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <!-- Squircle Card Container (Reduced Logo Background Space) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_station"
+        android:layout_width="match_parent"
+        android:layout_height="94dp"
+        android:clickable="false"
+        android:focusable="false"
+        app:cardBackgroundColor="?attr/squircleCardBackground"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="0dp"
+        app:strokeColor="?attr/squircleCardStroke"
+        app:strokeWidth="1dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Radio Station Logo (Enlarged to 68dp, Fills Square Nicely) -->
+            <ImageView
+                android:id="@+id/img_station"
+                android:layout_width="68dp"
+                android:layout_height="68dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_radio" />
+
+            <!-- Mini Play Indicator Badge -->
+            <ImageView
+                android:id="@+id/btn_play_indicator"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/bg_circle_white"
+                android:elevation="2dp"
+                android:padding="3dp"
+                android:src="@drawable/ic_play_circle"
+                app:tint="@color/color_light_primary" />
+
+        </FrameLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Station Name (2 Lines Fixed Height for Grid Uniformity) -->
+    <TextView
+        android:id="@+id/txt_station_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lineSpacingExtra="1dp"
+        android:maxLines="2"
+        android:minLines="2"
+        android:text="Radio Station"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="11.5sp" />
+
+    <!-- Station Desc / Frequency -->
+    <TextView
+        android:id="@+id/txt_station_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="Malayalam Live"
+        android:textAlignment="center"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textSize="9.5sp" />
+
+</LinearLayout>

@@ -1,0 +1,266 @@
+[
+  {
+    "title": "Detroit Free Press",
+    "provider": "web",
+    "arguments": [
+      "https://www.freep.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=freep.com",
+    "year": "Michigan",
+    "genre": "Detroit",
+    "rating": "State Flagship Daily"
+  },
+  {
+    "title": "The Detroit News",
+    "provider": "web",
+    "arguments": [
+      "https://www.detroitnews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=detroitnews.com",
+    "year": "Michigan",
+    "genre": "Detroit",
+    "rating": "Top Metro Daily"
+  },
+  {
+    "title": "The Grand Rapids Press / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/grand-rapids"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Grand Rapids",
+    "rating": "West Michigan Daily"
+  },
+  {
+    "title": "Lansing State Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.lansingstatejournal.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=lansingstatejournal.com",
+    "year": "Michigan",
+    "genre": "Lansing",
+    "rating": "State Capital Daily"
+  },
+  {
+    "title": "The Flint Journal / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/flint"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Flint",
+    "rating": "Mid-Michigan Daily"
+  },
+  {
+    "title": "Kalamazoo Gazette / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/kalamazoo"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Kalamazoo",
+    "rating": "Southwest MI Daily"
+  },
+  {
+    "title": "The Ann Arbor News / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/ann-arbor"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Ann Arbor",
+    "rating": "University of Michigan Daily"
+  },
+  {
+    "title": "Saginaw News / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/saginaw"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Saginaw",
+    "rating": "Daily"
+  },
+  {
+    "title": "Bay City Times / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/bay-city"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Bay City",
+    "rating": "Daily"
+  },
+  {
+    "title": "Muskegon Chronicle / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/muskegon"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Muskegon",
+    "rating": "Lakeshore Daily"
+  },
+  {
+    "title": "Traverse City Record-Eagle",
+    "provider": "web",
+    "arguments": [
+      "https://www.record-eagle.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=record-eagle.com",
+    "year": "Michigan",
+    "genre": "Traverse City",
+    "rating": "Northern MI Daily"
+  },
+  {
+    "title": "The Mining Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.miningjournal.net"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=miningjournal.net",
+    "year": "Michigan",
+    "genre": "Marquette",
+    "rating": "Upper Peninsula Flagship"
+  },
+  {
+    "title": "Battle Creek Enquirer",
+    "provider": "web",
+    "arguments": [
+      "https://www.battlecreekenquirer.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=battlecreekenquirer.com",
+    "year": "Michigan",
+    "genre": "Battle Creek",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Times Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.thetimesherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=thetimesherald.com",
+    "year": "Michigan",
+    "genre": "Port Huron",
+    "rating": "Daily"
+  },
+  {
+    "title": "Macomb Daily",
+    "provider": "web",
+    "arguments": [
+      "https://www.macombdaily.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=macombdaily.com",
+    "year": "Michigan",
+    "genre": "Mount Clemens",
+    "rating": "Metro Detroit Daily"
+  },
+  {
+    "title": "The Oakland Press",
+    "provider": "web",
+    "arguments": [
+      "https://www.theoaklandpress.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=theoaklandpress.com",
+    "year": "Michigan",
+    "genre": "Pontiac",
+    "rating": "Metro Detroit Daily"
+  },
+  {
+    "title": "Daily Tribune",
+    "provider": "web",
+    "arguments": [
+      "https://www.dailytribune.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=dailytribune.com",
+    "year": "Michigan",
+    "genre": "Royal Oak",
+    "rating": "Daily"
+  },
+  {
+    "title": "Jackson Citizen Patriot / MLive",
+    "provider": "web",
+    "arguments": [
+      "https://www.mlive.com/jackson"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mlive.com",
+    "year": "Michigan",
+    "genre": "Jackson",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Daily News",
+    "provider": "web",
+    "arguments": [
+      "https://www.thedailynews.cc"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=thedailynews.cc",
+    "year": "Michigan",
+    "genre": "Greenville",
+    "rating": "Daily"
+  },
+  {
+    "title": "Midland Daily News",
+    "provider": "web",
+    "arguments": [
+      "https://www.ourmidland.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=ourmidland.com",
+    "year": "Michigan",
+    "genre": "Midland",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Holland Sentinel",
+    "provider": "web",
+    "arguments": [
+      "https://www.hollandsentinel.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=hollandsentinel.com",
+    "year": "Michigan",
+    "genre": "Holland",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Daily Telegram",
+    "provider": "web",
+    "arguments": [
+      "https://www.lenconnect.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=lenconnect.com",
+    "year": "Michigan",
+    "genre": "Adrian",
+    "rating": "Daily"
+  },
+  {
+    "title": "Monroe News",
+    "provider": "web",
+    "arguments": [
+      "https://www.monroenews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=monroenews.com",
+    "year": "Michigan",
+    "genre": "Monroe",
+    "rating": "Daily"
+  },
+  {
+    "title": "Daily Mining Gazette",
+    "provider": "web",
+    "arguments": [
+      "https://www.mininggazette.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mininggazette.com",
+    "year": "Michigan",
+    "genre": "Houghton",
+    "rating": "Keweenaw Daily"
+  }
+]

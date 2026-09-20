@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:title="Filter Time"
+          app:showAsAction="never">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/menu_filter_all" android:title="All Time" android:checked="true" />
+                <item android:id="@+id/menu_filter_5m" android:title="Last 5 Minutes" />
+                <item android:id="@+id/menu_filter_10m" android:title="Last 10 Minutes" />
+                <item android:id="@+id/menu_filter_15m" android:title="Last 15 Minutes" />
+                <item android:id="@+id/menu_filter_30m" android:title="Last 30 Minutes" />
+                <item android:id="@+id/menu_filter_1h" android:title="Last 1 Hour" />
+                <item android:id="@+id/menu_filter_3h" android:title="Last 3 Hours" />
+                <item android:id="@+id/menu_filter_5h" android:title="Last 5 Hours" />
+            </group>
+        </menu>
+    </item>
+</menu>

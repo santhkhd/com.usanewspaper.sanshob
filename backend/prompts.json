@@ -1,0 +1,2135 @@
+{
+  "version": "1.0",
+  "country": "US",
+  "language": "en-US",
+  "categories": [
+    {
+      "id": "us_top_news",
+      "name": "Top US News",
+      "prompts": [
+        "Top 10 news stories in the US today",
+        "Breaking news in the US right now",
+        "Latest US news today",
+        "Biggest news stories in America today",
+        "Top US headlines today",
+        "Most important US news today",
+        "Latest breaking news from America",
+        "What is happening in the US today",
+        "Top national news in the US today",
+        "US news today morning to evening"
+      ]
+    },
+    {
+      "id": "us_breaking_news",
+      "name": "Breaking News",
+      "prompts": [
+        "Breaking US news right now",
+        "Latest breaking news America",
+        "Breaking news across the United States",
+        "US breaking news in the last hour",
+        "Major breaking news in America",
+        "Latest emergency news in the US",
+        "Breaking national news USA",
+        "Latest developing stories US",
+        "Breaking headlines US today",
+        "US news alerts right now"
+      ]
+    },
+    {
+      "id": "white_house",
+      "name": "White House",
+      "prompts": [
+        "Latest White House news today",
+        "Breaking White House news",
+        "White House latest announcements",
+        "White House press briefing today",
+        "White House latest statements",
+        "President latest news today",
+        "White House policy announcements",
+        "White House national news",
+        "White House executive actions today",
+        "White House briefing latest"
+      ]
+    },
+    {
+      "id": "us_president",
+      "name": "US President",
+      "prompts": [
+        "US president latest news today",
+        "President latest speech today",
+        "President latest announcement",
+        "President schedule today",
+        "President latest policy news",
+        "President executive orders latest",
+        "President international news today",
+        "President domestic policy latest",
+        "President press conference today",
+        "President breaking news"
+      ]
+    },
+    {
+      "id": "congress",
+      "name": "Congress",
+      "prompts": [
+        "US Congress latest news",
+        "Congress breaking news today",
+        "Congress latest legislation",
+        "Congress votes today",
+        "Congress latest bills",
+        "Congress Senate House latest news",
+        "Major congressional developments today",
+        "Congress government funding news",
+        "Congress budget negotiations latest",
+        "Congress policy debate today"
+      ]
+    },
+    {
+      "id": "senate",
+      "name": "US Senate",
+      "prompts": [
+        "US Senate latest news",
+        "Senate votes today",
+        "Senate legislation latest",
+        "Senate hearing today",
+        "Senate breaking news",
+        "Senate committee latest news",
+        "Senate confirmation news",
+        "Senate budget news",
+        "Senate immigration legislation",
+        "Senate major developments today"
+      ]
+    },
+    {
+      "id": "house",
+      "name": "US House",
+      "prompts": [
+        "US House latest news",
+        "House of Representatives latest news",
+        "House votes today",
+        "House legislation latest",
+        "House committee hearings today",
+        "House breaking news",
+        "House budget negotiations",
+        "House government funding news",
+        "House major developments today",
+        "House latest policy news"
+      ]
+    },
+    {
+      "id": "supreme_court",
+      "name": "Supreme Court",
+      "prompts": [
+        "US Supreme Court latest news",
+        "Supreme Court decisions today",
+        "Supreme Court rulings latest",
+        "Supreme Court hearings today",
+        "Supreme Court cases latest",
+        "Supreme Court major decisions",
+        "Supreme Court legal news today",
+        "Supreme Court justices latest news",
+        "Supreme Court upcoming cases",
+        "Supreme Court breaking news"
+      ]
+    },
+    {
+      "id": "federal_government",
+      "name": "Federal Government",
+      "prompts": [
+        "US federal government latest news",
+        "Federal government announcements today",
+        "US government latest policies",
+        "Federal agencies latest news",
+        "Federal government shutdown news",
+        "US federal regulations latest",
+        "Federal government spending news",
+        "Federal government programs latest",
+        "Major federal decisions today",
+        "US government breaking news"
+      ]
+    },
+    {
+      "id": "us_economy",
+      "name": "US Economy",
+      "prompts": [
+        "US economy latest news",
+        "US economic news today",
+        "Latest US economic data",
+        "US economic growth latest",
+        "US economy outlook",
+        "US economic indicators today",
+        "US economy breaking news",
+        "American economy latest developments",
+        "US economic policy news",
+        "US economy morning update"
+      ]
+    },
+    {
+      "id": "inflation",
+      "name": "Inflation",
+      "prompts": [
+        "US inflation latest news",
+        "US CPI latest report",
+        "US inflation rate today",
+        "Latest US consumer prices",
+        "US inflation data latest",
+        "US cost of living news",
+        "US inflation outlook",
+        "US food prices latest",
+        "US housing inflation latest",
+        "US inflation economic impact"
+      ]
+    },
+    {
+      "id": "federal_reserve",
+      "name": "Federal Reserve",
+      "prompts": [
+        "Federal Reserve latest news",
+        "Fed interest rate latest",
+        "Fed meeting latest news",
+        "Fed rate decision today",
+        "Federal Reserve chairman latest news",
+        "Fed inflation policy latest",
+        "Fed economic outlook",
+        "Fed interest rate forecast",
+        "Federal Reserve announcement today",
+        "Fed monetary policy latest"
+      ]
+    },
+    {
+      "id": "interest_rates",
+      "name": "Interest Rates",
+      "prompts": [
+        "US interest rates today",
+        "Latest Fed interest rate decision",
+        "US mortgage rates today",
+        "US loan interest rates latest",
+        "US interest rate outlook",
+        "Federal funds rate latest",
+        "US borrowing costs latest",
+        "Mortgage rate news USA",
+        "Interest rate economic impact US",
+        "US rate cut or hike latest news"
+      ]
+    },
+    {
+      "id": "jobs",
+      "name": "US Jobs",
+      "prompts": [
+        "US jobs report latest",
+        "US employment news today",
+        "US jobs added latest",
+        "US unemployment rate latest",
+        "US labor market news",
+        "US hiring trends latest",
+        "US job openings latest",
+        "US layoffs latest news",
+        "US wages latest data",
+        "American employment outlook"
+      ]
+    },
+    {
+      "id": "unemployment",
+      "name": "Unemployment",
+      "prompts": [
+        "US unemployment latest",
+        "US unemployment rate today",
+        "Latest unemployment claims US",
+        "US jobless claims latest",
+        "US unemployment report",
+        "US labor market slowdown",
+        "US unemployment trends",
+        "US layoffs and unemployment",
+        "State unemployment rates latest",
+        "US employment market update"
+      ]
+    },
+    {
+      "id": "stock_market",
+      "name": "US Stock Market",
+      "prompts": [
+        "US stock market today",
+        "Wall Street latest news",
+        "US stocks today",
+        "Stock market opening today USA",
+        "Stock market closing today USA",
+        "Biggest US stock market movers",
+        "US stocks rising today",
+        "US stocks falling today",
+        "Major Wall Street developments",
+        "US stock market outlook"
+      ]
+    },
+    {
+      "id": "dow_jones",
+      "name": "Dow Jones",
+      "prompts": [
+        "Dow Jones today",
+        "Dow Jones latest news",
+        "Dow Jones biggest movers today",
+        "Dow Jones market update",
+        "Dow Jones opening today",
+        "Dow Jones closing today",
+        "Dow Jones stocks rising",
+        "Dow Jones stocks falling",
+        "Dow Jones market outlook",
+        "Dow Jones breaking news"
+      ]
+    },
+    {
+      "id": "sp500",
+      "name": "S&P 500",
+      "prompts": [
+        "S&P 500 today",
+        "S&P 500 latest news",
+        "S&P 500 biggest movers",
+        "S&P 500 market update",
+        "S&P 500 opening today",
+        "S&P 500 closing today",
+        "S&P 500 sectors today",
+        "S&P 500 stocks rising",
+        "S&P 500 stocks falling",
+        "S&P 500 outlook"
+      ]
+    },
+    {
+      "id": "nasdaq",
+      "name": "Nasdaq",
+      "prompts": [
+        "Nasdaq today",
+        "Nasdaq latest news",
+        "Nasdaq biggest movers",
+        "Nasdaq market update",
+        "Nasdaq opening today",
+        "Nasdaq closing today",
+        "Nasdaq technology stocks today",
+        "Nasdaq stocks rising",
+        "Nasdaq stocks falling",
+        "Nasdaq outlook"
+      ]
+    },
+    {
+      "id": "business",
+      "name": "US Business",
+      "prompts": [
+        "Top US business news today",
+        "Latest American business news",
+        "Biggest US company news",
+        "US corporate news today",
+        "US business breaking news",
+        "Major US business developments",
+        "US corporate earnings news",
+        "US company announcements today",
+        "US business deals latest",
+        "US business outlook"
+      ]
+    },
+    {
+      "id": "corporate_earnings",
+      "name": "Corporate Earnings",
+      "prompts": [
+        "US company earnings today",
+        "Biggest US earnings reports",
+        "Latest corporate earnings USA",
+        "US quarterly earnings news",
+        "Wall Street earnings today",
+        "Major company earnings surprises",
+        "US earnings calendar latest",
+        "Technology earnings USA",
+        "Retail earnings USA",
+        "US corporate earnings outlook"
+      ]
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon",
+      "prompts": [
+        "Amazon latest US news",
+        "Amazon breaking news today",
+        "Amazon earnings latest",
+        "Amazon business news",
+        "Amazon layoffs latest",
+        "Amazon AI news",
+        "Amazon warehouse news",
+        "Amazon stock news today",
+        "Amazon product announcements",
+        "Amazon latest developments"
+      ]
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "prompts": [
+        "Apple latest US news",
+        "Apple breaking news today",
+        "Apple earnings latest",
+        "Apple product news today",
+        "Apple iPhone latest news",
+        "Apple AI news",
+        "Apple stock news",
+        "Apple business developments",
+        "Apple latest announcements",
+        "Apple technology news"
+      ]
+    },
+    {
+      "id": "microsoft",
+      "name": "Microsoft",
+      "prompts": [
+        "Microsoft latest news today",
+        "Microsoft US business news",
+        "Microsoft AI latest news",
+        "Microsoft earnings latest",
+        "Microsoft stock news",
+        "Microsoft product announcements",
+        "Microsoft cloud news",
+        "Microsoft layoffs latest",
+        "Microsoft technology developments",
+        "Microsoft breaking news"
+      ]
+    },
+    {
+      "id": "google",
+      "name": "Google",
+      "prompts": [
+        "Google latest US news",
+        "Google breaking news today",
+        "Google AI latest news",
+        "Google earnings latest",
+        "Google stock news",
+        "Google Search latest news",
+        "Google Cloud latest news",
+        "Google product announcements",
+        "Google technology developments",
+        "Google business news"
+      ]
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla",
+      "prompts": [
+        "Tesla latest news today",
+        "Tesla US news",
+        "Tesla stock latest news",
+        "Tesla earnings latest",
+        "Tesla vehicle news",
+        "Tesla factory news USA",
+        "Tesla AI news",
+        "Tesla business developments",
+        "Tesla product announcements",
+        "Tesla breaking news"
+      ]
+    },
+    {
+      "id": "nvidia",
+      "name": "Nvidia",
+      "prompts": [
+        "Nvidia latest news today",
+        "Nvidia US business news",
+        "Nvidia stock news",
+        "Nvidia earnings latest",
+        "Nvidia AI chip news",
+        "Nvidia semiconductor news",
+        "Nvidia data center news",
+        "Nvidia product announcements",
+        "Nvidia US developments",
+        "Nvidia breaking news"
+      ]
+    },
+    {
+      "id": "artificial_intelligence",
+      "name": "Artificial Intelligence",
+      "prompts": [
+        "Latest AI news in the US",
+        "US artificial intelligence news today",
+        "Biggest AI developments America",
+        "AI companies US latest news",
+        "AI regulation US latest",
+        "AI investment news USA",
+        "AI industry news today",
+        "Generative AI latest US news",
+        "AI jobs news USA",
+        "US AI policy latest"
+      ]
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "prompts": [
+        "OpenAI latest news",
+        "OpenAI breaking news today",
+        "OpenAI product announcements",
+        "OpenAI AI developments",
+        "OpenAI business news",
+        "OpenAI latest model news",
+        "OpenAI US news",
+        "OpenAI partnerships latest",
+        "OpenAI leadership news",
+        "OpenAI technology news"
+      ]
+    },
+    {
+      "id": "semiconductors",
+      "name": "Semiconductors",
+      "prompts": [
+        "US semiconductor industry latest news",
+        "US chip manufacturing news",
+        "American semiconductor investment latest",
+        "US chip factory construction news",
+        "Semiconductor companies USA latest",
+        "US advanced chip technology news",
+        "US chip export rules latest",
+        "US semiconductor jobs news",
+        "US semiconductor investment news",
+        "American chip industry outlook"
+      ]
+    },
+    {
+      "id": "chips_act",
+      "name": "CHIPS Act",
+      "prompts": [
+        "US CHIPS Act latest news",
+        "CHIPS Act funding latest",
+        "US semiconductor subsidies latest",
+        "CHIPS Act factory construction",
+        "TSMC US CHIPS Act news",
+        "Intel US CHIPS Act news",
+        "Samsung US CHIPS Act news",
+        "US chip manufacturing incentives",
+        "CHIPS Act jobs latest",
+        "CHIPS Act government announcements"
+      ]
+    },
+    {
+      "id": "technology",
+      "name": "US Technology",
+      "prompts": [
+        "Top US technology news today",
+        "Latest technology news America",
+        "US tech industry latest",
+        "Biggest technology developments US",
+        "US technology companies news",
+        "US tech regulation latest",
+        "US startup news today",
+        "US innovation news",
+        "Silicon Valley latest news",
+        "US technology breaking news"
+      ]
+    },
+    {
+      "id": "cybersecurity",
+      "name": "Cybersecurity",
+      "prompts": [
+        "US cybersecurity news today",
+        "Latest US cyber attack news",
+        "US government cybersecurity alerts",
+        "CISA latest news",
+        "Major cybersecurity incidents USA",
+        "US data breach news",
+        "Cybersecurity threats America today",
+        "US ransomware news",
+        "Federal cybersecurity announcements",
+        "US cyber defense news"
+      ]
+    },
+    {
+      "id": "weather",
+      "name": "US Weather",
+      "prompts": [
+        "US weather today",
+        "US weather forecast today",
+        "Severe weather in the US today",
+        "Latest US weather alerts",
+        "National weather forecast USA",
+        "US weather conditions today",
+        "Major weather systems US",
+        "Extreme weather forecast America",
+        "US weather warnings today",
+        "Weather outlook USA"
+      ]
+    },
+    {
+      "id": "storms",
+      "name": "US Storms",
+      "prompts": [
+        "US storm updates today",
+        "Major storms in America today",
+        "Severe storm warnings US",
+        "US thunderstorm forecast",
+        "Storm damage reports USA",
+        "US severe weather alerts",
+        "Major storm system latest",
+        "Storm tracking USA today",
+        "US storm emergency updates",
+        "Severe weather developments"
+      ]
+    },
+    {
+      "id": "hurricanes",
+      "name": "Hurricanes",
+      "prompts": [
+        "US hurricane latest news",
+        "Atlantic hurricane latest update",
+        "Hurricane tracking USA",
+        "US hurricane warnings today",
+        "Hurricane landfall latest",
+        "Hurricane evacuation news USA",
+        "Hurricane damage latest",
+        "Tropical storm US update",
+        "National hurricane forecast",
+        "Hurricane emergency alerts USA"
+      ]
+    },
+    {
+      "id": "tornadoes",
+      "name": "Tornadoes",
+      "prompts": [
+        "US tornado warnings today",
+        "Latest tornado news USA",
+        "Tornado outbreak US today",
+        "Tornado damage reports America",
+        "Tornado watches US",
+        "Severe tornado forecast USA",
+        "Tornado emergency alerts",
+        "US tornado tracking today",
+        "Major tornado incidents",
+        "Tornado recovery news USA"
+      ]
+    },
+    {
+      "id": "flooding",
+      "name": "Flooding",
+      "prompts": [
+        "US flood warnings today",
+        "Latest flooding news USA",
+        "Major floods in America",
+        "Flash flood warnings US",
+        "US flood damage latest",
+        "Flood emergency USA today",
+        "River flooding US latest",
+        "Flood evacuation news USA",
+        "Flood forecast United States",
+        "US flood recovery news"
+      ]
+    },
+    {
+      "id": "wildfires",
+      "name": "Wildfires",
+      "prompts": [
+        "US wildfire latest news",
+        "Major wildfires USA today",
+        "California wildfire latest",
+        "Wildfire evacuation alerts US",
+        "US wildfire containment latest",
+        "Wildfire smoke forecast USA",
+        "US wildfire damage reports",
+        "Major active fires America",
+        "Wildfire emergency updates",
+        "US wildfire season latest"
+      ]
+    },
+    {
+      "id": "earthquakes",
+      "name": "Earthquakes",
+      "prompts": [
+        "US earthquake latest news",
+        "Latest earthquake USA",
+        "Earthquake today United States",
+        "California earthquake latest",
+        "Major earthquake reports US",
+        "US earthquake warnings",
+        "Earthquake damage USA",
+        "Alaska earthquake latest",
+        "Earthquake activity United States",
+        "US earthquake emergency news"
+      ]
+    },
+    {
+      "id": "health",
+      "name": "US Health",
+      "prompts": [
+        "Latest US health news",
+        "US healthcare news today",
+        "Major health developments USA",
+        "US public health latest",
+        "American healthcare system news",
+        "US medical news today",
+        "Health policy USA latest",
+        "US hospital news",
+        "US health alerts",
+        "US health research news"
+      ]
+    },
+    {
+      "id": "cdc",
+      "name": "CDC",
+      "prompts": [
+        "CDC latest news",
+        "CDC health alerts today",
+        "CDC disease updates",
+        "CDC public health announcements",
+        "CDC outbreak news",
+        "CDC recommendations latest",
+        "CDC emergency alerts",
+        "CDC infectious disease news",
+        "CDC vaccination news",
+        "CDC latest guidance"
+      ]
+    },
+    {
+      "id": "fda",
+      "name": "FDA",
+      "prompts": [
+        "FDA latest news",
+        "FDA drug approvals today",
+        "FDA safety alerts",
+        "FDA food safety news",
+        "FDA medical device approvals",
+        "FDA recalls today",
+        "FDA latest announcements",
+        "FDA health warnings",
+        "FDA pharmaceutical news",
+        "FDA regulatory updates"
+      ]
+    },
+    {
+      "id": "science",
+      "name": "US Science",
+      "prompts": [
+        "US science news today",
+        "Latest scientific discoveries USA",
+        "American science research news",
+        "Major US science developments",
+        "US research breakthroughs",
+        "US universities science news",
+        "Latest scientific studies USA",
+        "US climate science news",
+        "US technology research news",
+        "American scientists latest discoveries"
+      ]
+    },
+    {
+      "id": "space",
+      "name": "US Space",
+      "prompts": [
+        "Latest US space news",
+        "NASA latest news",
+        "NASA mission updates today",
+        "US space launch latest",
+        "SpaceX latest US news",
+        "Artemis program latest",
+        "US moon mission latest",
+        "US Mars mission news",
+        "NASA breaking news",
+        "American space industry latest"
+      ]
+    },
+    {
+      "id": "nasa",
+      "name": "NASA",
+      "prompts": [
+        "NASA latest news today",
+        "NASA mission updates",
+        "NASA space launch today",
+        "NASA Artemis latest",
+        "NASA astronauts latest news",
+        "NASA moon mission update",
+        "NASA Mars news",
+        "NASA science discoveries",
+        "NASA breaking news",
+        "NASA upcoming missions"
+      ]
+    },
+    {
+      "id": "spacex",
+      "name": "SpaceX",
+      "prompts": [
+        "SpaceX latest news today",
+        "SpaceX launch latest",
+        "SpaceX Starship latest news",
+        "SpaceX Falcon launch today",
+        "SpaceX NASA mission latest",
+        "SpaceX satellite news",
+        "SpaceX launch schedule",
+        "SpaceX US space industry news",
+        "SpaceX breaking news",
+        "SpaceX latest developments"
+      ]
+    },
+    {
+      "id": "crime",
+      "name": "US Crime",
+      "prompts": [
+        "Major crime news in the US today",
+        "Latest US crime news",
+        "Major criminal investigations USA",
+        "US crime breaking news",
+        "National crime news today",
+        "Major arrests USA today",
+        "US crime investigation latest",
+        "Crime alerts America",
+        "Major criminal cases US",
+        "US public safety news"
+      ]
+    },
+    {
+      "id": "police",
+      "name": "US Police",
+      "prompts": [
+        "US police news today",
+        "Major police incidents USA",
+        "Police investigation news US",
+        "Police activity latest America",
+        "Major arrests US today",
+        "Law enforcement news USA",
+        "Police department news today",
+        "US police investigations",
+        "Major law enforcement operations",
+        "Police breaking news USA"
+      ]
+    },
+    {
+      "id": "fbi",
+      "name": "FBI",
+      "prompts": [
+        "FBI latest news",
+        "FBI investigations latest",
+        "FBI announcements today",
+        "FBI wanted latest news",
+        "FBI major cases",
+        "FBI national security news",
+        "FBI cybercrime news",
+        "FBI criminal investigation news",
+        "FBI press release today",
+        "FBI breaking news"
+      ]
+    },
+    {
+      "id": "justice_department",
+      "name": "Department of Justice",
+      "prompts": [
+        "US Department of Justice latest news",
+        "DOJ announcements today",
+        "DOJ major cases latest",
+        "DOJ legal news USA",
+        "DOJ investigations latest",
+        "DOJ enforcement actions",
+        "DOJ press releases today",
+        "DOJ criminal cases",
+        "DOJ civil cases latest",
+        "Department of Justice breaking news"
+      ]
+    },
+    {
+      "id": "immigration",
+      "name": "US Immigration",
+      "prompts": [
+        "US immigration latest news",
+        "US immigration policy today",
+        "US border latest news",
+        "US border security news",
+        "US visa news today",
+        "US immigration rules latest",
+        "US citizenship news",
+        "US asylum latest news",
+        "US immigration court news",
+        "US immigration government announcements"
+      ]
+    },
+    {
+      "id": "border",
+      "name": "US Border",
+      "prompts": [
+        "US border latest news",
+        "Mexico US border news today",
+        "US border security latest",
+        "Border crossings latest USA",
+        "US border enforcement news",
+        "Border Patrol latest news",
+        "US border policy latest",
+        "US border emergency news",
+        "Border immigration statistics latest",
+        "US southern border developments"
+      ]
+    },
+    {
+      "id": "national_security",
+      "name": "National Security",
+      "prompts": [
+        "US national security latest news",
+        "National security developments USA",
+        "US intelligence latest news",
+        "Homeland Security latest news",
+        "US security alerts today",
+        "National security policy latest",
+        "US counterterrorism news",
+        "US intelligence briefing latest",
+        "US security threats latest",
+        "American national security news"
+      ]
+    },
+    {
+      "id": "military",
+      "name": "US Military",
+      "prompts": [
+        "US military latest news",
+        "Pentagon latest news today",
+        "US defense news today",
+        "US military operations latest",
+        "US military announcements",
+        "US defense policy latest",
+        "US armed forces news",
+        "Pentagon press briefing today",
+        "US military technology news",
+        "US defense industry latest"
+      ]
+    },
+    {
+      "id": "pentagon",
+      "name": "Pentagon",
+      "prompts": [
+        "Pentagon latest news",
+        "Pentagon briefing today",
+        "Pentagon announcements",
+        "US Defense Department latest",
+        "Pentagon military operations news",
+        "Pentagon defense policy",
+        "Pentagon budget news",
+        "Pentagon weapons program news",
+        "Pentagon international security news",
+        "Pentagon breaking news"
+      ]
+    },
+    {
+      "id": "foreign_policy",
+      "name": "US Foreign Policy",
+      "prompts": [
+        "US foreign policy latest news",
+        "American diplomacy latest",
+        "US international relations news",
+        "US State Department latest",
+        "US diplomatic announcements",
+        "US foreign policy developments",
+        "US international agreements latest",
+        "US diplomatic relations today",
+        "America global affairs news",
+        "US foreign policy briefing"
+      ]
+    },
+    {
+      "id": "ukraine",
+      "name": "US Ukraine News",
+      "prompts": [
+        "US Ukraine policy latest",
+        "US Ukraine aid latest news",
+        "Washington Ukraine news",
+        "US Russia Ukraine policy",
+        "US Ukraine military aid",
+        "US Ukraine diplomatic news",
+        "Congress Ukraine aid latest",
+        "White House Ukraine statement",
+        "US Ukraine sanctions news",
+        "US Ukraine relations today"
+      ]
+    },
+    {
+      "id": "russia",
+      "name": "US Russia Relations",
+      "prompts": [
+        "US Russia relations latest",
+        "US Russia news today",
+        "Washington Russia policy latest",
+        "US Russia sanctions latest",
+        "US Russia diplomatic news",
+        "White House Russia statement",
+        "US Russia negotiations latest",
+        "US Russia security news",
+        "US Russia foreign policy",
+        "America Russia relations update"
+      ]
+    },
+    {
+      "id": "china",
+      "name": "US China Relations",
+      "prompts": [
+        "US China relations latest",
+        "US China news today",
+        "Washington China policy latest",
+        "US China trade news",
+        "US China technology restrictions",
+        "US China diplomatic news",
+        "White House China statement",
+        "US China tariffs latest",
+        "US China semiconductor news",
+        "America China relations update"
+      ]
+    },
+    {
+      "id": "trade",
+      "name": "US Trade",
+      "prompts": [
+        "US trade news today",
+        "US tariffs latest news",
+        "American trade policy latest",
+        "US import export news",
+        "US trade agreements latest",
+        "US trade negotiations",
+        "US tariffs China latest",
+        "US trade deficit latest",
+        "US international commerce news",
+        "US trade policy update"
+      ]
+    },
+    {
+      "id": "tariffs",
+      "name": "US Tariffs",
+      "prompts": [
+        "US tariff latest news",
+        "New US tariffs today",
+        "US tariff policy latest",
+        "US China tariffs latest",
+        "US tariffs on imports",
+        "US tariff economic impact",
+        "White House tariff announcement",
+        "Congress tariff news",
+        "US tariff changes today",
+        "American tariff policy update"
+      ]
+    },
+    {
+      "id": "housing",
+      "name": "US Housing",
+      "prompts": [
+        "US housing market latest news",
+        "US home prices latest",
+        "US housing market today",
+        "US mortgage market news",
+        "US home sales latest",
+        "US housing construction news",
+        "US real estate market update",
+        "US housing affordability news",
+        "US rental market latest",
+        "American housing outlook"
+      ]
+    },
+    {
+      "id": "real_estate",
+      "name": "US Real Estate",
+      "prompts": [
+        "US real estate news today",
+        "Commercial real estate USA latest",
+        "US property market latest",
+        "US office market news",
+        "US apartment market latest",
+        "US real estate investment news",
+        "US property prices latest",
+        "US real estate companies news",
+        "US construction property news",
+        "American real estate outlook"
+      ]
+    },
+    {
+      "id": "gas_prices",
+      "name": "US Gas Prices",
+      "prompts": [
+        "US gas prices today",
+        "Average gas price USA today",
+        "US gasoline prices latest",
+        "California gas prices today",
+        "Texas gas prices today",
+        "National gas price average USA",
+        "US fuel prices latest",
+        "Why are US gas prices changing",
+        "US oil and gas price news",
+        "American fuel market update"
+      ]
+    },
+    {
+      "id": "oil",
+      "name": "US Oil",
+      "prompts": [
+        "US oil industry latest news",
+        "US crude oil production latest",
+        "US oil prices today",
+        "American oil companies latest news",
+        "US shale oil latest",
+        "US oil drilling news",
+        "US energy market today",
+        "US oil production data",
+        "US petroleum industry news",
+        "American oil market outlook"
+      ]
+    },
+    {
+      "id": "energy",
+      "name": "US Energy",
+      "prompts": [
+        "US energy news today",
+        "US electricity prices latest",
+        "US energy policy latest",
+        "US renewable energy news",
+        "US power grid latest news",
+        "US energy production latest",
+        "US natural gas news",
+        "US solar energy news",
+        "US nuclear energy latest",
+        "American energy market update"
+      ]
+    },
+    {
+      "id": "electric_vehicles",
+      "name": "Electric Vehicles",
+      "prompts": [
+        "US electric vehicle news today",
+        "EV market USA latest",
+        "US EV sales latest",
+        "Electric car industry America",
+        "US EV manufacturing news",
+        "US electric vehicle policy",
+        "Tesla EV market news",
+        "US EV battery factory news",
+        "Electric vehicle incentives USA",
+        "American EV industry outlook"
+      ]
+    },
+    {
+      "id": "automotive",
+      "name": "US Auto Industry",
+      "prompts": [
+        "US auto industry latest news",
+        "American car industry news",
+        "US vehicle sales latest",
+        "US auto manufacturing news",
+        "Detroit auto industry latest",
+        "US car recalls today",
+        "US auto workers news",
+        "US automobile companies latest",
+        "US car prices latest",
+        "American automotive outlook"
+      ]
+    },
+    {
+      "id": "retail",
+      "name": "US Retail",
+      "prompts": [
+        "US retail news today",
+        "American retail industry latest",
+        "Walmart latest news",
+        "Target latest news",
+        "Costco latest news",
+        "US retail sales latest",
+        "US shopping trends latest",
+        "US retail layoffs news",
+        "US store closures latest",
+        "American retail outlook"
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "US Consumers",
+      "prompts": [
+        "US consumer spending latest",
+        "American consumer confidence latest",
+        "US consumer prices today",
+        "US consumer debt latest",
+        "US credit card debt news",
+        "US household spending latest",
+        "US consumer sentiment report",
+        "US shopping trends",
+        "US personal income latest",
+        "US consumer economy update"
+      ]
+    },
+    {
+      "id": "education",
+      "name": "US Education",
+      "prompts": [
+        "US education news today",
+        "American schools latest news",
+        "US college news today",
+        "US university latest news",
+        "US education policy latest",
+        "US student loan news",
+        "US teacher news today",
+        "US school funding latest",
+        "US education department news",
+        "American education developments"
+      ]
+    },
+    {
+      "id": "student_loans",
+      "name": "Student Loans",
+      "prompts": [
+        "US student loan latest news",
+        "Federal student loan news today",
+        "Student loan repayment latest",
+        "US student debt latest",
+        "Student loan policy news",
+        "Student loan forgiveness latest",
+        "Education Department student loans",
+        "Student loan interest rates USA",
+        "US college debt news",
+        "Student loan announcement today"
+      ]
+    },
+    {
+      "id": "labor_unions",
+      "name": "US Labor",
+      "prompts": [
+        "US labor news today",
+        "American workers latest news",
+        "US union news today",
+        "Major US strikes latest",
+        "US labor negotiations",
+        "Worker wage news USA",
+        "US workplace regulations",
+        "US labor disputes latest",
+        "US union contracts news",
+        "American workforce outlook"
+      ]
+    },
+    {
+      "id": "transportation",
+      "name": "US Transportation",
+      "prompts": [
+        "US transportation news today",
+        "US road traffic news",
+        "Major transportation incidents USA",
+        "US highway news today",
+        "US infrastructure news",
+        "Department of Transportation latest",
+        "US transportation policy",
+        "Major road closures USA",
+        "US transit news",
+        "American transportation developments"
+      ]
+    },
+    {
+      "id": "airlines",
+      "name": "US Airlines",
+      "prompts": [
+        "US airline news today",
+        "Major US flight disruptions",
+        "US airport delays today",
+        "American Airlines latest news",
+        "Delta Airlines latest news",
+        "United Airlines latest news",
+        "Southwest Airlines latest news",
+        "US airline cancellations today",
+        "US aviation industry latest",
+        "US flight travel alerts"
+      ]
+    },
+    {
+      "id": "aviation",
+      "name": "US Aviation",
+      "prompts": [
+        "US aviation news today",
+        "FAA latest news",
+        "US flight safety news",
+        "Major aviation incidents USA",
+        "US airport news today",
+        "FAA announcements latest",
+        "US aircraft industry news",
+        "US aviation regulations",
+        "US airline safety updates",
+        "American aviation outlook"
+      ]
+    },
+    {
+      "id": "railways",
+      "name": "US Rail",
+      "prompts": [
+        "US railroad news today",
+        "Amtrak latest news",
+        "US train service updates",
+        "Major train incidents USA",
+        "US railway infrastructure news",
+        "US freight rail latest",
+        "Railroad worker news USA",
+        "US rail transportation policy",
+        "Train delays USA today",
+        "American rail industry news"
+      ]
+    },
+    {
+      "id": "sports",
+      "name": "US Sports",
+      "prompts": [
+        "Top US sports news today",
+        "Latest American sports news",
+        "Major sports stories USA today",
+        "US sports breaking news",
+        "Sports headlines America",
+        "Biggest sports news today USA",
+        "US sports scores today",
+        "American sports events today",
+        "US sports injuries latest",
+        "US sports business news"
+      ]
+    },
+    {
+      "id": "nfl",
+      "name": "NFL",
+      "prompts": [
+        "NFL latest news today",
+        "NFL scores today",
+        "NFL breaking news",
+        "NFL injury news today",
+        "NFL standings latest",
+        "NFL game results today",
+        "NFL trade news",
+        "NFL player news",
+        "NFL team news today",
+        "NFL schedule latest"
+      ]
+    },
+    {
+      "id": "nba",
+      "name": "NBA",
+      "prompts": [
+        "NBA latest news today",
+        "NBA scores today",
+        "NBA breaking news",
+        "NBA injury news",
+        "NBA standings latest",
+        "NBA game results today",
+        "NBA trade news",
+        "NBA player news",
+        "NBA team news today",
+        "NBA schedule latest"
+      ]
+    },
+    {
+      "id": "mlb",
+      "name": "MLB",
+      "prompts": [
+        "MLB latest news today",
+        "MLB scores today",
+        "MLB breaking news",
+        "MLB injury news",
+        "MLB standings latest",
+        "MLB game results today",
+        "MLB trade news",
+        "MLB player news",
+        "MLB team news today",
+        "MLB schedule latest"
+      ]
+    },
+    {
+      "id": "nhl",
+      "name": "NHL",
+      "prompts": [
+        "NHL latest news today",
+        "NHL scores today",
+        "NHL breaking news",
+        "NHL injury news",
+        "NHL standings latest",
+        "NHL game results today",
+        "NHL trade news",
+        "NHL player news",
+        "NHL team news today",
+        "NHL schedule latest"
+      ]
+    },
+    {
+      "id": "college_sports",
+      "name": "College Sports",
+      "prompts": [
+        "US college sports news today",
+        "College football latest news",
+        "College basketball latest news",
+        "NCAA latest news",
+        "College sports scores today",
+        "College football rankings latest",
+        "College basketball rankings latest",
+        "NCAA tournament news",
+        "College athlete news USA",
+        "College sports breaking news"
+      ]
+    },
+    {
+      "id": "entertainment",
+      "name": "US Entertainment",
+      "prompts": [
+        "Latest US entertainment news",
+        "Top entertainment news America",
+        "Hollywood breaking news today",
+        "Celebrity news USA today",
+        "Movie industry news USA",
+        "TV industry news America",
+        "Streaming industry latest news",
+        "US entertainment business news",
+        "Entertainment headlines today",
+        "Hollywood latest developments"
+      ]
+    },
+    {
+      "id": "hollywood",
+      "name": "Hollywood",
+      "prompts": [
+        "Hollywood latest news today",
+        "Hollywood breaking news",
+        "Latest movie news USA",
+        "Hollywood actor news today",
+        "Hollywood director news",
+        "Hollywood film industry news",
+        "Hollywood box office latest",
+        "Hollywood production news",
+        "Major Hollywood announcements",
+        "Hollywood entertainment headlines"
+      ]
+    },
+    {
+      "id": "movies",
+      "name": "US Movies",
+      "prompts": [
+        "New movies US latest news",
+        "US box office latest",
+        "Hollywood movie releases today",
+        "Latest American film news",
+        "Upcoming US movies news",
+        "Movie trailers latest USA",
+        "US film industry news",
+        "Hollywood movie announcements",
+        "US cinema news today",
+        "American movie business latest"
+      ]
+    },
+    {
+      "id": "music",
+      "name": "US Music",
+      "prompts": [
+        "US music news today",
+        "Latest American music news",
+        "Music industry USA latest",
+        "US singer news today",
+        "American artist announcements",
+        "US concert news",
+        "Music festival news USA",
+        "Billboard latest news",
+        "US music business news",
+        "American music industry updates"
+      ]
+    },
+    {
+      "id": "social_media",
+      "name": "US Social Media",
+      "prompts": [
+        "US social media news today",
+        "TikTok US latest news",
+        "Facebook US latest news",
+        "Instagram US latest news",
+        "YouTube US latest news",
+        "X social media US news",
+        "Social media regulation USA",
+        "US social media policy latest",
+        "Social media company news USA",
+        "Viral social media news America"
+      ]
+    },
+    {
+      "id": "privacy",
+      "name": "Privacy & Data",
+      "prompts": [
+        "US privacy law latest news",
+        "American data privacy news",
+        "US data protection regulations",
+        "Consumer privacy USA latest",
+        "US data breach news today",
+        "Privacy legislation America",
+        "US technology privacy rules",
+        "State privacy laws latest",
+        "US online privacy developments",
+        "American data protection news"
+      ]
+    },
+    {
+      "id": "environment",
+      "name": "US Environment",
+      "prompts": [
+        "US environmental news today",
+        "American environmental policy latest",
+        "US climate news today",
+        "EPA latest news",
+        "US pollution news",
+        "US environmental regulations",
+        "US conservation news",
+        "US environmental disasters",
+        "US clean energy news",
+        "American environment developments"
+      ]
+    },
+    {
+      "id": "climate",
+      "name": "US Climate",
+      "prompts": [
+        "US climate news today",
+        "American climate change news",
+        "US climate policy latest",
+        "US climate research latest",
+        "Climate change impacts USA",
+        "US extreme heat latest",
+        "US climate regulations",
+        "US emissions news",
+        "US climate technology news",
+        "American climate developments"
+      ]
+    },
+    {
+      "id": "epa",
+      "name": "EPA",
+      "prompts": [
+        "EPA latest news",
+        "EPA announcements today",
+        "EPA environmental regulations",
+        "EPA pollution news",
+        "EPA climate policy latest",
+        "EPA enforcement actions",
+        "EPA environmental alerts",
+        "EPA water quality news",
+        "EPA air quality news",
+        "EPA breaking news"
+      ]
+    },
+    {
+      "id": "agriculture",
+      "name": "US Agriculture",
+      "prompts": [
+        "US agriculture news today",
+        "American farmers latest news",
+        "US farm policy latest",
+        "US crop prices latest",
+        "US agriculture exports news",
+        "US farming industry news",
+        "US USDA latest announcements",
+        "US food production news",
+        "US agricultural markets today",
+        "American farming outlook"
+      ]
+    },
+    {
+      "id": "food",
+      "name": "US Food News",
+      "prompts": [
+        "US food news today",
+        "Food prices USA latest",
+        "US food recalls today",
+        "FDA food safety alerts",
+        "US grocery prices latest",
+        "American food industry news",
+        "US restaurant industry news",
+        "US food supply news",
+        "Major food company news USA",
+        "US food safety latest"
+      ]
+    },
+    {
+      "id": "restaurants",
+      "name": "US Restaurants",
+      "prompts": [
+        "US restaurant industry news",
+        "Restaurant openings USA latest",
+        "US restaurant closures today",
+        "Fast food industry USA news",
+        "Major restaurant chain news",
+        "US restaurant prices latest",
+        "Restaurant layoffs USA",
+        "US food service industry news",
+        "Restaurant business trends USA",
+        "American restaurant industry outlook"
+      ]
+    },
+    {
+      "id": "travel",
+      "name": "US Travel",
+      "prompts": [
+        "US travel news today",
+        "American tourism latest news",
+        "US travel alerts today",
+        "US tourism industry news",
+        "Travel disruptions USA",
+        "US hotel industry news",
+        "US vacation travel trends",
+        "US national parks latest news",
+        "US travel regulations latest",
+        "American travel outlook"
+      ]
+    },
+    {
+      "id": "tourism",
+      "name": "US Tourism",
+      "prompts": [
+        "US tourism news today",
+        "American tourism industry latest",
+        "US tourist arrivals latest",
+        "US tourism spending news",
+        "Popular US destinations latest",
+        "US hotel occupancy news",
+        "US tourism economy latest",
+        "US travel demand news",
+        "US tourism policy latest",
+        "American tourism outlook"
+      ]
+    },
+    {
+      "id": "local_news",
+      "name": "US Local News",
+      "prompts": [
+        "Top local news in the US today",
+        "Major local news stories America",
+        "Latest city news USA",
+        "US local breaking news",
+        "Major state news today USA",
+        "Local government news USA",
+        "Community news America today",
+        "Local emergency news USA",
+        "US regional news today",
+        "Latest local headlines America"
+      ]
+    },
+    {
+      "id": "new_york",
+      "name": "New York",
+      "prompts": [
+        "New York latest news today",
+        "NYC breaking news today",
+        "New York City weather today",
+        "New York politics latest",
+        "New York business news",
+        "New York crime news today",
+        "New York transportation news",
+        "New York housing news",
+        "New York health news",
+        "New York local headlines"
+      ]
+    },
+    {
+      "id": "california",
+      "name": "California",
+      "prompts": [
+        "California latest news today",
+        "California breaking news",
+        "California weather today",
+        "California wildfire latest",
+        "California politics latest",
+        "California business news",
+        "California crime news",
+        "California housing news",
+        "California economy latest",
+        "California local headlines"
+      ]
+    },
+    {
+      "id": "texas",
+      "name": "Texas",
+      "prompts": [
+        "Texas latest news today",
+        "Texas breaking news",
+        "Texas weather today",
+        "Texas politics latest",
+        "Texas business news",
+        "Texas crime news",
+        "Texas energy news",
+        "Texas housing news",
+        "Texas economy latest",
+        "Texas local headlines"
+      ]
+    },
+    {
+      "id": "florida",
+      "name": "Florida",
+      "prompts": [
+        "Florida latest news today",
+        "Florida breaking news",
+        "Florida weather today",
+        "Florida hurricane latest",
+        "Florida politics latest",
+        "Florida business news",
+        "Florida crime news",
+        "Florida housing news",
+        "Florida tourism news",
+        "Florida local headlines"
+      ]
+    },
+    {
+      "id": "washington",
+      "name": "Washington State",
+      "prompts": [
+        "Washington State latest news today",
+        "Seattle breaking news today",
+        "Washington State weather today",
+        "Seattle technology news",
+        "Washington State politics latest",
+        "Seattle business news",
+        "Washington State crime news",
+        "Seattle housing news",
+        "Washington State economy news",
+        "Seattle local headlines"
+      ]
+    },
+    {
+      "id": "illinois",
+      "name": "Illinois",
+      "prompts": [
+        "Illinois latest news today",
+        "Chicago breaking news today",
+        "Illinois weather today",
+        "Chicago business news",
+        "Illinois politics latest",
+        "Chicago crime news",
+        "Illinois economy news",
+        "Chicago transportation news",
+        "Illinois housing news",
+        "Chicago local headlines"
+      ]
+    },
+    {
+      "id": "new_jersey",
+      "name": "New Jersey",
+      "prompts": [
+        "New Jersey latest news today",
+        "New Jersey breaking news",
+        "New Jersey weather today",
+        "New Jersey politics latest",
+        "New Jersey business news",
+        "New Jersey crime news",
+        "New Jersey housing news",
+        "New Jersey transportation news",
+        "New Jersey economy news",
+        "New Jersey local headlines"
+      ]
+    },
+    {
+      "id": "massachusetts",
+      "name": "Massachusetts",
+      "prompts": [
+        "Massachusetts latest news today",
+        "Boston breaking news today",
+        "Massachusetts weather today",
+        "Boston technology news",
+        "Massachusetts politics latest",
+        "Boston business news",
+        "Massachusetts crime news",
+        "Boston housing news",
+        "Massachusetts economy news",
+        "Boston local headlines"
+      ]
+    },
+    {
+      "id": "pennsylvania",
+      "name": "Pennsylvania",
+      "prompts": [
+        "Pennsylvania latest news today",
+        "Philadelphia breaking news",
+        "Pennsylvania weather today",
+        "Pennsylvania politics latest",
+        "Philadelphia business news",
+        "Pennsylvania crime news",
+        "Pennsylvania economy news",
+        "Pennsylvania housing news",
+        "Pennsylvania transportation news",
+        "Pennsylvania local headlines"
+      ]
+    },
+    {
+      "id": "arizona",
+      "name": "Arizona",
+      "prompts": [
+        "Arizona latest news today",
+        "Phoenix breaking news",
+        "Arizona weather today",
+        "Arizona politics latest",
+        "Phoenix business news",
+        "Arizona crime news",
+        "Arizona housing news",
+        "Arizona immigration news",
+        "Arizona economy news",
+        "Arizona local headlines"
+      ]
+    },
+    {
+      "id": "colorado",
+      "name": "Colorado",
+      "prompts": [
+        "Colorado latest news today",
+        "Denver breaking news",
+        "Colorado weather today",
+        "Colorado wildfire latest",
+        "Colorado politics latest",
+        "Denver business news",
+        "Colorado crime news",
+        "Colorado housing news",
+        "Colorado economy news",
+        "Colorado local headlines"
+      ]
+    },
+    {
+      "id": "georgia",
+      "name": "Georgia",
+      "prompts": [
+        "Georgia latest news today",
+        "Atlanta breaking news",
+        "Georgia weather today",
+        "Georgia politics latest",
+        "Atlanta business news",
+        "Georgia crime news",
+        "Georgia housing news",
+        "Georgia economy news",
+        "Atlanta transportation news",
+        "Georgia local headlines"
+      ]
+    },
+    {
+      "id": "north_carolina",
+      "name": "North Carolina",
+      "prompts": [
+        "North Carolina latest news today",
+        "Charlotte breaking news",
+        "North Carolina weather today",
+        "North Carolina politics latest",
+        "North Carolina business news",
+        "North Carolina crime news",
+        "North Carolina housing news",
+        "North Carolina economy news",
+        "North Carolina education news",
+        "North Carolina local headlines"
+      ]
+    },
+    {
+      "id": "ohio",
+      "name": "Ohio",
+      "prompts": [
+        "Ohio latest news today",
+        "Ohio breaking news",
+        "Ohio weather today",
+        "Ohio politics latest",
+        "Ohio business news",
+        "Ohio crime news",
+        "Ohio housing news",
+        "Ohio economy news",
+        "Ohio education news",
+        "Ohio local headlines"
+      ]
+    },
+    {
+      "id": "michigan",
+      "name": "Michigan",
+      "prompts": [
+        "Michigan latest news today",
+        "Detroit breaking news",
+        "Michigan weather today",
+        "Michigan politics latest",
+        "Detroit business news",
+        "Michigan auto industry news",
+        "Michigan crime news",
+        "Michigan housing news",
+        "Michigan economy news",
+        "Michigan local headlines"
+      ]
+    },
+    {
+      "id": "minnesota",
+      "name": "Minnesota",
+      "prompts": [
+        "Minnesota latest news today",
+        "Minneapolis breaking news",
+        "Minnesota weather today",
+        "Minnesota politics latest",
+        "Minnesota business news",
+        "Minnesota crime news",
+        "Minnesota housing news",
+        "Minnesota economy news",
+        "Minnesota education news",
+        "Minnesota local headlines"
+      ]
+    },
+    {
+      "id": "oregon",
+      "name": "Oregon",
+      "prompts": [
+        "Oregon latest news today",
+        "Portland breaking news",
+        "Oregon weather today",
+        "Oregon wildfire latest",
+        "Oregon politics latest",
+        "Portland business news",
+        "Oregon crime news",
+        "Oregon housing news",
+        "Oregon economy news",
+        "Oregon local headlines"
+      ]
+    },
+    {
+      "id": "nevada",
+      "name": "Nevada",
+      "prompts": [
+        "Nevada latest news today",
+        "Las Vegas breaking news",
+        "Nevada weather today",
+        "Nevada politics latest",
+        "Las Vegas business news",
+        "Nevada tourism news",
+        "Nevada crime news",
+        "Nevada housing news",
+        "Nevada economy news",
+        "Nevada local headlines"
+      ]
+    },
+    {
+      "id": "hawaii",
+      "name": "Hawaii",
+      "prompts": [
+        "Hawaii latest news today",
+        "Hawaii breaking news",
+        "Hawaii weather today",
+        "Hawaii wildfire latest",
+        "Hawaii politics latest",
+        "Hawaii tourism news",
+        "Hawaii business news",
+        "Hawaii crime news",
+        "Hawaii housing news",
+        "Hawaii local headlines"
+      ]
+    },
+    {
+      "id": "alaska",
+      "name": "Alaska",
+      "prompts": [
+        "Alaska latest news today",
+        "Alaska breaking news",
+        "Alaska weather today",
+        "Alaska earthquake latest",
+        "Alaska politics latest",
+        "Alaska oil industry news",
+        "Alaska crime news",
+        "Alaska economy news",
+        "Alaska wildlife news",
+        "Alaska local headlines"
+      ]
+    },
+    {
+      "id": "legal",
+      "name": "US Legal News",
+      "prompts": [
+        "US legal news today",
+        "Major court cases USA today",
+        "Federal court latest news",
+        "US lawsuit news today",
+        "Major lawsuits America",
+        "US legal decisions latest",
+        "Federal litigation news",
+        "Major corporate lawsuits USA",
+        "US legal policy developments",
+        "American law news today"
+      ]
+    },
+    {
+      "id": "consumer_protection",
+      "name": "Consumer Protection",
+      "prompts": [
+        "US consumer protection news",
+        "FTC latest news",
+        "FTC enforcement actions today",
+        "US consumer scams latest",
+        "American consumer alerts",
+        "Product safety recalls USA",
+        "Consumer fraud news USA",
+        "US business consumer lawsuits",
+        "Consumer protection regulations",
+        "FTC breaking news"
+      ]
+    },
+    {
+      "id": "ftc",
+      "name": "FTC",
+      "prompts": [
+        "FTC latest news",
+        "FTC announcements today",
+        "FTC lawsuits latest",
+        "FTC investigations USA",
+        "FTC antitrust news",
+        "FTC consumer protection news",
+        "FTC enforcement actions",
+        "FTC technology cases",
+        "FTC company investigations",
+        "FTC breaking news"
+      ]
+    },
+    {
+      "id": "antitrust",
+      "name": "US Antitrust",
+      "prompts": [
+        "US antitrust news today",
+        "FTC antitrust latest",
+        "DOJ antitrust cases latest",
+        "Major US antitrust lawsuits",
+        "Technology antitrust USA",
+        "Big Tech antitrust news",
+        "US merger review latest",
+        "American competition law news",
+        "Antitrust enforcement USA",
+        "US corporate competition cases"
+      ]
+    },
+    {
+      "id": "banking",
+      "name": "US Banking",
+      "prompts": [
+        "US banking news today",
+        "American banks latest news",
+        "US bank earnings latest",
+        "Major bank news USA",
+        "US banking regulations latest",
+        "US bank failures latest",
+        "Federal banking policy news",
+        "US regional banks latest",
+        "US banking industry outlook",
+        "American financial institutions news"
+      ]
+    },
+    {
+      "id": "cryptocurrency",
+      "name": "US Crypto",
+      "prompts": [
+        "US cryptocurrency news today",
+        "US crypto regulation latest",
+        "Bitcoin US news today",
+        "Ethereum US news",
+        "SEC crypto latest news",
+        "US crypto industry news",
+        "US cryptocurrency legislation",
+        "Crypto companies USA latest",
+        "US digital asset policy",
+        "American crypto market news"
+      ]
+    },
+    {
+      "id": "sec",
+      "name": "SEC",
+      "prompts": [
+        "SEC latest news today",
+        "SEC enforcement actions",
+        "SEC stock market regulations",
+        "SEC company investigations",
+        "SEC cryptocurrency news",
+        "SEC corporate filings latest",
+        "SEC announcements today",
+        "SEC investor alerts",
+        "SEC lawsuit news",
+        "SEC breaking news"
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "name": "US Manufacturing",
+      "prompts": [
+        "US manufacturing news today",
+        "American manufacturing latest",
+        "US factory construction news",
+        "US manufacturing jobs latest",
+        "US industrial production latest",
+        "US factory investment news",
+        "US manufacturing companies latest",
+        "American industrial sector news",
+        "US manufacturing policy",
+        "US manufacturing outlook"
+      ]
+    },
+    {
+      "id": "infrastructure",
+      "name": "US Infrastructure",
+      "prompts": [
+        "US infrastructure news today",
+        "American infrastructure projects latest",
+        "US roads and bridges news",
+        "US infrastructure investment latest",
+        "Federal infrastructure spending",
+        "US construction projects latest",
+        "US infrastructure policy",
+        "Major infrastructure projects USA",
+        "US public works news",
+        "American infrastructure outlook"
+      ]
+    },
+    {
+      "id": "housing_crisis",
+      "name": "Housing Affordability",
+      "prompts": [
+        "US housing affordability latest",
+        "US affordable housing news",
+        "American rent prices latest",
+        "US home affordability today",
+        "US housing shortage news",
+        "US rent inflation latest",
+        "US first time homebuyers news",
+        "Affordable housing policy USA",
+        "US housing crisis latest",
+        "American rental market update"
+      ]
+    },
+    {
+      "id": "daily_morning",
+      "name": "Morning Briefing",
+      "prompts": [
+        "US morning news briefing today",
+        "Top 10 US news stories this morning",
+        "America morning headlines today",
+        "US overnight news update",
+        "What happened in America overnight",
+        "US morning breaking news",
+        "US economic alerts this morning",
+        "US weather this morning",
+        "US markets before opening today",
+        "Morning news briefing USA"
+      ]
+    },
+    {
+      "id": "daily_evening",
+      "name": "Evening Briefing",
+      "prompts": [
+        "US evening news briefing today",
+        "Top 10 US news stories this evening",
+        "America evening headlines today",
+        "US news from morning to evening",
+        "US closing news roundup",
+        "US stock market closing news",
+        "US evening breaking news",
+        "US weather evening update",
+        "Latest US developments tonight",
+        "America end of day news"
+      ]
+    },
+    {
+      "id": "weekend_news",
+      "name": "Weekend US News",
+      "prompts": [
+        "Top US news this weekend",
+        "US weekend breaking news",
+        "America weekend headlines",
+        "Latest US news Saturday",
+        "Latest US news Sunday",
+        "US weekend politics news",
+        "US weekend business news",
+        "US weekend weather news",
+        "US weekend sports news",
+        "US weekend news roundup"
+      ]
+    },
+    {
+      "id": "news_roundup",
+      "name": "US News Roundup",
+      "prompts": [
+        "Top 10 US news stories today",
+        "US news roundup today",
+        "America news roundup today",
+        "Biggest US stories today",
+        "US national news summary today",
+        "Top headlines across America",
+        "US breaking news roundup",
+        "US business and economy roundup",
+        "US politics and world news roundup",
+        "Complete US news update today"
+      ]
+    }
+  ]
+}

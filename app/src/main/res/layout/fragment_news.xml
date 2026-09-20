@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorBackground"
+        android:elevation="0dp"
+        app:elevation="0dp">
+
+        <!-- Clean 56dp App Bar: [Menu] News [Search] [More] -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?android:attr/colorBackground"
+            android:elevation="0dp"
+            app:elevation="0dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="News"
+            app:titleTextAppearance="@style/ToolbarFontStyle"
+            app:titleTextColor="?android:attr/textColorPrimary" />
+
+        <!-- Collapsible Inline Search Bar -->
+        <LinearLayout
+            android:id="@+id/layout_search_container"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_search_input"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_search"
+                app:tint="?android:attr/textColorSecondary" />
+
+            <EditText
+                android:id="@+id/edit_search_news"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Search news headlines..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textColorHint="?android:attr/textColorSecondary"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/btn_clear_search"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="3dp"
+                android:src="@drawable/ic_close"
+                app:tint="?android:attr/textColorSecondary" />
+
+        </LinearLayout>
+
+        <!-- Horizontally Scrollable Category Chip Row -->
+        <HorizontalScrollView
+            android:id="@+id/scroll_category_chips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_news_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_all"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:checked="true"
+                    android:text="⭐ All News" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_top"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="⚡ Top Stories" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_politics"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🏛️ US Politics" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_business"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="💼 Business &amp; Markets" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_tech"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="📱 Tech &amp; AI" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_world"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🌎 World" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_sports"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="⚽ Sports" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_cinema"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🎬 Entertainment" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_science"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🔬 Science &amp; Space" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_health"
+                    style="@style/Widget.App.NewsFilterChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="🏥 Health" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+        <!-- Subtle Hairline Separator -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/textColorSecondary"
+            android:alpha="0.08" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Pull-to-Refresh & Main News Recycler -->
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_news"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_news"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="6dp"
+                android:paddingBottom="20dp" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <!-- Polished Skeleton Loading State (Placeholder Cards with Shimmering Blocks) -->
+        <LinearLayout
+            android:id="@+id/layout_news_skeleton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="8dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <!-- Skeleton Card 1 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeColor="?attr/squircleCardStroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@drawable/bg_skeleton_placeholder" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <View
+                            android:layout_width="90dp"
+                            android:layout_height="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+
+                        <View
+                            android:layout_width="220dp"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+
+                        <View
+                            android:layout_width="140dp"
+                            android:layout_height="14dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Skeleton Card 2 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="12dp"
+                app:cardBackgroundColor="?attr/colorSurface"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="1dp"
+                app:strokeColor="?attr/squircleCardStroke"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:background="@drawable/bg_skeleton_placeholder" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+
+                        <View
+                            android:layout_width="180dp"
+                            android:layout_height="20dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+
+                        <View
+                            android:layout_width="120dp"
+                            android:layout_height="14dp"
+                            android:background="@drawable/bg_skeleton_placeholder" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <!-- Minimal Centered Empty State -->
+        <LinearLayout
+            android:id="@+id/layout_empty_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📰"
+                android:textSize="48sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="No news available"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Try another category or refresh."
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="13sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_empty_refresh"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginTop="16dp"
+                android:text="Refresh"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:cornerRadius="19dp" />
+
+        </LinearLayout>
+
+        <!-- Clean Error State with Retry Button -->
+        <LinearLayout
+            android:id="@+id/layout_error_news"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_rss_feed"
+                app:tint="?android:attr/textColorSecondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Something went wrong"
+                android:textColor="?android:attr/textColorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Unable to load the latest news feeds."
+                android:textColor="?android:attr/textColorSecondary"
+                android:textSize="13sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_error_retry"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:layout_marginTop="16dp"
+                android:text="Retry"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:cornerRadius="19dp" />
+
+        </LinearLayout>
+
+        <!-- Progress Spinner (Fallback) -->
+        <ProgressBar
+            android:id="@+id/progress_news"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/colorAccent"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

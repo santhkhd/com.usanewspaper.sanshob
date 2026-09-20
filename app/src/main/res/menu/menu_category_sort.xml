@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_filter"
+        android:title="🔍 Filter Movies (Cast, Director, Year, Genre)"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_youtube_search"
+        android:title="🔴 Search on YouTube (In-App)"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sort"
+        android:title="Sort Movies"
+        app:showAsAction="never">
+        <menu>
+            <item android:id="@+id/sort_year_new" android:title="Year (Newest)" />
+            <item android:id="@+id/sort_year_old" android:title="Year (Oldest)" />
+            <item android:id="@+id/sort_az" android:title="Title (A-Z)" />
+            <item android:id="@+id/sort_za" android:title="Title (Z-A)" />
+        </menu>
+    </item>
+</menu>

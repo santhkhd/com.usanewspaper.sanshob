@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/background_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:attr/windowBackground">
+
+            <androidx.drawerlayout.widget.DrawerLayout
+                android:id="@+id/drawer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.coordinatorlayout.widget.CoordinatorLayout
+                        android:id="@+id/parent_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:id="@+id/main_non_video_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:id="@+id/fragment_container"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+                        </LinearLayout>
+
+                    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                </RelativeLayout>
+
+                <com.google.android.material.navigation.NavigationView
+                    android:id="@+id/navigationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    app:drawerLayoutCornerSize="@dimen/corner_radius_large">
+
+                    <androidx.core.widget.NestedScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <include layout="@layout/drawer_header" />
+
+                            <!-- AI News Research & Intelligence Hub Drawer Button -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/btn_drawer_ai_prompts"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginEnd="14dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="6dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp"
+                                app:strokeWidth="1dp"
+                                app:strokeColor="#33E11D48"
+                                app:cardBackgroundColor="#1A1E293B"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="26dp"
+                                        android:layout_height="26dp"
+                                        android:src="@drawable/ic_ai_sparkle"
+                                        app:tint="@color/colorAccent"
+                                        android:layout_marginEnd="12dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="AI News Prompts"
+                                            android:textSize="13sp"
+                                            android:textStyle="bold"
+                                            android:textColor="#FFFFFF" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="100+ Preprompts for ChatGPT"
+                                            android:textSize="10.5sp"
+                                            android:textColor="#94A3B8" />
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:background="@drawable/bg_badge_breaking"
+                                        android:paddingStart="6dp"
+                                        android:paddingEnd="6dp"
+                                        android:paddingTop="1dp"
+                                        android:paddingBottom="1dp"
+                                        android:text="100"
+                                        android:textColor="#FFFFFF"
+                                        android:textSize="9sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <!-- Add Newspaper Action Card in Drawer -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/btn_drawer_add_newspaper"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginEnd="14dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="4dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp"
+                                app:strokeWidth="1dp"
+                                app:strokeColor="#33E11D48"
+                                app:cardBackgroundColor="#1A1E293B"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="26dp"
+                                        android:layout_height="26dp"
+                                        android:src="@drawable/ic_newspaper"
+                                        app:tint="@color/colorAccent"
+                                        android:layout_marginEnd="12dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Add Newspaper"
+                                            android:textSize="13sp"
+                                            android:textStyle="bold"
+                                            android:textColor="#FFFFFF" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Add website to any state or category"
+                                            android:textSize="10.5sp"
+                                            android:textColor="#94A3B8" />
+                                    </LinearLayout>
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/ic_add"
+                                        app:tint="@color/colorAccent" />
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <!-- Add Channel / Playlist Action Card in Drawer -->
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/btn_drawer_add_channel"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="14dp"
+                                android:layout_marginEnd="14dp"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginBottom="6dp"
+                                app:cardCornerRadius="12dp"
+                                app:cardElevation="0dp"
+                                app:strokeWidth="1dp"
+                                app:strokeColor="#334155"
+                                app:cardBackgroundColor="#1E293B"
+                                android:clickable="true"
+                                android:focusable="true">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:padding="10dp">
+
+                                    <ImageView
+                                        android:layout_width="26dp"
+                                        android:layout_height="26dp"
+                                        android:src="@drawable/ic_youtube_brand"
+                                        android:layout_marginEnd="12dp" />
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Add Channel / Playlist"
+                                            android:textSize="13sp"
+                                            android:textStyle="bold"
+                                            android:textColor="#FFFFFF" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Search YouTube &amp; add to category"
+                                            android:textSize="10.5sp"
+                                            android:textColor="#94A3B8" />
+                                    </LinearLayout>
+
+                                    <ImageView
+                                        android:layout_width="20dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/ic_add"
+                                        app:tint="@color/colorAccent" />
+                                </LinearLayout>
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_small"
+                                android:nestedScrollingEnabled="false" />
+
+                        </LinearLayout>
+
+                    </androidx.core.widget.NestedScrollView>
+
+                </com.google.android.material.navigation.NavigationView>
+
+            </androidx.drawerlayout.widget.DrawerLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation_bar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="56dp"
+                    app:elevation="8dp"
+                    app:itemIconTint="@color/selector_bottom_nav"
+                    app:itemTextColor="@color/selector_bottom_nav"
+                    app:itemPaddingTop="4dp"
+                    app:itemPaddingBottom="4dp"
+                    app:paddingBottomSystemWindowInsets="false"
+                    app:paddingTopSystemWindowInsets="false"
+                    app:labelVisibilityMode="labeled"
+                    app:menu="@menu/menu_bottom_nav" />
+
+                <!-- YouTube Style Circular Center '+' Add Channel Button -->
+                <FrameLayout
+                    android:id="@+id/btn_bottom_add"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_nav_center_circle"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_newspaper"
+                        app:tint="@color/color_white" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <com.solodroidx.ads.ui.BannerAdView
+                android:id="@+id/adView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/main_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/dialog_view"
+        layout="@layout/dialog_exit"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

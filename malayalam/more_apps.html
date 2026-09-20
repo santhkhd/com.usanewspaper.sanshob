@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>More Apps - Our Collections</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.5);
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1.2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 25px var(--primary-glow);
+            transform: rotate(-5deg);
+        }
+
+        .logo-container i {
+            font-size: 40px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .apps-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .app-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-card:active {
+            transform: scale(0.97);
+        }
+
+        .app-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .app-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            object-fit: cover;
+            margin-right: 1.2rem;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-info {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            color: var(--text);
+        }
+
+        .app-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .install-btn {
+            background: rgba(255, 255, 255, 0.05);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 0.5rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-card:hover .install-btn {
+            background: var(--primary);
+            color: white;
+            transform: rotate(360deg);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            padding-bottom: 2rem;
+        }
+
+        /* Shimmer loading effect placeholder */
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .app-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header data-aos="fade-down">
+            <div class="logo-container">
+                <i class="material-icons">apps</i>
+            </div>
+            <h1>More Apps</h1>
+            <p class="subtitle">Explore our other amazing applications</p>
+        </header>
+
+        <div class="apps-grid">
+            <!-- App 1 -->
+            <a href="market://details?id=YOUR_APP_ID_1" class="app-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://img.icons8.com/fluent/144/null/google-play.png" alt="App Icon" class="app-icon">
+                <div class="app-info">
+                    <h2 class="app-title">Tamil Live TV</h2>
+                    <p class="app-desc">Watch 100+ Tamil channels live for free. High quality streaming.</p>
+                </div>
+                <div class="install-btn">
+                    <i class="material-icons">get_app</i>
+                </div>
+            </a>
+
+            <!-- App 2 -->
+            <a href="market://details?id=YOUR_APP_ID_2" class="app-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://img.icons8.com/fluent/144/null/movie-beginning.png" alt="App Icon" class="app-icon">
+                <div class="app-info">
+                    <h2 class="app-title">New Tamil Movies</h2>
+                    <p class="app-desc">Latest collection of Tamil movies, updates and trailers.</p>
+                </div>
+                <div class="install-btn">
+                    <i class="material-icons">get_app</i>
+                </div>
+            </a>
+
+            <!-- App 3 -->
+            <a href="market://details?id=YOUR_APP_ID_3" class="app-card" data-aos="fade-up" data-aos-delay="300">
+                <img src="https://img.icons8.com/fluent/144/null/news.png" alt="App Icon" class="app-icon">
+                <div class="app-info">
+                    <h2 class="app-title">Tamil News Hub</h2>
+                    <p class="app-desc">Stay updated with breaking news from all Tamil newspapers.</p>
+                </div>
+                <div class="install-btn">
+                    <i class="material-icons">get_app</i>
+                </div>
+            </a>
+
+            <!-- App 4 -->
+            <a href="market://details?id=YOUR_APP_ID_4" class="app-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://img.icons8.com/fluent/144/null/musical-notes.png" alt="App Icon" class="app-icon">
+                <div class="app-info">
+                    <h2 class="app-title">Tamil FM Radio</h2>
+                    <p class="app-desc">Listen to all Tamil radio stations in one place.</p>
+                </div>
+                <div class="install-btn">
+                    <i class="material-icons">get_app</i>
+                </div>
+            </a>
+        </div>
+
+        <footer data-aos="fade-up">
+            <p>© 2026 Your Studio. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Init animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+
+        // Add haptic feedback simulation if used in Android WebView
+        document.querySelectorAll('.app-card').forEach(card => {
+            card.addEventListener('click', () => {
+                // You can add a URL checker call here if needed
+                // console.log('App clicked');
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_bottom_sheet_dark">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="#334155"
+        android:layout_marginBottom="16dp" />
+
+    <!-- App Logo Icon -->
+    <ImageView
+        android:id="@+id/img_dialog_logo"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:src="@mipmap/ic_launcher"
+        android:background="@drawable/bg_icon_circle"
+        android:padding="6dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome Back"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login to join the conversation"
+        android:textColor="#94A3B8"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Full Name -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxBackgroundColor="#1E293B"
+        app:boxStrokeColor="#E11D48"
+        app:hintTextColor="#CBD5E1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Full Name"
+            android:textColor="#FFFFFF"
+            android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Email Address -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxBackgroundColor="#1E293B"
+        app:boxStrokeColor="#E11D48"
+        app:hintTextColor="#CBD5E1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_user_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email Address"
+            android:textColor="#FFFFFF"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Comment Message -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:boxBackgroundColor="#1E293B"
+        app:boxStrokeColor="#E11D48"
+        app:hintTextColor="#CBD5E1">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_user_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write your comment or opinion..."
+            android:textColor="#FFFFFF"
+            android:minLines="3"
+            android:gravity="top"
+            android:inputType="textMultiLine" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Continue / Submit Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_comment_continue"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="CONTINUE"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:backgroundTint="#BE123C"
+        app:cornerRadius="26dp" />
+
+    <!-- Skip / Cancel Button -->
+    <TextView
+        android:id="@+id/btn_comment_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SKIP FOR NOW"
+        android:textColor="#94A3B8"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>

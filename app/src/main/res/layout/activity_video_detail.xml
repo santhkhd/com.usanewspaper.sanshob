@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fitsSystemWindows="true">
+
+    <!-- Material 3 Clean Top App Bar (56dp, elevation 0dp, clean surface) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?android:attr/colorBackground"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 16:9 Hero Video Player with 16dp rounded bottom corners -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#000000"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.VideoPlayer">
+
+                <RelativeLayout
+                    android:id="@+id/layout_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:background="#000000">
+
+                    <ImageView
+                        android:id="@+id/image_thumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <View
+                        android:id="@+id/overlay_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#33000000" />
+
+                    <ImageView
+                        android:id="@+id/btn_play"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerInParent="true"
+                        android:background="?selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/ic_play_circle"
+                        app:tint="#FFFFFF" />
+
+                    <WebView
+                        android:id="@+id/web_view_player"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Title & Favorite Section: Compact heart beside multi-tier typography -->
+            <LinearLayout
+                android:id="@+id/layout_title_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="top"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="6dp">
+
+                <!-- Compact Favorite Action (aligned alongside the title) -->
+                <ImageView
+                    android:id="@+id/btn_favorite"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_favorite_circle"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="7dp"
+                    android:src="@drawable/ic_favorite_border"
+                    app:tint="?android:attr/textColorSecondary"
+                    android:contentDescription="Favorite" />
+
+                <!-- Multi-tier Title Column -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <!-- Primary Title (e.g. രുചിയൂറും ഇളനീർ പായസം) -->
+                    <TextView
+                        android:id="@+id/text_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="19sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:lineSpacingMultiplier="1.15"
+                        android:maxLines="3"
+                        android:ellipsize="end"
+                        tools:text="രുചിയൂറും ഇളനീർ പായസം" />
+
+                    <!-- Secondary Title (e.g. Tender Coconut Payasam • Onam Sadya) -->
+                    <TextView
+                        android:id="@+id/text_secondary_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textSize="14sp"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:lineSpacingMultiplier="1.1"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        android:visibility="gone"
+                        tools:text="Tender Coconut Payasam • Onam Sadya Special"
+                        tools:visibility="visible" />
+
+                    <!-- Metadata Row (e.g. 5:51 • 105 views • 3 weeks ago) -->
+                    <TextView
+                        android:id="@+id/text_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textSize="13sp"
+                        android:textColor="?android:attr/textColorSecondary"
+                        tools:text="5:51 • 105 views • 3 weeks ago" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Compact Channel Row (Material 3 rounded card with outlined + Add button) -->
+            <LinearLayout
+                android:id="@+id/layout_channel_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="@drawable/bg_channel_detail_card_light"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <!-- Channel Avatar / Fallback -->
+                <FrameLayout
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:layout_marginEnd="12dp">
+
+                    <ImageView
+                        android:id="@+id/img_channel_badge"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_live_tv" />
+
+                    <TextView
+                        android:id="@+id/text_channel_avatar_fallback"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_icon_circle"
+                        android:gravity="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+                </FrameLayout>
+
+                <!-- Channel Details -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        android:id="@+id/text_channel_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        tools:text="Kannur Kitchen" />
+
+                    <TextView
+                        android:id="@+id/text_channel_sub"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textSize="12sp"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:text="Tap to add this channel to app"
+                        tools:text="NF Kannur Kitchen" />
+                </LinearLayout>
+
+                <!-- Compact Outlined + Add Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_add_channel"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:minHeight="32dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="0dp"
+                    android:paddingBottom="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="+ Add"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    app:strokeColor="@color/colorAccent"
+                    app:strokeWidth="1dp"
+                    app:cornerRadius="16dp" />
+
+            </LinearLayout>
+
+            <!-- Streamlined Comments Section (Header + Thin Divider + Compact Zero-Comment State) -->
+            <LinearLayout
+                android:id="@+id/layout_comments_preview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="14dp"
+                android:orientation="vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?selectableItemBackground">
+
+                <!-- Header Row: Comments ......... 0 -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_preview_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:text="Comments"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/textColorPrimary" />
+
+                    <TextView
+                        android:id="@+id/text_preview_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text="0"
+                        android:textSize="14sp"
+                        android:textColor="?android:attr/textColorSecondary" />
+                </RelativeLayout>
+
+                <!-- Thin Subtle Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="?android:attr/textColorSecondary"
+                    android:alpha="0.12" />
+
+                <!-- Zero Comments State: Compact centered icon + text -->
+                <LinearLayout
+                    android:id="@+id/layout_comments_empty_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="10dp">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:src="@drawable/ic_chat"
+                        android:alpha="0.4"
+                        app:tint="?android:attr/textColorSecondary" />
+
+                    <TextView
+                        android:id="@+id/text_comments_empty_prompt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="No comments yet"
+                        android:textSize="13sp"
+                        android:textColor="?android:attr/textColorSecondary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Be the first to comment"
+                        android:textSize="11sp"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:alpha="0.7" />
+                </LinearLayout>
+
+                <!-- Comments Exist State: Snippet of top comment -->
+                <LinearLayout
+                    android:id="@+id/layout_preview_snippet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="6dp"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_marginEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/text_preview_avatar_fallback"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_icon_circle"
+                            android:gravity="center"
+                            android:text="C"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/img_preview_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerCrop" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/text_preview_comment_snippet"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="12.5sp"
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        tools:text="Tap to view comments..." />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Material 3 Tonal Button: Watch on YouTube App (refined from solid red block) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_open_youtube"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Watch on YouTube App"
+                android:textSize="13.5sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary"
+                app:backgroundTint="@color/color_squircle_card_bg_light"
+                app:strokeColor="@color/color_squircle_card_stroke_light"
+                app:strokeWidth="1dp"
+                app:cornerRadius="22dp"
+                app:icon="@drawable/ic_play_circle"
+                app:iconTint="@color/colorAccent"
+                app:iconGravity="textStart" />
+
+            <!-- Native Ad Container -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/native_ad_view_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="@dimen/corner_radius"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:id="@+id/native_ad_view_inner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

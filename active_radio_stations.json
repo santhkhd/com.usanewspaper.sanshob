@@ -1,0 +1,173 @@
+[
+  {
+    "name": "986malayalamradio",
+    "url": "https://stream.zeno.fm/512rbf1e3qzuv",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/986malayalamradio.jpg",
+    "tags": "",
+    "votes": 347,
+    "codec": "MP3"
+  },
+  {
+    "name": "Ahalia FM",
+    "url": "https://cast1.my-control-panel.com/proxy/ahaliafm/stream",
+    "homepage": "https://ahaliafm.com/",
+    "favicon": "https://ahaliafm.com/assets/images/cs/logo2.png",
+    "tags": "fm radio kerala,malayalam fm,malayalam radio,palakkad",
+    "votes": 10,
+    "codec": "MP3"
+  },
+  {
+    "name": "AIR Malayalam",
+    "url": "http://air.pc.cdn.bitgravity.com/air/live/pbaudio230/playlist.m3u8",
+    "homepage": "https://prasarbharati.gov.in/",
+    "favicon": "",
+    "tags": "air,all india radio,india,malayalam",
+    "votes": 2690,
+    "codec": "AAC"
+  },
+  {
+    "name": "AIR Thrissur",
+    "url": "https://d1tmej9eu7kw5c.cloudfront.net/f70fdeca437dc326/f70fdeca437dc326.m3u8",
+    "homepage": "https://akashvani.gov.in/radio/live.php",
+    "favicon": "https://newsonair.gov.in/wp-content/uploads/2024/03/Akhashvani-1.png",
+    "tags": "local radio,malayalam,news",
+    "votes": 2,
+    "codec": "UNKNOWN"
+  },
+  {
+    "name": "airmalayalam",
+    "url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio230/playlist.m3u8",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/air.jpg",
+    "tags": "",
+    "votes": 359,
+    "codec": "AAC"
+  },
+  {
+    "name": "Anbu FM Malayalam",
+    "url": "https://stream.zeno.fm/8ca40byv4x8uv",
+    "homepage": "",
+    "favicon": "https://onlineradiohub.com/wp-content/uploads/2023/02/anbu-fm-malayalam.jpg",
+    "tags": "",
+    "votes": 177,
+    "codec": "MP3"
+  },
+  {
+    "name": "chitrahitsmalayalam",
+    "url": "http://stream.zeno.fm/dubvcz3rkrhvv",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/kschitra.jpg",
+    "tags": "",
+    "votes": 413,
+    "codec": "MP3"
+  },
+  {
+    "name": "Jesus Radio Malayalam",
+    "url": "https://gains.reviveradio.net/proxy/jesusreigns?mp=/stream",
+    "homepage": "",
+    "favicon": "https://onlineradiohub.com/wp-content/uploads/2023/03/JesusRadio.jpg",
+    "tags": "",
+    "votes": 81,
+    "codec": "MP3"
+  },
+  {
+    "name": "Kancheeravam Radio",
+    "url": "https://radiosavre.com:8020/radio.mp3",
+    "homepage": "https://liveradios.in/kancheeravam-radio.html",
+    "favicon": "https://liveradios.in/wp-content/uploads/kancheeravamradio.jpg",
+    "tags": "jazz,malayalam,malayalam song,popular,vividhbharti",
+    "votes": 96,
+    "codec": "MP3"
+  },
+  {
+    "name": "KJ Yesudas Malayalam radio",
+    "url": "https://stream.zeno.fm/9x1sw687nf9uv",
+    "homepage": "",
+    "favicon": "https://onlineradiohub.com/wp-content/uploads/2023/03/Yesudas-Radio.jpg",
+    "tags": "",
+    "votes": 1151,
+    "codec": "MP3"
+  },
+  {
+    "name": "London Malayalam Radio",
+    "url": "https://ais-edge105-live365-dal02.cdnstream.com/a50671",
+    "homepage": "http://www.lmrradio.co.uk/",
+    "favicon": "http://www.lmrradio.co.uk/wp-content/uploads/2020/12/cropped-lmrlogo-new2-180x180.png",
+    "tags": "",
+    "votes": 677,
+    "codec": "MP3"
+  },
+  {
+    "name": "malayalambhakthiradio",
+    "url": "https://stream.zeno.fm/08e1vkshcc9uv",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/iyalisaibakthiradio.jpg",
+    "tags": "",
+    "votes": 353,
+    "codec": "MP3"
+  },
+  {
+    "name": "malayalammusic",
+    "url": "https://stream.zeno.fm/g8cx7tggb3quv.aac",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/malayalammusic.jpg",
+    "tags": "",
+    "votes": 373,
+    "codec": "MP3"
+  },
+  {
+    "name": "Radio Digital Malayali",
+    "url": "https://radio.digitalmalayali.in/listen/stream/radio.mp3",
+    "homepage": "https://radio.digitalmalayali.in/",
+    "favicon": "https://radio.digitalmalayali.in/static/uploads/album_art.1688135987.jpg",
+    "tags": "bollywood,hindi,indian,kollywood,lo-fi,lofi,malayalam,mollywood,tamil",
+    "votes": 186,
+    "codec": "MP3"
+  },
+  {
+    "name": "Radio Malayalam 98.6 FM",
+    "url": "https://stream.zeno.fm/512rbf1e3qzuv",
+    "homepage": "",
+    "favicon": "https://onlineradiohub.com/wp-content/uploads/2022/03/qatar-malayalam-986-fm.jpg",
+    "tags": "",
+    "votes": 617,
+    "codec": "MP3"
+  },
+  {
+    "name": "Radio Suno Malayalam 91.7",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/SUNO917_SC",
+    "homepage": "",
+    "favicon": "https://onlineradiohub.com/wp-content/uploads/2022/03/radio-suno-malayalam-fm.jpg",
+    "tags": "",
+    "votes": 245,
+    "codec": "MP3"
+  },
+  {
+    "name": "radiokeralam",
+    "url": "https://ice31.securenetsystems.net/RADIOKERAL",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/radiokeralam.jpg",
+    "tags": "",
+    "votes": 192,
+    "codec": "AAC"
+  },
+  {
+    "name": "radiosunomalayalam",
+    "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/SUNO917_SC",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/radiosuno.jpg",
+    "tags": "",
+    "votes": 161,
+    "codec": "MP3"
+  },
+  {
+    "name": "reviveradiomalayalam",
+    "url": "https://gains.reviveradio.net/proxy/revivemalayalam?mp=/stream",
+    "homepage": "",
+    "favicon": "https://radiosindia.com/images/reviveradio.jpg",
+    "tags": "",
+    "votes": 80,
+    "codec": "MP3"
+  }
+]

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#070A10">
+
+    <!-- High-Resolution Malayalam Cinema Artwork Background -->
+    <ImageView
+        android:id="@+id/img_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_splash_default" />
+
+    <!-- Bottom Branding & Loading Container in the dark theater section -->
+    <LinearLayout
+        android:id="@+id/layout_branding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="36dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <!-- Main Cinema Title -->
+        <TextView
+            android:id="@+id/txt_splash_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/custom_font"
+            android:gravity="center"
+            android:letterSpacing="0.08"
+            android:shadowColor="#99FFB800"
+            android:shadowDx="0"
+            android:shadowDy="2"
+            android:shadowRadius="12"
+            android:text="MALAYALAM MOVIE VAULT"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <!-- Subtitle / Tagline -->
+        <TextView
+            android:id="@+id/txt_splash_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/custom_font"
+            android:gravity="center"
+            android:letterSpacing="0.09"
+            android:text="CINEMA • RADIO • 50+ CHANNELS • NEWS"
+            android:textColor="#CBD5E1"
+            android:textSize="11.5sp"
+            android:textStyle="bold" />
+
+        <!-- Feature Pill Badge -->
+        <TextView
+            android:id="@+id/txt_splash_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_splash_pill"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="6dp"
+            android:text="★ 6,150+ MOVIES • 100+ NEWSPAPERS ★"
+            android:textColor="#FFB800"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <!-- Material Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="26dp"
+            android:indeterminateTint="@color/color_light_primary" />
+
+        <!-- Loading Prompt -->
+        <TextView
+            android:id="@+id/txt_splash_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/custom_font"
+            android:gravity="center"
+            android:letterSpacing="0.04"
+            android:text="Loading Entertainment Hub..."
+            android:textColor="#E2E8F0"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Footer Label -->
+        <TextView
+            android:id="@+id/txt_splash_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/custom_font"
+            android:gravity="center"
+            android:letterSpacing="0.04"
+            android:text="Malayalam Entertainment Platform"
+            android:textColor="#94A3B8"
+            android:textSize="11sp" />
+
+        <!-- Version Info -->
+        <TextView
+            android:id="@+id/txt_splash_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/custom_font"
+            android:gravity="center"
+            android:letterSpacing="0.04"
+            android:text="Version 40.0"
+            android:textColor="#64748B"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

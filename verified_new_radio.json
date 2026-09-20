@@ -1,0 +1,138 @@
+[
+  {
+    "name": "AIR Malayalam (All India Radio)",
+    "url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio230/playlist.m3u8",
+    "tagline": "Prasar Bharati National Malayalam Service",
+    "cat": "Popular FM Live",
+    "color": "#0284C7",
+    "logo": "https://radiosindia.com/images/air.jpg"
+  },
+  {
+    "name": "AIR Ananthapuri FM 101.9",
+    "url": "https://air.pc.cdn.bitgravity.com/air/live/pbaudio229/playlist.m3u8",
+    "tagline": "Thiruvananthapuram Vividh Bharati Live",
+    "cat": "Popular FM Live",
+    "color": "#075985",
+    "logo": "https://radiosindia.com/images/air.jpg"
+  },
+  {
+    "name": "Radio Keralam Live",
+    "url": "https://ice31.securenetsystems.net/RADIOKERAL",
+    "tagline": "Kerala's Vibrant 24x7 Digital FM",
+    "cat": "Popular FM Live",
+    "color": "#16A34A",
+    "logo": "https://radiosindia.com/images/radiokeralam.jpg"
+  },
+  {
+    "name": "Anbu FM Malayalam",
+    "url": "https://stream.zeno.fm/8ca40byv4x8uv",
+    "tagline": "Heart-Touching Malayalam Melodies Live",
+    "cat": "Popular FM Live",
+    "color": "#D97706",
+    "logo": "https://radiosindia.com/images/malayalammusic.jpg"
+  },
+  {
+    "name": "KS Chithra Hits Radio",
+    "url": "http://stream.zeno.fm/dubvcz3rkrhvv",
+    "tagline": "Chithra's Melodious Evergreens 24/7",
+    "cat": "Singers & Composers",
+    "color": "#DB2777",
+    "logo": "https://radiosindia.com/images/kschitra.jpg"
+  },
+  {
+    "name": "KJ Yesudas Hits Radio",
+    "url": "https://stream.zeno.fm/9x1sw687nf9uv",
+    "tagline": "Ganagandharvan K.J. Yesudas Evergreen Hits",
+    "cat": "Singers & Composers",
+    "color": "#4F46E5",
+    "logo": "https://onlineradiohub.com/wp-content/uploads/2023/03/Yesudas-Radio.jpg"
+  },
+  {
+    "name": "Mohanlal Hits Radio",
+    "url": "https://stream.zeno.fm/5vva7u4ts0quv",
+    "tagline": "Complete Actor Mohanlal Movie Songs",
+    "cat": "Singers & Composers",
+    "color": "#7C3AED",
+    "logo": "https://radiosindia.com/images/mohanlalhits.jpg"
+  },
+  {
+    "name": "Malayalam 80s 90s Classics",
+    "url": "https://stream.zeno.fm/g8cx7tggb3quv.aac",
+    "tagline": "Golden Era Nostalgic Movie Hits",
+    "cat": "Golden Eras & Hits",
+    "color": "#CA8A04",
+    "logo": "https://radiosindia.com/images/malayalammusic.jpg"
+  },
+  {
+    "name": "Aaha Radio Classics",
+    "url": "https://s2.radio.co/s3801784f1/listen",
+    "tagline": "Old is Gold • 70s, 80s, 90s Hits",
+    "cat": "Golden Eras & Hits",
+    "color": "#059669",
+    "logo": "https://radiosindia.com/images/kschitra.jpg"
+  },
+  {
+    "name": "Kaathoram Live Melodies",
+    "url": "https://c30.radioboss.fm/stream/560",
+    "tagline": "Evergreen Malayalam Classic Melodies",
+    "cat": "Golden Eras & Hits",
+    "color": "#EA580C",
+    "logo": "https://radiosindia.com/images/malayalammusic.jpg"
+  },
+  {
+    "name": "Kancheeravam Radio",
+    "url": "https://radiosavre.com:8020/radio.mp3",
+    "tagline": "Folk, Kavitha & Evergreen Malayalam",
+    "cat": "Golden Eras & Hits",
+    "color": "#65A30D",
+    "logo": "https://radiosindia.com/images/malayalammusic.jpg"
+  },
+  {
+    "name": "Malayalam Bhakthi Ganam",
+    "url": "https://stream.zeno.fm/08e1vkshcc9uv",
+    "tagline": "Devotional Hymns & Bhajans 24x7",
+    "cat": "Devotional Radio",
+    "color": "#DC2626",
+    "logo": "https://radiosindia.com/images/iyalisaibakthiradio.jpg"
+  },
+  {
+    "name": "Shaiva Lahari Bhakthi Ganam",
+    "url": "https://radio.shaivam.org/listen/shaiva-lahari/radio.mp3",
+    "tagline": "Lord Shiva & Hindu Devotional 24/7",
+    "cat": "Devotional Radio",
+    "color": "#F59E0B",
+    "logo": "https://radiosindia.com/images/iyalisaibakthiradio.jpg"
+  },
+  {
+    "name": "Revive Radio Malayalam",
+    "url": "https://gains.reviveradio.net/proxy/revivemalayalam?mp=/stream",
+    "tagline": "Christian Worship, Gospel & Prayers",
+    "cat": "Devotional Radio",
+    "color": "#2563EB",
+    "logo": "https://radiosindia.com/images/reviveradio.jpg"
+  },
+  {
+    "name": "Jesus Reigns Christian Radio",
+    "url": "https://gains.reviveradio.net/proxy/jesusreigns?mp=/stream",
+    "tagline": "Gospel Songs & Worship 24/7",
+    "cat": "Devotional Radio",
+    "color": "#3B82F6",
+    "logo": "https://onlineradiohub.com/wp-content/uploads/2023/03/JesusRadio.jpg"
+  },
+  {
+    "name": "Mary Matha Radio",
+    "url": "https://stream.zeno.fm/g5ay9q4dgrruv",
+    "tagline": "Malayalam Christian Devotional Prayers",
+    "cat": "Devotional Radio",
+    "color": "#6366F1",
+    "logo": "https://radiosindia.com/images/reviveradio.jpg"
+  },
+  {
+    "name": "Peace Radio Live",
+    "url": "https://peaceradio.out.airtime.pro/peaceradio_a",
+    "tagline": "Islamic Speeches & Nasheeds Live",
+    "cat": "Devotional Radio",
+    "color": "#10B981",
+    "logo": "https://onlineradiohub.com/wp-content/uploads/2023/03/PeaceRadio.jpg"
+  }
+]

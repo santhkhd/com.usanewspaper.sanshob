@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "114162429800",
+    "project_id": "comshobmcsan",
+    "storage_bucket": "comshobmcsan.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114162429800:android:6430d58773adc8c7aff0dd",
+        "android_client_info": {
+          "package_name": "com.shobmc.san"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDabQHv2x-kgLHcrhuzzQTv7Dcpi_kVQmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114162429800:android:e946e63a76bc2abdaff0dd",
+        "android_client_info": {
+          "package_name": "com.tamiltvshowslive.san"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDabQHv2x-kgLHcrhuzzQTv7Dcpi_kVQmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

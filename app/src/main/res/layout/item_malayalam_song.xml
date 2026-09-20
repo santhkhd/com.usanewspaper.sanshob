@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_song_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/squircleCardStroke"
+    app:cardBackgroundColor="?attr/categoryCardBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- Top Row: Vinyl Disc Icon + Title & Metadata -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="top">
+
+            <!-- Vinyl Disc Music Avatar -->
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_vinyl_avatar"
+                android:layout_marginEnd="12dp">
+
+                <ImageView
+                    android:id="@+id/img_song_avatar"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_music_note"
+                    app:tint="@color/colorAccent"
+                    android:contentDescription="Music Icon" />
+            </FrameLayout>
+
+            <!-- Song Title, Movie, Year & Artists -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Song Title -->
+                <TextView
+                    android:id="@+id/tv_song_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    tools:text="പോരൂ പുലരിവഴിയിലാകെ" />
+
+                <!-- Movie & Year Badge Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="4dp">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_movie"
+                        app:tint="@color/colorAccent"
+                        android:layout_marginEnd="4dp" />
+
+                    <TextView
+                        android:id="@+id/tv_movie_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        tools:text="സ്‌കൂൾ ചാലേ ഹം" />
+
+                    <TextView
+                        android:id="@+id/tv_song_year_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:background="@drawable/bg_search_chip_inactive_light"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:textColor="?android:attr/textColorSecondary"
+                        tools:text="2026" />
+                </LinearLayout>
+
+                <!-- Singers Row -->
+                <TextView
+                    android:id="@+id/tv_song_artists"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="?android:attr/textColorPrimary"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginTop="4dp"
+                    tools:text="🎙️ ബിജിബാൽ മണിയിൽ, ദയ ബിജിബാല്‍" />
+
+                <!-- Composer & Lyricist Row -->
+                <TextView
+                    android:id="@+id/tv_song_credits"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginTop="2dp"
+                    tools:text="🎼 ബിജിബാൽ  |  ✍️ നിധീഷ് നടേരി" />
+
+                <!-- Raga (if available) -->
+                <TextView
+                    android:id="@+id/tv_song_raga"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="@color/color_gold"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginTop="2dp"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    tools:text="🎵 രാഗം: കല്യാണ വസന്തം" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Bottom Action Buttons: Play YouTube, Lyrics & Info, Share -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="12dp">
+
+            <!-- Play / Watch on YouTube Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_play_youtube"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Play Song"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                app:icon="@drawable/ic_play_arrow"
+                app:iconSize="18dp"
+                app:iconTint="#FFFFFF"
+                app:cornerRadius="19dp"
+                app:backgroundTint="@color/colorAccent"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Direct YouTube Search Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_search_youtube"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Search YT"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary"
+                app:icon="@drawable/ic_youtube_brand"
+                app:iconSize="16dp"
+                app:iconTint="#FF0000"
+                app:cornerRadius="19dp"
+                app:strokeColor="?attr/squircleCardStroke"
+                android:layout_marginEnd="8dp" />
+
+            <!-- Lyrics & Info Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_view_lyrics"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Lyrics &amp; Info"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="?android:attr/textColorPrimary"
+                app:icon="@drawable/ic_newspaper"
+                app:iconSize="15dp"
+                app:iconTint="?android:attr/textColorSecondary"
+                app:cornerRadius="19dp"
+                app:strokeColor="?attr/squircleCardStroke"
+                android:layout_marginEnd="8dp" />
+
+            <ProgressBar
+                android:id="@+id/progress_song_action"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:visibility="gone"
+                android:layout_marginEnd="8dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- Share Button -->
+            <ImageView
+                android:id="@+id/btn_share_song"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_share"
+                app:tint="?android:attr/textColorSecondary"
+                android:contentDescription="Share Song" />
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

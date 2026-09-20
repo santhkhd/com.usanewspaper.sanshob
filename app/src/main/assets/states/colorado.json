@@ -1,0 +1,244 @@
+[
+  {
+    "title": "The Denver Post",
+    "provider": "web",
+    "arguments": [
+      "https://www.denverpost.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=denverpost.com",
+    "year": "Colorado",
+    "genre": "Denver",
+    "rating": "State Flagship Daily"
+  },
+  {
+    "title": "The Gazette",
+    "provider": "web",
+    "arguments": [
+      "https://www.gazette.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=gazette.com",
+    "year": "Colorado",
+    "genre": "Colorado Springs",
+    "rating": "Top Metro Daily"
+  },
+  {
+    "title": "Daily Camera",
+    "provider": "web",
+    "arguments": [
+      "https://www.dailycamera.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=dailycamera.com",
+    "year": "Colorado",
+    "genre": "Boulder",
+    "rating": "Top University Daily"
+  },
+  {
+    "title": "The Coloradoan",
+    "provider": "web",
+    "arguments": [
+      "https://www.coloradoan.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=coloradoan.com",
+    "year": "Colorado",
+    "genre": "Fort Collins",
+    "rating": "Top Daily"
+  },
+  {
+    "title": "The Daily Sentinel",
+    "provider": "web",
+    "arguments": [
+      "https://www.gjsentinel.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=gjsentinel.com",
+    "year": "Colorado",
+    "genre": "Grand Junction",
+    "rating": "Western Slope Flagship"
+  },
+  {
+    "title": "The Pueblo Chieftain",
+    "provider": "web",
+    "arguments": [
+      "https://www.chieftain.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=chieftain.com",
+    "year": "Colorado",
+    "genre": "Pueblo",
+    "rating": "Top Southern CO Daily"
+  },
+  {
+    "title": "Greeley Tribune",
+    "provider": "web",
+    "arguments": [
+      "https://www.greeleytribune.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=greeleytribune.com",
+    "year": "Colorado",
+    "genre": "Greeley",
+    "rating": "Top Daily"
+  },
+  {
+    "title": "Longmont Times-Call",
+    "provider": "web",
+    "arguments": [
+      "https://www.timescall.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=timescall.com",
+    "year": "Colorado",
+    "genre": "Longmont",
+    "rating": "Daily"
+  },
+  {
+    "title": "Loveland Reporter-Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.reporterherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=reporterherald.com",
+    "year": "Colorado",
+    "genre": "Loveland",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Durango Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.durangoherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=durangoherald.com",
+    "year": "Colorado",
+    "genre": "Durango",
+    "rating": "Four Corners Daily"
+  },
+  {
+    "title": "Aspen Daily News",
+    "provider": "web",
+    "arguments": [
+      "https://www.aspendailynews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=aspendailynews.com",
+    "year": "Colorado",
+    "genre": "Aspen",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Aspen Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.aspentimes.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=aspentimes.com",
+    "year": "Colorado",
+    "genre": "Aspen",
+    "rating": "Daily"
+  },
+  {
+    "title": "Vail Daily",
+    "provider": "web",
+    "arguments": [
+      "https://www.vaildaily.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=vaildaily.com",
+    "year": "Colorado",
+    "genre": "Vail",
+    "rating": "Daily"
+  },
+  {
+    "title": "Steamboat Pilot & Today",
+    "provider": "web",
+    "arguments": [
+      "https://www.steamboatpilot.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=steamboatpilot.com",
+    "year": "Colorado",
+    "genre": "Steamboat Springs",
+    "rating": "Daily"
+  },
+  {
+    "title": "Summit Daily News",
+    "provider": "web",
+    "arguments": [
+      "https://www.summitdaily.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=summitdaily.com",
+    "year": "Colorado",
+    "genre": "Frisco / Breckenridge",
+    "rating": "Daily"
+  },
+  {
+    "title": "Glenwood Springs Post Independent",
+    "provider": "web",
+    "arguments": [
+      "https://www.postindependent.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=postindependent.com",
+    "year": "Colorado",
+    "genre": "Glenwood Springs",
+    "rating": "Daily"
+  },
+  {
+    "title": "Montrose Daily Press",
+    "provider": "web",
+    "arguments": [
+      "https://www.montrosepress.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=montrosepress.com",
+    "year": "Colorado",
+    "genre": "Montrose",
+    "rating": "Daily"
+  },
+  {
+    "title": "Canon City Daily Record",
+    "provider": "web",
+    "arguments": [
+      "https://www.canoncitydailyrecord.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=canoncitydailyrecord.com",
+    "year": "Colorado",
+    "genre": "Canon City",
+    "rating": "Daily"
+  },
+  {
+    "title": "Sterling Journal-Advocate",
+    "provider": "web",
+    "arguments": [
+      "https://www.journal-advocate.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=journal-advocate.com",
+    "year": "Colorado",
+    "genre": "Sterling",
+    "rating": "Daily"
+  },
+  {
+    "title": "Fort Morgan Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.fortmorgantimes.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=fortmorgantimes.com",
+    "year": "Colorado",
+    "genre": "Fort Morgan",
+    "rating": "Daily"
+  },
+  {
+    "title": "Alamosa Citizen",
+    "provider": "web",
+    "arguments": [
+      "https://www.alamosacitizen.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=alamosacitizen.com",
+    "year": "Colorado",
+    "genre": "Alamosa",
+    "rating": "San Luis Valley"
+  },
+  {
+    "title": "Telluride Daily Planet",
+    "provider": "web",
+    "arguments": [
+      "https://www.telluridenews.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=telluridenews.com",
+    "year": "Colorado",
+    "genre": "Telluride",
+    "rating": "Weekly"
+  }
+]

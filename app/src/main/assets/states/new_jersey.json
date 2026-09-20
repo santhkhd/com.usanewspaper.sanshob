@@ -1,0 +1,189 @@
+[
+  {
+    "title": "The Star-Ledger / NJ.com",
+    "provider": "web",
+    "arguments": [
+      "https://www.nj.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=nj.com",
+    "year": "New Jersey",
+    "genre": "Newark",
+    "rating": "State Flagship Daily"
+  },
+  {
+    "title": "The Record",
+    "provider": "web",
+    "arguments": [
+      "https://www.northjersey.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=northjersey.com",
+    "year": "New Jersey",
+    "genre": "Bergen County / Woodland Park",
+    "rating": "North Jersey Flagship Daily"
+  },
+  {
+    "title": "Asbury Park Press",
+    "provider": "web",
+    "arguments": [
+      "https://www.app.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=app.com",
+    "year": "New Jersey",
+    "genre": "Asbury Park / Neptune",
+    "rating": "Jersey Shore Flagship Daily"
+  },
+  {
+    "title": "The Press of Atlantic City",
+    "provider": "web",
+    "arguments": [
+      "https://www.pressofatlanticcity.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=pressofatlanticcity.com",
+    "year": "New Jersey",
+    "genre": "Atlantic City",
+    "rating": "South Jersey Shore Daily"
+  },
+  {
+    "title": "Courier-Post",
+    "provider": "web",
+    "arguments": [
+      "https://www.courierpostonline.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=courierpostonline.com",
+    "year": "New Jersey",
+    "genre": "Cherry Hill / Camden",
+    "rating": "South Jersey Metro Daily"
+  },
+  {
+    "title": "Home News Tribune",
+    "provider": "web",
+    "arguments": [
+      "https://www.mycentraljersey.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=mycentraljersey.com",
+    "year": "New Jersey",
+    "genre": "Somerville / New Brunswick",
+    "rating": "Central Jersey Daily"
+  },
+  {
+    "title": "Daily Record",
+    "provider": "web",
+    "arguments": [
+      "https://www.dailyrecord.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=dailyrecord.com",
+    "year": "New Jersey",
+    "genre": "Morristown",
+    "rating": "Morris County Daily"
+  },
+  {
+    "title": "The Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.nj.com/times"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=nj.com",
+    "year": "New Jersey",
+    "genre": "Trenton",
+    "rating": "State Capital Daily"
+  },
+  {
+    "title": "The Trentonian",
+    "provider": "web",
+    "arguments": [
+      "https://www.trentonian.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=trentonian.com",
+    "year": "New Jersey",
+    "genre": "Trenton",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Jersey Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.nj.com/jjournal"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=nj.com",
+    "year": "New Jersey",
+    "genre": "Jersey City",
+    "rating": "Hudson County Daily"
+  },
+  {
+    "title": "Burlington County Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.burlingtoncountytimes.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=burlingtoncountytimes.com",
+    "year": "New Jersey",
+    "genre": "Willingboro",
+    "rating": "Daily"
+  },
+  {
+    "title": "South Jersey Times",
+    "provider": "web",
+    "arguments": [
+      "https://www.nj.com/south-jersey-towns"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=nj.com",
+    "year": "New Jersey",
+    "genre": "Woodbury / Mullica Hill",
+    "rating": "Daily"
+  },
+  {
+    "title": "The Daily Journal",
+    "provider": "web",
+    "arguments": [
+      "https://www.thedailyjournal.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=thedailyjournal.com",
+    "year": "New Jersey",
+    "genre": "Vineland",
+    "rating": "Cumberland County Daily"
+  },
+  {
+    "title": "New Jersey Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.njherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=njherald.com",
+    "year": "New Jersey",
+    "genre": "Newton",
+    "rating": "Sussex County Daily"
+  },
+  {
+    "title": "Cape May County Herald",
+    "provider": "web",
+    "arguments": [
+      "https://www.capemaycountyherald.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=capemaycountyherald.com",
+    "year": "New Jersey",
+    "genre": "Rio Grande / Cape May",
+    "rating": "Weekly"
+  },
+  {
+    "title": "The Ocean Star",
+    "provider": "web",
+    "arguments": [
+      "https://www.theoceanstar.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=theoceanstar.com",
+    "year": "New Jersey",
+    "genre": "Point Pleasant Beach",
+    "rating": "Weekly"
+  },
+  {
+    "title": "The Coast Star",
+    "provider": "web",
+    "arguments": [
+      "https://www.thecoaststar.com"
+    ],
+    "image": "https://www.google.com/s2/favicons?sz=128&domain=thecoaststar.com",
+    "year": "New Jersey",
+    "genre": "Manasquan",
+    "rating": "Weekly"
+  }
+]
