@@ -76,8 +76,8 @@
                                 app:cardCornerRadius="12dp"
                                 app:cardElevation="0dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="#33E11D48"
-                                app:cardBackgroundColor="#1A1E293B"
+                                app:strokeColor="?attr/squircleCardStroke"
+                                app:cardBackgroundColor="?attr/squircleCardBackground"
                                 android:clickable="true"
                                 android:focusable="true">
 
@@ -107,14 +107,14 @@
                                             android:text="AI News Prompts"
                                             android:textSize="13sp"
                                             android:textStyle="bold"
-                                            android:textColor="#FFFFFF" />
+                                            android:textColor="?android:attr/textColorPrimary" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="100+ Preprompts for ChatGPT"
-                                            android:textSize="10.5sp"
-                                            android:textColor="#94A3B8" />
+                                            android:textSize="11sp"
+                                            android:textColor="?android:attr/textColorSecondary" />
                                     </LinearLayout>
 
                                     <TextView
@@ -123,11 +123,11 @@
                                         android:background="@drawable/bg_badge_breaking"
                                         android:paddingStart="6dp"
                                         android:paddingEnd="6dp"
-                                        android:paddingTop="1dp"
-                                        android:paddingBottom="1dp"
+                                        android:paddingTop="2dp"
+                                        android:paddingBottom="2dp"
                                         android:text="100"
                                         android:textColor="#FFFFFF"
-                                        android:textSize="9sp"
+                                        android:textSize="10sp"
                                         android:textStyle="bold" />
                                 </LinearLayout>
                             </com.google.android.material.card.MaterialCardView>
@@ -144,8 +144,8 @@
                                 app:cardCornerRadius="12dp"
                                 app:cardElevation="0dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="#33E11D48"
-                                app:cardBackgroundColor="#1A1E293B"
+                                app:strokeColor="?attr/squircleCardStroke"
+                                app:cardBackgroundColor="?attr/squircleCardBackground"
                                 android:clickable="true"
                                 android:focusable="true">
 
@@ -175,14 +175,14 @@
                                             android:text="Add Newspaper"
                                             android:textSize="13sp"
                                             android:textStyle="bold"
-                                            android:textColor="#FFFFFF" />
+                                            android:textColor="?android:attr/textColorPrimary" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Add website to any state or category"
-                                            android:textSize="10.5sp"
-                                            android:textColor="#94A3B8" />
+                                            android:textSize="11sp"
+                                            android:textColor="?android:attr/textColorSecondary" />
                                     </LinearLayout>
 
                                     <ImageView
@@ -205,8 +205,8 @@
                                 app:cardCornerRadius="12dp"
                                 app:cardElevation="0dp"
                                 app:strokeWidth="1dp"
-                                app:strokeColor="#334155"
-                                app:cardBackgroundColor="#1E293B"
+                                app:strokeColor="?attr/squircleCardStroke"
+                                app:cardBackgroundColor="?attr/squircleCardBackground"
                                 android:clickable="true"
                                 android:focusable="true">
 
@@ -235,14 +235,14 @@
                                             android:text="Add Channel / Playlist"
                                             android:textSize="13sp"
                                             android:textStyle="bold"
-                                            android:textColor="#FFFFFF" />
+                                            android:textColor="?android:attr/textColorPrimary" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="Search YouTube &amp; add to category"
-                                            android:textSize="10.5sp"
-                                            android:textColor="#94A3B8" />
+                                            android:textSize="11sp"
+                                            android:textColor="?android:attr/textColorSecondary" />
                                     </LinearLayout>
 
                                     <ImageView

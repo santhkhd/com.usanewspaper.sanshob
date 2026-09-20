@@ -298,9 +298,14 @@ public class ActivityAiPrompts extends AppCompatActivity implements AdapterAiPro
             ClipData clip = ClipData.newPlainText("AI News Prompt", prompt);
             clipboard.setPrimaryClip(clip);
             if (showNotification) {
-                Snackbar.make(findViewById(R.id.parent_view), "✅ AI Prompt copied to clipboard! Ready to paste into ChatGPT, Perplexity, or Gemini.", Snackbar.LENGTH_LONG)
-                        .setAction("Open ChatGPT", v -> launchChatGPT(prompt))
-                        .show();
+                View root = findViewById(R.id.root_view);
+                if (root != null) {
+                    Snackbar.make(root, "✅ AI Prompt copied to clipboard! Ready to paste into ChatGPT, Perplexity, or Gemini.", Snackbar.LENGTH_LONG)
+                            .setAction("Open ChatGPT", v -> launchChatGPT(prompt))
+                            .show();
+                } else {
+                    Toast.makeText(this, "✅ AI Prompt copied to clipboard!", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
