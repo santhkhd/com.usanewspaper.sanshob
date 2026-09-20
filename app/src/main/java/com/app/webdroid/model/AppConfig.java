@@ -69,6 +69,7 @@ public class AppConfig {
     public static class RssSource {
         public String title;
         public String url;
+        public String category;
     }
 
     public static class YouTubeSource {

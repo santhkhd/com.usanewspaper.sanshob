@@ -14,12 +14,16 @@ public class RssParser {
     private static final String NS = null;
 
     public List<NewsItem> parseNews(InputStream in, String sourceName) throws XmlPullParserException, IOException {
+        return parseNews(in, sourceName, null);
+    }
+
+    public List<NewsItem> parseNews(InputStream in, String sourceName, String category) throws XmlPullParserException, IOException {
         try {
             XmlPullParser parser = Xml.newPullParser();
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in, null);
             parser.nextTag();
-            return readRss(parser, sourceName);
+            return readRss(parser, sourceName, category);
         } finally {
             in.close();
         }
@@ -38,7 +42,7 @@ public class RssParser {
         }
     }
 
-    private List<NewsItem> readRss(XmlPullParser parser, String sourceName) throws XmlPullParserException, IOException {
+    private List<NewsItem> readRss(XmlPullParser parser, String sourceName, String category) throws XmlPullParserException, IOException {
         List<NewsItem> items = new ArrayList<>();
         parser.require(XmlPullParser.START_TAG, NS, "rss");
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -47,7 +51,7 @@ public class RssParser {
             }
             String name = parser.getName();
             if (name.equals("channel")) {
-                items.addAll(readChannel(parser, sourceName));
+                items.addAll(readChannel(parser, sourceName, category));
             } else {
                 skip(parser);
             }
@@ -55,7 +59,7 @@ public class RssParser {
         return items;
     }
 
-    private List<NewsItem> readChannel(XmlPullParser parser, String sourceName)
+    private List<NewsItem> readChannel(XmlPullParser parser, String sourceName, String category)
             throws XmlPullParserException, IOException {
         List<NewsItem> items = new ArrayList<>();
         while (parser.next() != XmlPullParser.END_TAG) {
@@ -64,7 +68,7 @@ public class RssParser {
             }
             String name = parser.getName();
             if (name.equals("item")) {
-                items.add(readItem(parser, sourceName));
+                items.add(readItem(parser, sourceName, category));
             } else {
                 skip(parser);
             }
@@ -72,7 +76,7 @@ public class RssParser {
         return items;
     }
 
-    private NewsItem readItem(XmlPullParser parser, String sourceName) throws XmlPullParserException, IOException {
+    private NewsItem readItem(XmlPullParser parser, String sourceName, String category) throws XmlPullParserException, IOException {
         String title = null;
         String description = null;
         String link = null;
@@ -142,7 +146,7 @@ public class RssParser {
         }
 
         long pubInMillis = parseRssDateToMillis(pubDate);
-        NewsItem item = new NewsItem(title, description, imageUrl, pubDate, pubInMillis, itemSourceName, link);
+        NewsItem item = new NewsItem(title, description, imageUrl, pubDate, pubInMillis, itemSourceName, link, category);
         item.sourceUrl = sourceUrl;
         return item;
     }

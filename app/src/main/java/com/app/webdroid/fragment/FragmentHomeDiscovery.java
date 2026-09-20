@@ -336,17 +336,9 @@ public class FragmentHomeDiscovery extends Fragment {
             }
         }
 
-        // Fallback: if selected category has very few items, backfill with general news so list is never empty
-        if (matched.size() < 3 && !"WEATHER".equals(categoryKey)) {
-            for (NewsItem item : all) {
-                if (!matched.contains(item)) {
-                    matched.add(item);
-                }
-            }
-        }
-
+        // STRICT CATEGORY ISOLATION: Show ONLY articles matching the respective category
+        // Never pollute a specific category with unrelated stories
         if (categoryNewsAdapter != null) {
-            // UNLIMITED RSS FEED: show all matching articles without arbitrary limits
             categoryNewsAdapter.setItems(matched);
         }
     }
@@ -361,14 +353,34 @@ public class FragmentHomeDiscovery extends Fragment {
                 Type listType = new TypeToken<List<AppConfig.RssSource>>(){}.getType();
                 List<AppConfig.RssSource> sources = new Gson().fromJson(reader, listType);
                 if (sources != null && !sources.isEmpty()) {
+                    // Group sources by category so EVERY category is represented equally
+                    java.util.Map<String, List<AppConfig.RssSource>> byCat = new java.util.LinkedHashMap<>();
+                    for (AppConfig.RssSource s : sources) {
+                        String cat = (s.category != null && !s.category.isEmpty()) ? s.category.toUpperCase(java.util.Locale.US) : "TOP";
+                        List<AppConfig.RssSource> catList = byCat.get(cat);
+                        if (catList == null) {
+                            catList = new ArrayList<>();
+                            byCat.put(cat, catList);
+                        }
+                        catList.add(s);
+                    }
+
+                    // Select up to 3 sources for each category
+                    List<AppConfig.RssSource> selectedSources = new ArrayList<>();
+                    for (java.util.Map.Entry<String, List<AppConfig.RssSource>> entry : byCat.entrySet()) {
+                        List<AppConfig.RssSource> list = entry.getValue();
+                        int take = Math.min(list.size(), 3);
+                        for (int i = 0; i < take; i++) {
+                            selectedSources.add(list.get(i));
+                        }
+                    }
+
                     com.app.webdroid.util.RssParser parser = new com.app.webdroid.util.RssParser();
                     List<NewsItem> allFetched = Collections.synchronizedList(new ArrayList<>());
-                    int maxSources = Math.min(sources.size(), 30);
-                    ExecutorService pool = Executors.newFixedThreadPool(6);
-                    CountDownLatch latch = new CountDownLatch(maxSources);
+                    ExecutorService pool = Executors.newFixedThreadPool(8);
+                    CountDownLatch latch = new CountDownLatch(selectedSources.size());
 
-                    for (int i = 0; i < maxSources; i++) {
-                        final AppConfig.RssSource src = sources.get(i);
+                    for (AppConfig.RssSource src : selectedSources) {
                         pool.execute(() -> {
                             try {
                                 java.net.URL u = new java.net.URL(src.url);
@@ -377,7 +389,7 @@ public class FragmentHomeDiscovery extends Fragment {
                                 c.setConnectTimeout(4000);
                                 c.setReadTimeout(4000);
                                 if (c.getResponseCode() == 200) {
-                                    List<NewsItem> parsed = parser.parseNews(c.getInputStream(), src.title);
+                                    List<NewsItem> parsed = parser.parseNews(c.getInputStream(), src.title, src.category);
                                     if (parsed != null && !parsed.isEmpty()) {
                                         allFetched.addAll(parsed);
                                     }
@@ -403,66 +415,96 @@ public class FragmentHomeDiscovery extends Fragment {
 
     private boolean matchesCategory(NewsItem item, String category) {
         if (item == null) return false;
-        String source = item.sourceName != null ? item.sourceName.toLowerCase() : "";
-        String title = item.title != null ? item.title.toLowerCase() : "";
-        String desc = item.description != null ? item.description.toLowerCase() : "";
+        String itemCat = item.category != null ? item.category.trim().toUpperCase(java.util.Locale.US) : "";
+        String source = item.sourceName != null ? item.sourceName.toLowerCase(java.util.Locale.US) : "";
+        String title = item.title != null ? item.title.toLowerCase(java.util.Locale.US) : "";
+        String desc = item.description != null ? item.description.toLowerCase(java.util.Locale.US) : "";
         String combined = source + " " + title + " " + desc;
 
         switch (category) {
             case "FOR_YOU":
                 return true;
+
             case "TRENDING":
+                if ("TOP".equals(itemCat)) return true;
                 return combined.contains("breaking") || combined.contains("alert") || combined.contains("live")
-                        || combined.contains("top") || combined.contains("massive") || combined.contains("attack")
-                        || combined.contains("exclusive") || combined.contains("urgent");
-            case "LOCAL":
-                return source.contains("local") || source.contains("state") || source.contains("city")
-                        || combined.contains("police") || combined.contains("mayor") || combined.contains("county")
-                        || combined.contains("local") || combined.contains("sheriff") || combined.contains("highway");
+                        || combined.contains("top") || combined.contains("massive") || combined.contains("exclusive")
+                        || combined.contains("urgent");
+
+            case "SPORTS":
+                if ("SPORTS".equals(itemCat)) return true;
+                return source.contains("sport") || source.contains("espn")
+                        || combined.contains("nfl") || combined.contains("nba") || combined.contains("mlb")
+                        || combined.contains("nhl") || combined.contains("football") || combined.contains("basketball")
+                        || combined.contains("baseball") || combined.contains("super bowl") || combined.contains("touchdown")
+                        || combined.contains("quarterback") || combined.contains("soccer") || combined.contains("tennis")
+                        || combined.contains("golf") || combined.contains("athlete") || combined.contains("olympics")
+                        || combined.contains("championship");
+
             case "WEATHER":
+                if ("WEATHER".equals(itemCat)) return true;
                 return source.contains("weather") || source.contains("accuweather") || source.contains("noaa")
                         || combined.contains("weather") || combined.contains("storm") || combined.contains("hurricane")
                         || combined.contains("tornado") || combined.contains("rain") || combined.contains("flood")
                         || combined.contains("snow") || combined.contains("temperature") || combined.contains("forecast")
                         || combined.contains("radar") || combined.contains("blizzard") || combined.contains("heat wave");
+
             case "POLITICS":
+                if ("POLITICS".equals(itemCat)) return true;
                 return source.contains("politico") || source.contains("hill") || source.contains("politic")
                         || combined.contains("biden") || combined.contains("trump") || combined.contains("congress")
-                        || combined.contains("senate") || combined.contains("house") || combined.contains("white house")
+                        || combined.contains("senate") || combined.contains("white house") || combined.contains("house of representatives")
                         || combined.contains("democrat") || combined.contains("republican") || combined.contains("supreme court")
                         || combined.contains("election") || combined.contains("capitol") || combined.contains("governor");
+
             case "BUSINESS":
+                if ("BUSINESS".equals(itemCat)) return true;
                 return source.contains("business") || source.contains("market") || source.contains("wsj")
                         || source.contains("cnbc") || source.contains("bloomberg") || source.contains("finance")
-                        || combined.contains("stock") || combined.contains("dow") || combined.contains("nasdaq")
-                        || combined.contains("fed") || combined.contains("inflation") || combined.contains("economy")
-                        || combined.contains("market") || combined.contains("revenue") || combined.contains("earnings");
+                        || combined.contains("stock") || combined.contains("dow jones") || combined.contains("nasdaq")
+                        || combined.contains("s&p 500") || combined.contains("fed") || combined.contains("inflation")
+                        || combined.contains("economy") || combined.contains("revenue") || combined.contains("earnings")
+                        || combined.contains("wall street") || combined.contains("interest rate");
+
             case "TECH":
+                if ("TECH".equals(itemCat) || "SCIENCE".equals(itemCat)) return true;
                 return source.contains("tech") || source.contains("verge") || source.contains("wired")
-                        || combined.contains("ai") || combined.contains("apple") || combined.contains("google")
-                        || combined.contains("microsoft") || combined.contains("meta") || combined.contains("nvidia")
-                        || combined.contains("openai") || combined.contains("software") || combined.contains("cyber");
+                        || source.contains("space.com")
+                        || combined.contains("ai") || combined.contains("artificial intelligence") || combined.contains("apple")
+                        || combined.contains("google") || combined.contains("microsoft") || combined.contains("meta")
+                        || combined.contains("nvidia") || combined.contains("openai") || combined.contains("chatgpt")
+                        || combined.contains("software") || combined.contains("cyber");
+
+            case "HEALTH":
+                if ("HEALTH".equals(itemCat)) return true;
+                return source.contains("health") || source.contains("medical")
+                        || combined.contains("fda") || combined.contains("cdc") || combined.contains("vaccine")
+                        || combined.contains("doctor") || combined.contains("hospital") || combined.contains("diet")
+                        || combined.contains("treatment") || combined.contains("cancer") || combined.contains("disease");
+
+            case "ENTERTAINMENT":
+                if ("ENTERTAINMENT".equals(itemCat)) return true;
+                return source.contains("entertainment") || source.contains("variety") || source.contains("hollywood")
+                        || combined.contains("movie") || combined.contains("actor") || combined.contains("actress")
+                        || combined.contains("box office") || combined.contains("film") || combined.contains("oscar")
+                        || combined.contains("celebrity") || combined.contains("music") || combined.contains("series");
+
             case "WORLD":
+                if ("WORLD".equals(itemCat)) return true;
                 return source.contains("world") || source.contains("international") || source.contains("foreign")
                         || combined.contains("ukraine") || combined.contains("russia") || combined.contains("china")
                         || combined.contains("middle east") || combined.contains("europe") || combined.contains("israel")
                         || combined.contains("nato") || combined.contains("un ") || combined.contains("global");
-            case "SPORTS":
-                return source.contains("sport") || source.contains("espn") || combined.contains("nfl")
-                        || combined.contains("nba") || combined.contains("mlb") || combined.contains("nhl")
-                        || combined.contains("football") || combined.contains("basketball") || combined.contains("baseball")
-                        || combined.contains("super bowl") || combined.contains("championship");
-            case "ENTERTAINMENT":
-                return source.contains("entertainment") || source.contains("variety") || source.contains("hollywood")
-                        || source.contains("movie") || combined.contains("actor") || combined.contains("box office")
-                        || combined.contains("film") || combined.contains("oscar") || combined.contains("celebrity")
-                        || combined.contains("music") || combined.contains("series");
-            case "HEALTH":
-                return source.contains("health") || source.contains("medical") || combined.contains("fda")
-                        || combined.contains("cdc") || combined.contains("vaccine") || combined.contains("doctor")
-                        || combined.contains("hospital") || combined.contains("diet") || combined.contains("treatment");
+
+            case "LOCAL":
+                if ("LOCAL".equals(itemCat)) return true;
+                return source.contains("local") || source.contains("metro") || source.contains("state")
+                        || combined.contains("police") || combined.contains("mayor") || combined.contains("county")
+                        || combined.contains("sheriff") || combined.contains("city council") || combined.contains("highway");
+
             default:
                 return true;
         }
     }
 }
+

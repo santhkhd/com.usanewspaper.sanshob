@@ -17,6 +17,7 @@ public class NewsItem implements Serializable {
     public long pubDateMillis;
     public String sourceName;
     public String link;
+    public String category;
 
     // Constructor
     public NewsItem() {
@@ -25,6 +26,12 @@ public class NewsItem implements Serializable {
     @androidx.room.Ignore
     public NewsItem(String title, String description, String imageUrl, String pubDate, long pubDateMillis,
             String sourceName, String link) {
+        this(title, description, imageUrl, pubDate, pubDateMillis, sourceName, link, null);
+    }
+
+    @androidx.room.Ignore
+    public NewsItem(String title, String description, String imageUrl, String pubDate, long pubDateMillis,
+            String sourceName, String link, String category) {
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -32,6 +39,7 @@ public class NewsItem implements Serializable {
         this.pubDateMillis = pubDateMillis;
         this.sourceName = sourceName;
         this.link = link;
+        this.category = category;
     }
 
     @androidx.room.Ignore

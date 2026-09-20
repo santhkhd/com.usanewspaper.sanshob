@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = { NewsItem.class, YouTubeItem.class, WebItem.class,
-        FavoriteItem.class, HistoryItem.class }, version = 5, exportSchema = false)
+        FavoriteItem.class, HistoryItem.class }, version = 6, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract NewsDao newsDao();

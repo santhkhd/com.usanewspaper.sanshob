@@ -90,7 +90,7 @@ public class SyncWorker extends Worker {
                         Response response = client.newCall(request).execute();
                         if (response.isSuccessful() && response.body() != null) {
                             InputStream stream = response.body().byteStream();
-                            List<NewsItem> items = parser.parseNews(stream, source.title);
+                            List<NewsItem> items = parser.parseNews(stream, source.title, source.category);
                             if (!items.isEmpty()) {
                                 // Check for duplicates handled by DB IGNORE strategy
                                 // To count new items, check returned row IDs
