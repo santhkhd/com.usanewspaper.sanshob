@@ -532,7 +532,7 @@ public class MainActivity extends AppCompatActivity implements DrawerStateListen
                     targetTabId = R.id.nav_bottom_channels;
                 } else if ((url != null && url.contains("usa_states")) || (name != null && name.toLowerCase().contains("state"))) {
                     targetTabId = R.id.nav_bottom_add;
-                } else if ("RSS".equalsIgnoreCase(effectiveType) || (name != null && name.toLowerCase().contains("news"))) {
+                } else if ("RSS".equalsIgnoreCase(effectiveType) || "ALL_NEWS".equalsIgnoreCase(url) || (name != null && (name.equalsIgnoreCase("News Feed") || name.equalsIgnoreCase("Breaking News (RSS)")))) {
                     targetTabId = R.id.nav_bottom_categories;
                 } else if ("FAVORITES".equalsIgnoreCase(effectiveType) || (name != null && (name.equalsIgnoreCase("Saved") || name.equalsIgnoreCase("You")))) {
                     targetTabId = R.id.nav_bottom_saved;
@@ -541,6 +541,11 @@ public class MainActivity extends AppCompatActivity implements DrawerStateListen
                     MenuItem tabItem = bottomNavigationView.getMenu().findItem(targetTabId);
                     if (tabItem != null) tabItem.setChecked(true);
                 }
+            }
+
+            if ("SECTIONS".equalsIgnoreCase(effectiveType) || "CATEGORIES_SECTIONS".equalsIgnoreCase(effectiveType)) {
+                com.app.webdroid.activity.ActivitySections.start(MainActivity.this);
+                return;
             }
 
             if ("RADIO".equalsIgnoreCase(effectiveType)) {

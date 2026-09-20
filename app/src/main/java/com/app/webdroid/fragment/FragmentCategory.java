@@ -26,11 +26,16 @@ import com.app.webdroid.adapter.AdapterCategory;
 import com.app.webdroid.adapter.AdapterNews;
 import com.app.webdroid.model.AppConfig;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import androidx.appcompat.widget.Toolbar;
@@ -850,6 +855,13 @@ public class FragmentCategory extends Fragment {
                         .apply();
             }
 
+            // High-priority: Handle Category Page / Section Items -> Open ActivityCategoryPage directly
+            if ("category_page".equalsIgnoreCase(obj.provider) || "section".equalsIgnoreCase(obj.provider)) {
+                String catKey = (obj.arguments != null && !obj.arguments.isEmpty()) ? obj.arguments.get(0) : obj.title;
+                com.app.webdroid.activity.ActivityCategoryPage.start(getContext(), catKey);
+                return;
+            }
+
             // High-priority: Handle RSS / News Items -> Open ActivityNewsDetail directly
             if ("rss_item".equalsIgnoreCase(obj.provider) || "news".equalsIgnoreCase(obj.provider)) {
                 ArrayList<String> targetUrls = new ArrayList<>();
@@ -1355,25 +1367,65 @@ public class FragmentCategory extends Fragment {
 
     private void parseAndDisplayJson(String json) {
         try {
-            // Attempt to parse as Map first to see if it has "overview" key, else array
-            List<AppConfig.OverviewItem> items = null;
-
-            // Try Map/Object first
-            try {
-                Map<String, List<AppConfig.OverviewItem>> map = new Gson().fromJson(json,
-                        new TypeToken<Map<String, List<AppConfig.OverviewItem>>>() {
-                        }.getType());
-                if (map != null && map.containsKey("overview")) {
-                    items = map.get("overview");
+            if (json == null || json.trim().isEmpty()) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(() -> {
+                        if (layoutLoading != null) layoutLoading.setVisibility(View.GONE);
+                        if (progressBar != null) progressBar.setVisibility(View.GONE);
+                        swipeRefreshLayout.setRefreshing(false);
+                        textError.setVisibility(View.VISIBLE);
+                        textError.setText("Empty response");
+                    });
                 }
-            } catch (Exception e) {
-                // Not a map of list, maybe direct list
+                return;
             }
 
-            if (items == null) {
-                // Try List directly
-                items = new Gson().fromJson(json, new TypeToken<List<AppConfig.OverviewItem>>() {
-                }.getType());
+            List<AppConfig.OverviewItem> items = null;
+            JsonElement rootElement = JsonParser.parseString(json);
+
+            if (rootElement.isJsonArray()) {
+                // Direct List of OverviewItem
+                items = new Gson().fromJson(rootElement, new TypeToken<List<AppConfig.OverviewItem>>() {}.getType());
+            } else if (rootElement.isJsonObject()) {
+                JsonObject rootObj = rootElement.getAsJsonObject();
+                if (rootObj.has("overview") && rootObj.get("overview").isJsonArray()) {
+                    items = new Gson().fromJson(rootObj.get("overview"), new TypeToken<List<AppConfig.OverviewItem>>() {}.getType());
+                } else if (rootObj.has("categories") && rootObj.get("categories").isJsonArray()) {
+                    // categories.json object format: { "categories": [ { "id": "...", "name": "...", "icon": "..." } ] }
+                    JsonArray catArray = rootObj.getAsJsonArray("categories");
+                    items = new ArrayList<>();
+                    for (JsonElement catElem : catArray) {
+                        if (catElem.isJsonObject()) {
+                            JsonObject cObj = catElem.getAsJsonObject();
+                            String id = cObj.has("id") ? cObj.get("id").getAsString() : "";
+                            String name = cObj.has("name") ? cObj.get("name").getAsString() : (cObj.has("title") ? cObj.get("title").getAsString() : id);
+                            String icon = cObj.has("icon") ? cObj.get("icon").getAsString() : "";
+
+                            AppConfig.OverviewItem it = new AppConfig.OverviewItem();
+                            it.title = name;
+                            it.provider = "category_page";
+                            it.arguments = new ArrayList<>();
+                            it.arguments.add(id);
+                            it.image = mapCategoryIcon(id, icon);
+                            items.add(it);
+                        }
+                    }
+                } else {
+                    // Try to find any property containing a JSON array of OverviewItem
+                    for (Map.Entry<String, JsonElement> entry : rootObj.entrySet()) {
+                        if (entry.getValue().isJsonArray()) {
+                            try {
+                                List<AppConfig.OverviewItem> candidate = new Gson().fromJson(
+                                        entry.getValue(), new TypeToken<List<AppConfig.OverviewItem>>() {}.getType());
+                                if (candidate != null && !candidate.isEmpty() && candidate.get(0).title != null) {
+                                    items = candidate;
+                                    break;
+                                }
+                            } catch (Exception ignored) {
+                            }
+                        }
+                    }
+                }
             }
 
             List<AppConfig.OverviewItem> finalItems = items != null ? new ArrayList<>(items) : new ArrayList<>();
@@ -1562,6 +1614,33 @@ public class FragmentCategory extends Fragment {
                 });
             }
         }
+    }
+
+    private String mapCategoryIcon(String id, String icon) {
+        if (icon != null && (icon.startsWith("http://") || icon.startsWith("https://"))) {
+            return icon;
+        }
+        if (id != null) {
+            String lower = id.toLowerCase(Locale.US);
+            if (lower.contains("top") || lower.contains("flag")) return "https://img.icons8.com/color/96/usa.png";
+            if (lower.contains("break") || lower.contains("bolt")) return "https://img.icons8.com/color/96/flash-on.png";
+            if (lower.contains("white_house") || lower.contains("president")) return "https://img.icons8.com/color/96/capitol.png";
+            if (lower.contains("congress") || lower.contains("senate") || lower.contains("house")) return "https://img.icons8.com/color/96/law.png";
+            if (lower.contains("court") || lower.contains("gavel") || lower.contains("balance")) return "https://img.icons8.com/color/96/scales.png";
+            if (lower.contains("econom") || lower.contains("money") || lower.contains("inflation") || lower.contains("rate")) return "https://img.icons8.com/color/96/us-dollar-circled.png";
+            if (lower.contains("stock") || lower.contains("nasdaq") || lower.contains("dow") || lower.contains("sp500") || lower.contains("market")) return "https://img.icons8.com/color/96/bullish.png";
+            if (lower.contains("business") || lower.contains("job") || lower.contains("work")) return "https://img.icons8.com/color/96/briefcase.png";
+            if (lower.contains("tech") || lower.contains("ai") || lower.contains("cyber")) return "https://img.icons8.com/color/96/artificial-intelligence.png";
+            if (lower.contains("sport") || lower.contains("nfl") || lower.contains("nba") || lower.contains("mlb")) return "https://img.icons8.com/color/96/american-football.png";
+            if (lower.contains("health") || lower.contains("med")) return "https://img.icons8.com/color/96/caduceus.png";
+            if (lower.contains("science") || lower.contains("space")) return "https://img.icons8.com/color/96/rocket.png";
+            if (lower.contains("entertain") || lower.contains("hollywood") || lower.contains("movie")) return "https://img.icons8.com/color/96/clapperboard.png";
+            if (lower.contains("world") || lower.contains("global")) return "https://img.icons8.com/color/96/globe.png";
+            if (lower.contains("weather")) return "https://img.icons8.com/color/96/partly-cloudy-day.png";
+            if (lower.contains("state")) return "https://img.icons8.com/color/96/map.png";
+            if (lower.contains("radio")) return "https://img.icons8.com/color/96/radio-tower.png";
+        }
+        return "https://img.icons8.com/color/96/categorize.png";
     }
 
     private List<AppConfig.OverviewItem> injectNativeAds(List<AppConfig.OverviewItem> items) {

@@ -181,7 +181,31 @@ public class FollowManager {
 
     public static CategoryMeta getCategoryMeta(String key) {
         if (key == null) return null;
-        return CATEGORY_REGISTRY.get(key.toUpperCase(Locale.US));
+        String upper = key.toUpperCase(Locale.US);
+        CategoryMeta meta = CATEGORY_REGISTRY.get(upper);
+        if (meta != null) return meta;
+
+        // Dynamic fallback for any category from categories.json
+        String title = key.replace("_", " ");
+        String[] words = title.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (String w : words) {
+            if (!w.isEmpty()) {
+                sb.append(Character.toUpperCase(w.charAt(0))).append(w.substring(1).toLowerCase(Locale.US)).append(" ");
+            }
+        }
+        String cleanTitle = sb.toString().trim();
+        return new CategoryMeta(
+                upper,
+                cleanTitle,
+                "Click here to show all news about " + cleanTitle + " Topic",
+                R.drawable.ic_newspaper,
+                "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=1200&q=80",
+                "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?w=200&q=80",
+                125000L,
+                "1.2M",
+                "35.0M"
+        );
     }
 
     public static List<CategoryMeta> getAllCategoryMetas() {

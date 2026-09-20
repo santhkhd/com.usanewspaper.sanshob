@@ -142,7 +142,28 @@ public class ActivityCategoryPage extends AppCompatActivity {
         String desc = item.description != null ? item.description.toLowerCase(java.util.Locale.US) : "";
         String combined = source + " " + title + " " + desc;
 
-        switch (category) {
+        String normCat = category != null ? category.toUpperCase(java.util.Locale.US) : "";
+        if (!normCat.isEmpty() && normCat.equals(itemCat)) return true;
+        if (normCat.contains("TOP") || normCat.contains("HEADLINE")) {
+            return true;
+        }
+        if (normCat.contains("BREAK")) {
+            return combined.contains("breaking") || combined.contains("alert") || combined.contains("urgent");
+        }
+        if (normCat.contains("WHITE_HOUSE") || normCat.contains("PRESIDENT")) {
+            return combined.contains("white house") || combined.contains("president") || combined.contains("biden") || combined.contains("trump");
+        }
+        if (normCat.contains("CONGRESS") || normCat.contains("SENATE") || normCat.contains("HOUSE")) {
+            return combined.contains("congress") || combined.contains("senate") || combined.contains("house") || combined.contains("capitol");
+        }
+        if (normCat.contains("COURT")) {
+            return combined.contains("supreme court") || combined.contains("court") || combined.contains("judge") || combined.contains("justice");
+        }
+        if (normCat.contains("ECONOM") || normCat.contains("INFLAT") || normCat.contains("FED") || normCat.contains("JOB") || normCat.contains("STOCK")) {
+            return combined.contains("economy") || combined.contains("inflation") || combined.contains("fed") || combined.contains("job") || combined.contains("rate") || combined.contains("market");
+        }
+
+        switch (normCat) {
             case "SPORTS":
                 if ("SPORTS".equals(itemCat)) return true;
                 return source.contains("sport") || source.contains("espn")
