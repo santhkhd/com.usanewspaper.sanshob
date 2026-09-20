@@ -225,38 +225,28 @@
     "category": "HEALTH"
   },
   {
-    "title": "The Weather Channel (Top News & Alerts)",
-    "url": "https://news.google.com/rss/search?q=Weather+Channel+forecast+storm+extreme&hl=en-US&gl=US&ceid=US:en",
+    "title": "The Weather Channel (Official Forecasts)",
+    "url": "https://news.google.com/rss/search?q=site:weather.com+forecast+meteorology&hl=en-US&gl=US&ceid=US:en",
     "category": "WEATHER"
   },
   {
-    "title": "AccuWeather (Severe Weather & Forecasts)",
-    "url": "https://news.google.com/rss/search?q=AccuWeather+severe+weather+storm+forecast&hl=en-US&gl=US&ceid=US:en",
+    "title": "AccuWeather (Official Forecast & Radar)",
+    "url": "https://news.google.com/rss/search?q=site:accuweather.com+forecast+severe&hl=en-US&gl=US&ceid=US:en",
     "category": "WEATHER"
   },
   {
-    "title": "NOAA National Weather Service (Live Alerts)",
-    "url": "https://news.google.com/rss/search?q=NOAA+National+Weather+Service+alert+warning&hl=en-US&gl=US&ceid=US:en",
+    "title": "NOAA National Weather Service (Weather.gov)",
+    "url": "https://news.google.com/rss/search?q=site:weather.gov+alert+forecast&hl=en-US&gl=US&ceid=US:en",
     "category": "WEATHER"
   },
   {
-    "title": "Fox Weather (Live Storm & Radar Updates)",
-    "url": "https://news.google.com/rss/search?q=FOX+Weather+radar+storm+tracker&hl=en-US&gl=US&ceid=US:en",
+    "title": "FOX Weather (Live Forecast & Radar Updates)",
+    "url": "https://news.google.com/rss/search?q=site:foxweather.com+forecast+radar&hl=en-US&gl=US&ceid=US:en",
     "category": "WEATHER"
   },
   {
-    "title": "US Severe Weather, Hurricanes & Tornadoes",
-    "url": "https://news.google.com/rss/search?q=US+severe+weather+storm+tornado+hurricane+blizzard&hl=en-US&gl=US&ceid=US:en",
-    "category": "WEATHER"
-  },
-  {
-    "title": "National Hurricane Center & Coastal Alerts",
-    "url": "https://news.google.com/rss/search?q=National+Hurricane+Center+storm+update&hl=en-US&gl=US&ceid=US:en",
-    "category": "WEATHER"
-  },
-  {
-    "title": "Extreme Weather & Climate Alerts",
-    "url": "https://news.google.com/rss/search?q=extreme+weather+heatwave+flooding+winter+storm&hl=en-US&gl=US&ceid=US:en",
+    "title": "National Hurricane Center (NOAA Tropical Alerts)",
+    "url": "https://news.google.com/rss/search?q=site:nhc.noaa.gov+OR+site:weather.gov+hurricane&hl=en-US&gl=US&ceid=US:en",
     "category": "WEATHER"
   },
   {

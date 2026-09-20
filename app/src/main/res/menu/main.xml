@@ -10,6 +10,11 @@
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
 
     <item
+        android:id="@+id/menu_sections"
+        android:title="📑 News Sections"
+        android:visible="true" />
+
+    <item
         android:id="@+id/menu_ai_prompts"
         android:title="🤖 AI News Prompts (ChatGPT &amp; Gemini)"
         android:visible="true" />

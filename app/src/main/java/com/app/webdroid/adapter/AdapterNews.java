@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.webdroid.model.NewsItem;
+import com.app.webdroid.util.FollowManager;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -70,13 +71,34 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int VIEW_TYPE_CARD_IMAGE = 0;
     public static final int VIEW_TYPE_COMPACT_LIST = 1;
     public static final int VIEW_TYPE_AD = 2;
+    public static final int VIEW_TYPE_CATEGORY_HEADER = 3;
+
+    private FollowManager.CategoryMeta categoryMeta = null;
+    private OnFollowStateChangeListener onFollowStateChangeListener;
+
+    public interface OnFollowStateChangeListener {
+        void onFollowStateChanged(String categoryKey, boolean isFollowed);
+    }
+
+    public void setCategoryMeta(FollowManager.CategoryMeta meta) {
+        this.categoryMeta = meta;
+        notifyDataSetChanged();
+    }
+
+    public void setOnFollowStateChangeListener(OnFollowStateChangeListener listener) {
+        this.onFollowStateChangeListener = listener;
+    }
 
     @Override
     public int getItemViewType(int position) {
-        if (items.get(position).isNativeAd) {
+        if (categoryMeta != null && position == 0) {
+            return VIEW_TYPE_CATEGORY_HEADER;
+        }
+        int actualIndex = (categoryMeta != null) ? position - 1 : position;
+        if (items.get(actualIndex).isNativeAd) {
             return VIEW_TYPE_AD;
         }
-        if (items.get(position).hasRealImage()) {
+        if (items.get(actualIndex).hasRealImage()) {
             return VIEW_TYPE_CARD_IMAGE;
         }
         return VIEW_TYPE_COMPACT_LIST;
@@ -85,7 +107,10 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == VIEW_TYPE_AD) {
+        if (viewType == VIEW_TYPE_CATEGORY_HEADER) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_page_header, parent, false);
+            return new CategoryHeaderViewHolder(view);
+        } else if (viewType == VIEW_TYPE_AD) {
             com.app.webdroid.database.prefs.AdsPref adsPref = new com.app.webdroid.database.prefs.AdsPref(context);
             return new com.app.webdroid.util.AdsManager((android.app.Activity) context)
                     .createNativeAdViewHolder(context, parent, adsPref.getNativeAdStyleProductList());
@@ -99,6 +124,78 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_CATEGORY_HEADER) {
+            if (categoryMeta == null) return;
+            CategoryHeaderViewHolder h = (CategoryHeaderViewHolder) holder;
+
+            // Load Cover Banner
+            if (h.ivBanner != null) {
+                Glide.with(context)
+                        .load(categoryMeta.coverUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.ic_placeholder_media)
+                        .error(R.drawable.ic_placeholder_media)
+                        .into(h.ivBanner);
+            }
+
+            // Load Category Avatar
+            if (h.ivAvatar != null) {
+                Glide.with(context)
+                        .load(categoryMeta.avatarUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .circleCrop()
+                        .placeholder(categoryMeta.iconRes)
+                        .error(categoryMeta.iconRes)
+                        .into(h.ivAvatar);
+            }
+
+            // Set Title & Description
+            if (h.tvTitle != null) {
+                h.tvTitle.setText(categoryMeta.title);
+            }
+            if (h.tvDesc != null) {
+                if (categoryMeta.description != null && !categoryMeta.description.isEmpty()) {
+                    h.tvDesc.setText(categoryMeta.description);
+                    h.tvDesc.setVisibility(View.VISIBLE);
+                } else {
+                    h.tvDesc.setVisibility(View.GONE);
+                }
+            }
+
+            // Set Metrics (Followers, Posts, Views)
+            if (h.tvFollowers != null) {
+                h.tvFollowers.setText(FollowManager.getFormattedFollowers(context, categoryMeta.key));
+            }
+            if (h.tvPosts != null) {
+                h.tvPosts.setText(categoryMeta.postsCount);
+            }
+            if (h.tvViews != null) {
+                h.tvViews.setText(categoryMeta.viewsCount);
+            }
+
+            // Follow Button State
+            boolean isFollowed = FollowManager.isFollowed(context, categoryMeta.key);
+            updateFollowButtonUi(h.btnFollow, isFollowed);
+
+            h.btnFollow.setOnClickListener(v -> {
+                h.btnFollow.animate().scaleX(1.15f).scaleY(1.15f).setDuration(120)
+                        .withEndAction(() -> h.btnFollow.animate().scaleX(1.0f).scaleY(1.0f).setDuration(120).start())
+                        .start();
+
+                boolean newFollowed = FollowManager.toggleFollow(context, categoryMeta.key);
+                updateFollowButtonUi(h.btnFollow, newFollowed);
+                if (h.tvFollowers != null) {
+                    h.tvFollowers.setText(FollowManager.getFormattedFollowers(context, categoryMeta.key));
+                }
+                Toast.makeText(context, (newFollowed ? "Followed " : "Unfollowed ") + categoryMeta.title, Toast.LENGTH_SHORT).show();
+                if (onFollowStateChangeListener != null) {
+                    onFollowStateChangeListener.onFollowStateChanged(categoryMeta.key, newFollowed);
+                }
+            });
+
+            return;
+        }
+
         if (getItemViewType(position) == VIEW_TYPE_AD) {
             com.solodroidx.ads.nativead.NativeAdViewHolder nativeHolder = (com.solodroidx.ads.nativead.NativeAdViewHolder) holder;
             new com.app.webdroid.util.AdsManager((android.app.Activity) context).bindNativeAdViewHolder(context, nativeHolder);
@@ -106,7 +203,8 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         ViewHolder myHolder = (ViewHolder) holder;
-        final NewsItem item = items.get(position);
+        final int itemPos = (categoryMeta != null) ? position - 1 : position;
+        final NewsItem item = items.get(itemPos);
 
         // 1. Malayalam-friendly Title
         myHolder.title.setText(item.title != null ? item.title.trim() : "");
@@ -237,7 +335,7 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (myHolder.layoutComment != null) {
             myHolder.layoutComment.setOnClickListener(v -> {
                 if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(v, item, position);
+                    onItemClickListener.onItemClick(v, item, itemPos);
                 }
             });
         }
@@ -260,7 +358,7 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         // Card Click
         myHolder.itemView.setOnClickListener(v -> {
             if (onItemClickListener != null) {
-                onItemClickListener.onItemClick(v, item, position);
+                onItemClickListener.onItemClick(v, item, itemPos);
             }
         });
 
@@ -270,7 +368,7 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     .withEndAction(() -> myHolder.favorite.animate().scaleX(1.0f).scaleY(1.0f).setDuration(120).start())
                     .start();
             if (onFavoriteClickListener != null) {
-                onFavoriteClickListener.onFavoriteClick(v, item, position);
+                onFavoriteClickListener.onFavoriteClick(v, item, itemPos);
             }
         });
     }
@@ -338,7 +436,47 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return items != null ? items.size() : 0;
+        int count = items != null ? items.size() : 0;
+        if (categoryMeta != null) {
+            count += 1;
+        }
+        return count;
+    }
+
+    private void updateFollowButtonUi(TextView btn, boolean isFollowed) {
+        if (btn == null) return;
+        if (isFollowed) {
+            btn.setText("✕ Unfollow");
+            btn.setBackgroundResource(R.drawable.bg_btn_unfollow);
+            btn.setTextColor(0xFF0F172A);
+        } else {
+            btn.setText("+ Follow");
+            btn.setBackgroundResource(R.drawable.bg_btn_follow);
+            btn.setTextColor(0xFFFFFFFF);
+        }
+    }
+
+    public static class CategoryHeaderViewHolder extends RecyclerView.ViewHolder {
+        public ImageView ivBanner;
+        public ImageView ivAvatar;
+        public TextView tvTitle;
+        public TextView tvDesc;
+        public TextView btnFollow;
+        public TextView tvFollowers;
+        public TextView tvPosts;
+        public TextView tvViews;
+
+        public CategoryHeaderViewHolder(View v) {
+            super(v);
+            ivBanner = v.findViewById(R.id.iv_category_banner);
+            ivAvatar = v.findViewById(R.id.iv_category_avatar);
+            tvTitle = v.findViewById(R.id.tv_category_title);
+            tvDesc = v.findViewById(R.id.tv_category_description);
+            btnFollow = v.findViewById(R.id.btn_category_follow);
+            tvFollowers = v.findViewById(R.id.tv_followers_count);
+            tvPosts = v.findViewById(R.id.tv_posts_count);
+            tvViews = v.findViewById(R.id.tv_views_count);
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -380,3 +518,4 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 }
+

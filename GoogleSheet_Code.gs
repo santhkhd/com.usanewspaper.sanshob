@@ -27,6 +27,7 @@ const SHEET_COMMENTS = "Comments";
 const SHEET_REACTIONS = "Reactions";
 const SHEET_SETTINGS = "Settings";
 const SHEET_USER_VOTES = "UserVotes";
+const SHEET_FOLLOWERS = "Followers";
 
 /**
  * Automatically creates and formats all tabs if they do not exist
@@ -106,6 +107,34 @@ function initializeSheets() {
       ["announcement_ticker", "Welcome to Malayalam Movie List & News!", "Marquee announcement banner text"]
     ];
     settingsSheet.getRange(2, 1, defaultSettings.length, 3).setValues(defaultSettings);
+  }
+
+  // 4. Followers Sheet (Category Followers Tracker)
+  let followersSheet = ss.getSheetByName(SHEET_FOLLOWERS);
+  if (!followersSheet) {
+    followersSheet = ss.insertSheet(SHEET_FOLLOWERS);
+    const headers = [["Category Key", "Category Name", "Followers", "Last Updated"]];
+    followersSheet.getRange(1, 1, 1, headers[0].length).setValues(headers)
+      .setBackground("#0284C7").setFontColor("#FFFFFF").setFontWeight("bold");
+    followersSheet.setFrozenRows(1);
+    followersSheet.setColumnWidth(1, 140);
+    followersSheet.setColumnWidth(2, 200);
+    followersSheet.setColumnWidth(3, 120);
+    followersSheet.setColumnWidth(4, 180);
+
+    const now = new Date().toLocaleString();
+    const defaultFollowers = [
+      ["TECH", "Technology", 218400, now],
+      ["HEALTH", "Health", 290500, now],
+      ["SPORTS", "Sports", 412800, now],
+      ["POLITICS", "Politics", 345100, now],
+      ["BUSINESS", "Business", 180200, now],
+      ["ENTERTAINMENT", "Entertainment", 275600, now],
+      ["WORLD", "World", 192400, now],
+      ["LOCAL", "Local news", 98300, now],
+      ["WEATHER", "Weather", 156700, now]
+    ];
+    followersSheet.getRange(2, 1, defaultFollowers.length, 4).setValues(defaultFollowers);
   }
 
   // Remove default "Sheet1" if empty
@@ -233,6 +262,28 @@ function doGet(e) {
         articleId: articleId,
         count: comments.length,
         comments: comments
+      });
+    }
+
+    // 5. Category Follow / Unfollow (GET support for simple webapp HTTP calls)
+    if (action === "follow" || action === "unfollow") {
+      const categoryKey = (params.category || params.key || "").toUpperCase().trim();
+      const isFollow = (action === "follow");
+      const updatedCount = updateCategoryFollowers(categoryKey, isFollow);
+      return createJsonResponse({
+        status: "success",
+        action: action,
+        category: categoryKey,
+        followers: updatedCount
+      });
+    }
+
+    // 6. Get All Category Followers
+    if (action === "getfollowers") {
+      const followersMap = getAllCategoryFollowers();
+      return createJsonResponse({
+        status: "success",
+        followers: followersMap
       });
     }
 
@@ -449,3 +500,65 @@ function createJsonResponse(data) {
   return ContentService.createTextOutput(JSON.stringify(data))
     .setMimeType(ContentService.MimeType.JSON);
 }
+
+/**
+ * Update category follower count in Followers sheet (+1 or -1)
+ */
+function updateCategoryFollowers(categoryKey, isFollow) {
+  if (!categoryKey) return 0;
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SHEET_FOLLOWERS);
+  if (!sheet) {
+    initializeSheets();
+    sheet = ss.getSheetByName(SHEET_FOLLOWERS);
+  }
+  const data = sheet.getDataRange().getValues();
+  let foundRow = -1;
+  let count = 0;
+
+  for (let i = 1; i < data.length; i++) {
+    if (String(data[i][0]).toUpperCase().trim() === categoryKey) {
+      foundRow = i + 1;
+      count = Number(data[i][2]) || 0;
+      break;
+    }
+  }
+
+  if (isFollow) {
+    count += 1;
+  } else {
+    count = Math.max(0, count - 1);
+  }
+
+  const now = new Date().toLocaleString();
+  if (foundRow > 0) {
+    sheet.getRange(foundRow, 3).setValue(count);
+    sheet.getRange(foundRow, 4).setValue(now);
+  } else {
+    sheet.appendRow([categoryKey, categoryKey, count, now]);
+  }
+  return count;
+}
+
+/**
+ * Retrieve map of all category follower counts
+ */
+function getAllCategoryFollowers() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(SHEET_FOLLOWERS);
+  if (!sheet) {
+    initializeSheets();
+    sheet = ss.getSheetByName(SHEET_FOLLOWERS);
+  }
+  const data = sheet.getDataRange().getValues();
+  const map = {};
+  for (let i = 1; i < data.length; i++) {
+    const key = String(data[i][0]).toUpperCase().trim();
+    const count = Number(data[i][2]) || 0;
+    if (key) {
+      map[key] = count;
+    }
+  }
+  return map;
+}
+

@@ -24,12 +24,14 @@ import com.google.gson.reflect.TypeToken;
 import com.shobmc.san.R;
 import com.app.webdroid.activity.ActivityNewsDetail;
 import com.app.webdroid.activity.ActivityRadioPlayer;
+import com.app.webdroid.activity.ActivityVideoDetail;
 import com.app.webdroid.activity.MainActivity;
 import com.app.webdroid.adapter.AdapterNews;
 import com.app.webdroid.database.AppDatabase;
 import com.app.webdroid.database.prefs.SharedPref;
 import com.app.webdroid.model.AppConfig;
 import com.app.webdroid.model.NewsItem;
+import com.app.webdroid.util.FollowManager;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -119,6 +121,11 @@ public class FragmentHomeDiscovery extends Fragment {
             btnUsNewsHub.setOnClickListener(v -> com.app.webdroid.news.ui.ActivityUsNews.start(requireContext()));
         }
 
+        View btnSections = root.findViewById(R.id.btn_home_sections);
+        if (btnSections != null) {
+            btnSections.setOnClickListener(v -> com.app.webdroid.activity.ActivitySections.start(requireContext()));
+        }
+
         if (btnSearch != null) {
             btnSearch.setOnClickListener(v -> com.app.webdroid.news.ui.ActivityUsNews.start(requireContext()));
         }
@@ -170,6 +177,11 @@ public class FragmentHomeDiscovery extends Fragment {
                 intent.putExtra("sourceName", obj.sourceName);
                 startActivity(intent);
             });
+            categoryNewsAdapter.setOnFollowStateChangeListener((catKey, isFollowed) -> {
+                if ("FOR_YOU".equals(currentSelectedCategory)) {
+                    filterAndDisplayCategoryNews("FOR_YOU");
+                }
+            });
             rvCategoryNews.setAdapter(categoryNewsAdapter);
 
             rvCategoryNews.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -198,6 +210,10 @@ public class FragmentHomeDiscovery extends Fragment {
     private void loadAllSections() {
         Context ctx = getContext();
         if (ctx == null) return;
+
+        // Fetch remote follower metrics from Google Sheets
+        FollowManager.fetchAllRemoteFollowers(ctx);
+
         if (swipeRefresh != null) {
             swipeRefresh.post(() -> {
                 if (swipeRefresh != null) swipeRefresh.setRefreshing(true);
@@ -270,15 +286,25 @@ public class FragmentHomeDiscovery extends Fragment {
                 tab.setOnClickListener(v -> handleTabClick(tab, catKey));
             }
         }
+
+        TextView tabSections = root.findViewById(R.id.tab_home_sections);
+        if (tabSections != null) {
+            tabSections.setOnClickListener(v -> com.app.webdroid.activity.ActivitySections.start(requireContext()));
+        }
     }
 
     private void handleTabClick(TextView selectedTab, String categoryKey) {
         if ("CHANNELS".equals(categoryKey)) {
-            if (activity != null) {
-                activity.loadWebPage("News Channels", "CATEGORY", "news_channels.json", "news_channels.json");
-            } else if (getActivity() instanceof MainActivity) {
-                ((MainActivity) getActivity()).loadWebPage("News Channels", "CATEGORY", "news_channels.json", "news_channels.json");
-            }
+            // Direct Live TV stream playback: User specified "not list just live add in tab"
+            Context ctx = getContext() != null ? getContext() : requireContext();
+            Intent intent = new Intent(ctx, ActivityVideoDetail.class);
+            intent.putExtra("videoId", "UCBi2mrWuNuyYy4gbM6fU18Q");
+            intent.putExtra("title", "ABC News Live 24/7");
+            intent.putExtra("channelName", "ABC News");
+            intent.putExtra("channelId", "UCBi2mrWuNuyYy4gbM6fU18Q");
+            intent.putExtra("thumbUrl", "https://i.ytimg.com/vi/gN0PZCe-kwQ/hqdefault_live.jpg");
+            intent.putExtra("date", "Live Now");
+            ctx.startActivity(intent);
             return;
         }
 
@@ -301,6 +327,14 @@ public class FragmentHomeDiscovery extends Fragment {
             if (tab != selectedTab && tab != null) {
                 tab.setBackgroundResource(R.drawable.bg_home_tab_unselected);
                 tab.setTextColor(0xFFFFFFFF);
+            }
+        }
+
+        if (categoryNewsAdapter != null) {
+            if ("FOR_YOU".equals(categoryKey) || "TRENDING".equals(categoryKey)) {
+                categoryNewsAdapter.setCategoryMeta(null);
+            } else {
+                categoryNewsAdapter.setCategoryMeta(FollowManager.getCategoryMeta(categoryKey));
             }
         }
 
@@ -330,15 +364,46 @@ public class FragmentHomeDiscovery extends Fragment {
         }
 
         List<NewsItem> matched = new ArrayList<>();
-        for (NewsItem item : all) {
-            if (matchesCategory(item, categoryKey)) {
-                matched.add(item);
+        if ("FOR_YOU".equals(categoryKey)) {
+            // Prioritize news from categories the user follows!
+            java.util.Set<String> followed = FollowManager.getFollowedCategories(getContext());
+            if (followed != null && !followed.isEmpty()) {
+                List<NewsItem> followedItems = new ArrayList<>();
+                List<NewsItem> otherItems = new ArrayList<>();
+                for (NewsItem item : all) {
+                    boolean isFollowedMatch = false;
+                    for (String fCat : followed) {
+                        if (matchesCategory(item, fCat)) {
+                            isFollowedMatch = true;
+                            break;
+                        }
+                    }
+                    if (isFollowedMatch) {
+                        followedItems.add(item);
+                    } else {
+                        otherItems.add(item);
+                    }
+                }
+                matched.addAll(followedItems);
+                matched.addAll(otherItems);
+            } else {
+                matched.addAll(all);
+            }
+        } else {
+            for (NewsItem item : all) {
+                if (matchesCategory(item, categoryKey)) {
+                    matched.add(item);
+                }
             }
         }
 
         // STRICT CATEGORY ISOLATION: Show ONLY articles matching the respective category
-        // Never pollute a specific category with unrelated stories
         if (categoryNewsAdapter != null) {
+            if ("FOR_YOU".equals(categoryKey) || "TRENDING".equals(categoryKey)) {
+                categoryNewsAdapter.setCategoryMeta(null);
+            } else {
+                categoryNewsAdapter.setCategoryMeta(FollowManager.getCategoryMeta(categoryKey));
+            }
             categoryNewsAdapter.setItems(matched);
         }
     }
@@ -442,12 +507,30 @@ public class FragmentHomeDiscovery extends Fragment {
                         || combined.contains("championship");
 
             case "WEATHER":
-                if ("WEATHER".equals(itemCat)) return true;
-                return source.contains("weather") || source.contains("accuweather") || source.contains("noaa")
-                        || combined.contains("weather") || combined.contains("storm") || combined.contains("hurricane")
-                        || combined.contains("tornado") || combined.contains("rain") || combined.contains("flood")
-                        || combined.contains("snow") || combined.contains("temperature") || combined.contains("forecast")
-                        || combined.contains("radar") || combined.contains("blizzard") || combined.contains("heat wave");
+                // 1. Strict Negative Keyword Filtering: Completely reject political, crime, sports, entertainment, finance stories
+                if (combined.contains("trump") || combined.contains("biden") || combined.contains("harris")
+                        || combined.contains("senate") || combined.contains("congress") || combined.contains("white house")
+                        || combined.contains("election") || combined.contains("campaign") || combined.contains("gop")
+                        || combined.contains("democrat") || combined.contains("republican") || combined.contains("supreme court")
+                        || combined.contains("trial") || combined.contains("verdict") || combined.contains("shooting")
+                        || combined.contains("police arrest") || combined.contains("murder") || combined.contains("nfl")
+                        || combined.contains("nba") || combined.contains("box office") || combined.contains("actor")
+                        || combined.contains("hollywood") || combined.contains("wall street") || combined.contains("crypto")
+                        || combined.contains("bitcoin")) {
+                    return false;
+                }
+
+                // 2. Strict Positive Meteorological Source Verification
+                boolean isMeteorologicalSource = source.contains("weather") || source.contains("accuweather")
+                        || source.contains("noaa") || source.contains("meteorol") || source.contains("weather service");
+                if (isMeteorologicalSource) return true;
+
+                // 3. Strict Meteorological Keyword Matching
+                return combined.contains("temperature") || combined.contains("forecast") || combined.contains("meteorol")
+                        || combined.contains("radar") || combined.contains("hurricane") || combined.contains("tornado")
+                        || combined.contains("blizzard") || combined.contains("heat wave") || combined.contains("cold front")
+                        || combined.contains("rainfall") || combined.contains("snowfall") || combined.contains("degrees")
+                        || combined.contains("weather warning") || combined.contains("weather alert") || combined.contains("wind chill");
 
             case "POLITICS":
                 if ("POLITICS".equals(itemCat)) return true;

@@ -141,6 +141,17 @@
             android:label="US News Hub"
             android:exported="false" />
 
+        <activity
+            android:name="com.app.webdroid.activity.ActivitySections"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:label="SECTIONS"
+            android:exported="false" />
+
+        <activity
+            android:name="com.app.webdroid.activity.ActivityCategoryPage"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="false" />
+
         <provider
             android:name="com.app.webdroid.util.GenericFileProvider"
             android:authorities="${applicationId}.provider"

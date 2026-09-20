@@ -1003,7 +1003,10 @@ public class MainActivity extends AppCompatActivity implements DrawerStateListen
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.menu_ai_prompts) {
+        if (itemId == R.id.menu_sections) {
+            com.app.webdroid.activity.ActivitySections.start(this);
+            return true;
+        } else if (itemId == R.id.menu_ai_prompts) {
             startActivity(new Intent(getApplicationContext(), ActivityAiPrompts.class));
             return true;
         } else if (itemId == R.id.menu_add_newspaper) {
