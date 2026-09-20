@@ -116,11 +116,6 @@ public class FragmentHomeDiscovery extends Fragment {
             toolbarTitle.setText(R.string.app_name);
         }
 
-        View btnUsNewsHub = root.findViewById(R.id.btn_home_us_news_hub);
-        if (btnUsNewsHub != null) {
-            btnUsNewsHub.setOnClickListener(v -> com.app.webdroid.news.ui.ActivityUsNews.start(requireContext()));
-        }
-
         View btnSections = root.findViewById(R.id.btn_home_sections);
         if (btnSections != null) {
             btnSections.setOnClickListener(v -> com.app.webdroid.activity.ActivitySections.start(requireContext()));
@@ -295,16 +290,10 @@ public class FragmentHomeDiscovery extends Fragment {
 
     private void handleTabClick(TextView selectedTab, String categoryKey) {
         if ("CHANNELS".equals(categoryKey)) {
-            // Direct Live TV stream playback: User specified "not list just live add in tab"
-            Context ctx = getContext() != null ? getContext() : requireContext();
-            Intent intent = new Intent(ctx, ActivityVideoDetail.class);
-            intent.putExtra("videoId", "UCBi2mrWuNuyYy4gbM6fU18Q");
-            intent.putExtra("title", "ABC News Live 24/7");
-            intent.putExtra("channelName", "ABC News");
-            intent.putExtra("channelId", "UCBi2mrWuNuyYy4gbM6fU18Q");
-            intent.putExtra("thumbUrl", "https://i.ytimg.com/vi/gN0PZCe-kwQ/hqdefault_live.jpg");
-            intent.putExtra("date", "Live Now");
-            ctx.startActivity(intent);
+            // User requested: "When channel click list all the live channel newspaper YouTube, not a single channel, all the channel that is live"
+            if (getActivity() instanceof MainActivity) {
+                ((MainActivity) getActivity()).loadWebPage("News Channels", "CATEGORY", "news_channels.json", "news_channels.json");
+            }
             return;
         }
 

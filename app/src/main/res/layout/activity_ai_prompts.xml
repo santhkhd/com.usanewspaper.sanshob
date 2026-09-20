@@ -2,7 +2,7 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root_view"
+    android:id="@+id/coordinator_ai"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground">
@@ -11,7 +11,7 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/color_light_primary"
         android:fitsSystemWindows="true"
         app:elevation="2dp">
 
@@ -20,12 +20,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
+            android:background="@color/color_light_primary"
             android:paddingTop="4dp"
             android:paddingBottom="4dp"
             app:contentInsetStartWithNavigation="0dp"
             app:navigationIcon="@drawable/ic_arrow_back"
             app:titleTextColor="@color/color_white"
-            app:subtitleTextColor="#D1D5DB"
+            app:subtitleTextColor="#F1F5F9"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             <LinearLayout

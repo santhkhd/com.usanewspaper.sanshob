@@ -2182,4 +2182,63 @@ public class CustomChannelManager {
             }
         }
     }
+
+    public static void saveChannelOverride(Context context, String channelKey, String newId) {
+        if (context == null || channelKey == null || newId == null) return;
+        context.getSharedPreferences("channel_id_overrides", Context.MODE_PRIVATE)
+                .edit()
+                .putString(channelKey.trim().toLowerCase(java.util.Locale.US), newId.trim())
+                .apply();
+    }
+
+    public static String getChannelOverride(Context context, String channelKey, String defaultId) {
+        if (context == null || channelKey == null) return defaultId;
+        return context.getSharedPreferences("channel_id_overrides", Context.MODE_PRIVATE)
+                .getString(channelKey.trim().toLowerCase(java.util.Locale.US), defaultId);
+    }
+
+    public static void showEditChannelDialog(Context context, String channelName, String currentId, Runnable onSaved) {
+        if (context == null) return;
+
+        android.widget.LinearLayout layout = new android.widget.LinearLayout(context);
+        layout.setOrientation(android.widget.LinearLayout.VERTICAL);
+        int pad = (int) (18 * context.getResources().getDisplayMetrics().density);
+        layout.setPadding(pad, pad / 2, pad, pad / 2);
+
+        TextView tvHint = new TextView(context);
+        tvHint.setText("If the live stream is not working or offline, enter a new YouTube Channel ID (e.g. UC...), Video ID, or .m3u8 stream URL:");
+        tvHint.setTextSize(13);
+        tvHint.setTextColor(0xFF64748B);
+        tvHint.setPadding(0, 0, 0, (int) (10 * context.getResources().getDisplayMetrics().density));
+        layout.addView(tvHint);
+
+        com.google.android.material.textfield.TextInputLayout inputLayout =
+                new com.google.android.material.textfield.TextInputLayout(context);
+        inputLayout.setHint("Channel ID / Video ID / Stream URL");
+        inputLayout.setBoxBackgroundMode(com.google.android.material.textfield.TextInputLayout.BOX_BACKGROUND_OUTLINE);
+
+        com.google.android.material.textfield.TextInputEditText etId =
+                new com.google.android.material.textfield.TextInputEditText(context);
+        etId.setText(currentId != null ? currentId : "");
+        etId.setSingleLine(true);
+        inputLayout.addView(etId);
+        layout.addView(inputLayout);
+
+        new com.google.android.material.dialog.MaterialAlertDialogBuilder(context)
+                .setTitle("✏️ Edit Stream: " + (channelName != null ? channelName : "Channel"))
+                .setView(layout)
+                .setPositiveButton("Save & Reload", (d, w) -> {
+                    String newId = etId.getText() != null ? etId.getText().toString().trim() : "";
+                    if (!newId.isEmpty()) {
+                        saveChannelOverride(context, channelName, newId);
+                        if (currentId != null && !currentId.isEmpty()) {
+                            saveChannelOverride(context, currentId, newId);
+                        }
+                        android.widget.Toast.makeText(context, "✓ Channel ID updated!", android.widget.Toast.LENGTH_SHORT).show();
+                        if (onSaved != null) onSaved.run();
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
 }

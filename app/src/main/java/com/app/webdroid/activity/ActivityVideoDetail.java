@@ -97,6 +97,16 @@ public class ActivityVideoDetail extends AppCompatActivity {
             channelId = getIntent().getStringExtra("channelId");
         }
 
+        // Check if user has a custom override for this channel/video ID
+        String lookupKey = (channelName != null && !channelName.isEmpty()) ? channelName : title;
+        String overrideId = CustomChannelManager.getChannelOverride(this, lookupKey, null);
+        if (overrideId == null || overrideId.isEmpty()) {
+            overrideId = CustomChannelManager.getChannelOverride(this, videoId, null);
+        }
+        if (overrideId != null && !overrideId.isEmpty()) {
+            videoId = overrideId;
+        }
+
         // Setup 56dp Clean Toolbar
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -371,6 +381,11 @@ public class ActivityVideoDetail extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_video_detail, menu);
+        boolean isDark = new SharedPref(this).getIsDarkTheme();
+        MenuItem editItem = menu.findItem(R.id.menu_edit_channel);
+        if (editItem != null && editItem.getIcon() != null) {
+            androidx.core.graphics.drawable.DrawableCompat.setTint(editItem.getIcon(), isDark ? 0xFFFFFFFF : 0xFF0F172A);
+        }
         return true;
     }
 
@@ -379,6 +394,9 @@ public class ActivityVideoDetail extends AppCompatActivity {
         int id = item.getItemId();
         if (id == android.R.id.home) {
             onBackPressed();
+            return true;
+        } else if (id == R.id.menu_edit_channel) {
+            showEditChannelIdDialog();
             return true;
         } else if (id == R.id.menu_share) {
             shareVideo();
@@ -391,6 +409,17 @@ public class ActivityVideoDetail extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showEditChannelIdDialog() {
+        String displayName = (channelName != null && !channelName.isEmpty()) ? channelName : title;
+        CustomChannelManager.showEditChannelDialog(this, displayName, videoId, () -> {
+            String updated = CustomChannelManager.getChannelOverride(this, displayName, videoId);
+            if (updated != null && !updated.isEmpty()) {
+                this.videoId = updated;
+                playEmbeddedVideo();
+            }
+        });
     }
 
     private void shareVideo() {

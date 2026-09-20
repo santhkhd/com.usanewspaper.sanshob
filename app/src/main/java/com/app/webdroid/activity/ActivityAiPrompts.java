@@ -78,6 +78,18 @@ public class ActivityAiPrompts extends AppCompatActivity implements AdapterAiPro
         Tools.setNavigation(this);
 
         sharedPref = new SharedPref(this);
+        boolean isDark = sharedPref.getIsDarkTheme();
+        int toolbarBg = ContextCompat.getColor(this, isDark ? R.color.color_dark_toolbar : R.color.color_light_primary);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(toolbarBg);
+        }
+        try {
+            androidx.core.view.WindowInsetsControllerCompat insetsCtrl =
+                    androidx.core.view.WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+            if (insetsCtrl != null) {
+                insetsCtrl.setAppearanceLightStatusBars(false);
+            }
+        } catch (Exception ignored) {}
 
         initViews();
         setupToolbar();
@@ -129,10 +141,19 @@ public class ActivityAiPrompts extends AppCompatActivity implements AdapterAiPro
     }
 
     private void setupToolbar() {
+        boolean isDark = sharedPref != null && sharedPref.getIsDarkTheme();
+        int toolbarBg = ContextCompat.getColor(this, isDark ? R.color.color_dark_toolbar : R.color.color_light_primary);
+        toolbar.setBackgroundColor(toolbarBg);
+        View appbar = findViewById(R.id.appbar);
+        if (appbar != null) appbar.setBackgroundColor(toolbarBg);
+
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        if (toolbar.getNavigationIcon() != null) {
+            toolbar.getNavigationIcon().setTint(0xFFFFFFFF);
         }
         toolbar.setNavigationOnClickListener(v -> finish());
     }

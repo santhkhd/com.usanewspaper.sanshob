@@ -933,6 +933,10 @@ public class FragmentCategory extends Fragment {
                     }
 
                     String targetUrl = targetUrls.isEmpty() ? "" : targetUrls.get(0);
+                    String overrideUrl = com.app.webdroid.util.CustomChannelManager.getChannelOverride(getContext(), obj.title, null);
+                    if (overrideUrl != null && !overrideUrl.isEmpty()) {
+                        targetUrl = overrideUrl;
+                    }
                     final String initialTargetUrl = targetUrl;
 
                     // Check if it is an RSS News Item -> Open ActivityNewsDetail
@@ -2035,6 +2039,28 @@ public class FragmentCategory extends Fragment {
             }
         }
 
+        View rowEdit = sheetView.findViewById(R.id.row_edit_channel);
+        if (rowEdit != null) {
+            if (isCategoryList) {
+                rowEdit.setVisibility(View.GONE);
+            } else {
+                rowEdit.setVisibility(View.VISIBLE);
+                rowEdit.setOnClickListener(v -> {
+                    bottomSheet.dismiss();
+                    String curId = (obj.arguments != null && !obj.arguments.isEmpty()) ? obj.arguments.get(0) : "";
+                    com.app.webdroid.util.CustomChannelManager.showEditChannelDialog(requireContext(), obj.title, curId, () -> {
+                        String newId = com.app.webdroid.util.CustomChannelManager.getChannelOverride(requireContext(), obj.title, curId);
+                        if (obj.arguments != null && !obj.arguments.isEmpty()) {
+                            obj.arguments.set(0, newId);
+                        }
+                        if (adapter != null) {
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                });
+            }
+        }
+
         View rowRemove = sheetView.findViewById(R.id.row_remove_channel);
         TextView tvRemoveTitle = sheetView.findViewById(R.id.tv_row_remove_title);
         TextView tvRemoveSubtitle = sheetView.findViewById(R.id.tv_row_remove_subtitle);
@@ -2404,6 +2430,7 @@ public class FragmentCategory extends Fragment {
     }
 
     private void updateHubChipSelection(TextView selected, TextView... others) {
+        boolean isDark = sharedPref != null && sharedPref.getIsDarkTheme();
         if (selected != null) {
             selected.setBackgroundResource(R.drawable.bg_chip_selected);
             selected.setTextColor(android.graphics.Color.WHITE);
@@ -2411,7 +2438,7 @@ public class FragmentCategory extends Fragment {
         for (TextView other : others) {
             if (other != null) {
                 other.setBackgroundResource(R.drawable.bg_chip_unselected);
-                other.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_light_title_toolbar));
+                other.setTextColor(isDark ? 0xFFFFFFFF : 0xFF0F172A);
             }
         }
     }

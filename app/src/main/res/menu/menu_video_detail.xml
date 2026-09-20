@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_edit_channel"
+        android:icon="@drawable/ic_edit"
+        android:title="✏️ Edit Channel ID"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/menu_share"
         android:icon="@drawable/ic_share"
         android:title="Share Video"
