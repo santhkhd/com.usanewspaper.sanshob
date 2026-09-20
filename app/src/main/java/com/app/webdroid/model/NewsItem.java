@@ -37,23 +37,40 @@ public class NewsItem implements Serializable {
     @androidx.room.Ignore
     public boolean isNativeAd = false;
 
+    @androidx.room.Ignore
+    public String sourceUrl;
+
     public boolean hasRealImage() {
         return imageUrl != null
                 && !imageUrl.trim().isEmpty()
                 && !imageUrl.contains("google.com/s2/favicons")
+                && !imageUrl.contains("icons8.com")
                 && !imageUrl.endsWith(".ico")
                 && (imageUrl.startsWith("http://") || imageUrl.startsWith("https://"));
     }
 
     public String getSourceIconUrl() {
-        if (link != null && !link.isEmpty()) {
+        if (sourceUrl != null && !sourceUrl.isEmpty()) {
             try {
-                String host = new java.net.URL(link).getHost();
+                String host = new java.net.URL(sourceUrl).getHost();
                 if (host != null && !host.isEmpty()) {
                     return "https://www.google.com/s2/favicons?sz=128&domain=" + host;
                 }
             } catch (Exception ignored) {
             }
+        }
+        if (link != null && !link.isEmpty()) {
+            try {
+                String host = new java.net.URL(link).getHost();
+                if (host != null && !host.isEmpty() && !host.contains("google.com")) {
+                    return "https://www.google.com/s2/favicons?sz=128&domain=" + host;
+                }
+            } catch (Exception ignored) {
+            }
+        }
+        if (sourceName != null && !sourceName.trim().isEmpty()) {
+            String clean = sourceName.trim().toLowerCase().replaceAll("[^a-z0-9]", "");
+            return "https://www.google.com/s2/favicons?sz=128&domain=" + clean + ".com";
         }
         return null;
     }

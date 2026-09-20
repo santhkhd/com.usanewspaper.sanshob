@@ -94,6 +94,7 @@
 
             <!-- News Image -->
             <androidx.cardview.widget.CardView
+                android:id="@+id/card_image_news_detail"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:layout_marginTop="14dp"

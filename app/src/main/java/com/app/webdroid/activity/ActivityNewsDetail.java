@@ -134,13 +134,25 @@ public class ActivityNewsDetail extends AppCompatActivity {
         }
         txtDesc.setText(cleanDesc);
 
-        if (imageUrl != null && !imageUrl.isEmpty()) {
-            Glide.with(this)
-                    .load(imageUrl)
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.mipmap.ic_launcher)
-                    .error(R.mipmap.ic_launcher)
-                    .into(imgNews);
+        View cardImage = findViewById(R.id.card_image_news_detail);
+        boolean hasValidImage = imageUrl != null && !imageUrl.trim().isEmpty()
+                && !imageUrl.contains("google.com/s2/favicons")
+                && !imageUrl.contains("icons8.com")
+                && !imageUrl.endsWith(".ico")
+                && (imageUrl.startsWith("http://") || imageUrl.startsWith("https://"));
+
+        if (cardImage != null) {
+            if (hasValidImage) {
+                cardImage.setVisibility(View.VISIBLE);
+                Glide.with(this)
+                        .load(imageUrl)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.ic_placeholder_media)
+                        .error(R.drawable.ic_placeholder_media)
+                        .into(imgNews);
+            } else {
+                cardImage.setVisibility(View.GONE);
+            }
         }
 
         // CONTINUE READING opens full article in WebView

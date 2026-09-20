@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.shobmc.san.R;
 import com.app.webdroid.activity.ActivityMovieDetail;
+import com.app.webdroid.activity.ActivityNewsDetail;
 import com.app.webdroid.activity.ActivityVideoDetail;
 import com.app.webdroid.activity.ActivityWebView;
 import com.app.webdroid.activity.MainActivity;
@@ -240,6 +241,15 @@ public class FragmentFavorites extends Fragment {
             intent.putExtra("title", title);
             intent.putExtra("image", imageUrl);
             intent.putExtra("year", subtitle);
+            startActivity(intent);
+        } else if (FavoriteItem.TYPE_RSS.equalsIgnoreCase(type) || "NEWS".equalsIgnoreCase(type) || "rss_item".equalsIgnoreCase(type)) {
+            Intent intent = new Intent(getContext(), ActivityNewsDetail.class);
+            intent.putExtra("title", title);
+            intent.putExtra("description", subtitle != null ? subtitle : title);
+            intent.putExtra("link", targetUrl != null && !targetUrl.isEmpty() ? targetUrl : itemId);
+            intent.putExtra("imageUrl", imageUrl);
+            intent.putExtra("pubDate", subtitle != null ? subtitle : "Saved");
+            intent.putExtra("sourceName", subtitle != null ? subtitle : "Saved Story");
             startActivity(intent);
         } else if ("VIDEOS".equalsIgnoreCase(type) || "CHANNEL".equalsIgnoreCase(type)
                 || (targetUrl != null && targetUrl.contains("youtube.com/feeds"))) {

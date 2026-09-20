@@ -14,12 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.shobmc.san.R;
 import com.app.webdroid.activity.MainActivity;
 import com.app.webdroid.adapter.AdapterCategory;
+import com.app.webdroid.adapter.AdapterNews;
 import com.app.webdroid.model.AppConfig;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -817,11 +819,34 @@ public class FragmentCategory extends Fragment {
                         .apply();
             }
 
+            // High-priority: Handle RSS / News Items -> Open ActivityNewsDetail directly
+            if ("rss_item".equalsIgnoreCase(obj.provider) || "news".equalsIgnoreCase(obj.provider)) {
+                ArrayList<String> targetUrls = new ArrayList<>();
+                if (obj.arguments != null && !obj.arguments.isEmpty()) {
+                    targetUrls.addAll(obj.arguments);
+                } else if (obj.link != null) {
+                    targetUrls.add(obj.link);
+                }
+                String targetUrl = targetUrls.isEmpty() ? "" : targetUrls.get(0);
+
+                Intent intent = new Intent(getContext(), com.app.webdroid.activity.ActivityNewsDetail.class);
+                intent.putExtra("title", obj.title != null ? obj.title : "");
+                intent.putExtra("description", obj.plot != null && !obj.plot.isEmpty() ? obj.plot : obj.title);
+                intent.putExtra("link", targetUrl);
+                intent.putExtra("imageUrl", obj.image);
+                intent.putExtra("pubDate", obj.year != null ? obj.year : "Live");
+                intent.putExtra("sourceName", obj.genre != null ? obj.genre : "Local Press");
+                startActivity(intent);
+                return;
+            }
+
             // Check if it's a Movie Item and launch ActivityMovieDetail
             boolean isMovieItem = ("movies".equalsIgnoreCase(obj.provider)
                     || ((obj.year != null && !obj.year.isEmpty()) && (obj.plot != null && !obj.plot.isEmpty())))
                     && !"iptv".equalsIgnoreCase(obj.provider)
-                    && !"live".equalsIgnoreCase(obj.provider);
+                    && !"live".equalsIgnoreCase(obj.provider)
+                    && !"rss_item".equalsIgnoreCase(obj.provider)
+                    && !"news".equalsIgnoreCase(obj.provider);
 
             if (isMovieItem) {
                 com.solodroidx.ads.listener.OnShowAdCompleteListener openMovieAction = () -> {
@@ -2136,6 +2161,7 @@ public class FragmentCategory extends Fragment {
                 updateHubChipSelection(chipAll, chipLocalRss, chipWeatherRss, chipMainUsa);
                 GridLayoutManager glm = new GridLayoutManager(getContext(), 3);
                 recyclerView.setLayoutManager(glm);
+                recyclerView.setAdapter(adapter);
                 if (allItems != null) {
                     adapter.setItems(injectNativeAds(allItems));
                 }
@@ -2150,13 +2176,7 @@ public class FragmentCategory extends Fragment {
                 com.app.webdroid.util.StateWeatherManager.fetchStateRss(rss, loc.stateName + " News", items -> {
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     if (items != null && !items.isEmpty()) {
-                        List<AppConfig.OverviewItem> list = new ArrayList<>();
-                        for (com.app.webdroid.model.NewsItem n : items) {
-                            list.add(convertNewsToOverview(n, loc.stateName + " News"));
-                        }
-                        GridLayoutManager glm = new GridLayoutManager(getContext(), 1);
-                        recyclerView.setLayoutManager(glm);
-                        adapter.setItems(injectNativeAds(list));
+                        bindNewsAdapter(items, loc.stateName + " News");
                     } else {
                         android.widget.Toast.makeText(getContext(), "Fetching latest " + loc.stateName + " stories...", android.widget.Toast.LENGTH_SHORT).show();
                     }
@@ -2172,13 +2192,7 @@ public class FragmentCategory extends Fragment {
                 com.app.webdroid.util.StateWeatherManager.fetchStateRss(rss, loc.stateName + " Weather", items -> {
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     if (items != null && !items.isEmpty()) {
-                        List<AppConfig.OverviewItem> list = new ArrayList<>();
-                        for (com.app.webdroid.model.NewsItem n : items) {
-                            list.add(convertNewsToOverview(n, loc.stateName + " Weather"));
-                        }
-                        GridLayoutManager glm = new GridLayoutManager(getContext(), 1);
-                        recyclerView.setLayoutManager(glm);
-                        adapter.setItems(injectNativeAds(list));
+                        bindNewsAdapter(items, loc.stateName + " Weather");
                     } else {
                         android.widget.Toast.makeText(getContext(), "No severe weather alerts for " + loc.stateName, android.widget.Toast.LENGTH_SHORT).show();
                     }
@@ -2194,13 +2208,7 @@ public class FragmentCategory extends Fragment {
                 com.app.webdroid.util.StateWeatherManager.fetchStateRss(rss, "Main USA News", items -> {
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     if (items != null && !items.isEmpty()) {
-                        List<AppConfig.OverviewItem> list = new ArrayList<>();
-                        for (com.app.webdroid.model.NewsItem n : items) {
-                            list.add(convertNewsToOverview(n, "USA National"));
-                        }
-                        GridLayoutManager glm = new GridLayoutManager(getContext(), 1);
-                        recyclerView.setLayoutManager(glm);
-                        adapter.setItems(injectNativeAds(list));
+                        bindNewsAdapter(items, "USA National");
                     }
                 });
             });
@@ -2215,13 +2223,54 @@ public class FragmentCategory extends Fragment {
         }
     }
 
+    private void bindNewsAdapter(List<com.app.webdroid.model.NewsItem> items, String defaultSource) {
+        if (getContext() == null || recyclerView == null) return;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        AdapterNews newsAdapter = new AdapterNews(getContext(), items);
+        newsAdapter.setOnItemClickListener((view, newsItem, position) -> {
+            if (newsItem == null) return;
+            Intent intent = new Intent(getContext(), com.app.webdroid.activity.ActivityNewsDetail.class);
+            intent.putExtra("title", newsItem.title != null ? newsItem.title : "");
+            intent.putExtra("description", newsItem.description != null ? newsItem.description : "");
+            intent.putExtra("link", newsItem.link != null ? newsItem.link : "");
+            intent.putExtra("imageUrl", newsItem.imageUrl);
+            intent.putExtra("pubDate", newsItem.pubDate != null ? newsItem.pubDate : "Live");
+            intent.putExtra("sourceName", newsItem.sourceName != null ? newsItem.sourceName : defaultSource);
+            startActivity(intent);
+        });
+
+        newsAdapter.setOnFavoriteClickListener((view, newsItem, position) -> {
+            if (getContext() == null || newsItem == null || newsItem.link == null) return;
+            AppDatabase.databaseWriteExecutor.execute(() -> {
+                AppDatabase db = AppDatabase.getDatabase(getContext());
+                int count = db.favoriteDao().isFavoriteByTargetOrTitle(newsItem.link, newsItem.title);
+                if (count > 0) {
+                    db.favoriteDao().removeFavoriteComprehensive(newsItem.link, newsItem.link, newsItem.title);
+                } else {
+                    FavoriteItem fav = new FavoriteItem();
+                    fav.itemId = newsItem.link;
+                    fav.type = FavoriteItem.TYPE_RSS;
+                    fav.title = newsItem.title;
+                    fav.subtitle = newsItem.sourceName != null ? newsItem.sourceName : defaultSource;
+                    fav.imageUrl = newsItem.imageUrl != null ? newsItem.imageUrl : "";
+                    fav.targetUrl = newsItem.link;
+                    db.favoriteDao().addFavorite(fav);
+                }
+            });
+        });
+
+        recyclerView.setAdapter(newsAdapter);
+    }
+
     private AppConfig.OverviewItem convertNewsToOverview(com.app.webdroid.model.NewsItem item, String genre) {
         AppConfig.OverviewItem oi = new AppConfig.OverviewItem();
         oi.title = item.title != null ? item.title : "News Story";
         oi.provider = "rss_item";
         oi.arguments = new ArrayList<>();
         oi.arguments.add(item.link != null ? item.link : "");
-        oi.image = item.imageUrl != null && !item.imageUrl.isEmpty() ? item.imageUrl : "https://img.icons8.com/color/96/news.png";
+        oi.link = item.link != null ? item.link : "";
+        String iconUrl = item.getSourceIconUrl();
+        oi.image = item.imageUrl != null && !item.imageUrl.isEmpty() ? item.imageUrl : (iconUrl != null ? iconUrl : "https://img.icons8.com/color/96/news.png");
         oi.year = item.pubDate != null ? item.pubDate : "Live";
         oi.genre = item.sourceName != null ? item.sourceName : genre;
         oi.plot = item.description != null ? item.description : "";
@@ -2244,6 +2293,10 @@ public class FragmentCategory extends Fragment {
 
     private void filterStateItems(String query) {
         if (allItems == null) return;
+        if (recyclerView.getAdapter() != adapter) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+            recyclerView.setAdapter(adapter);
+        }
         if (query.isEmpty()) {
             adapter.setItems(injectNativeAds(allItems));
             return;

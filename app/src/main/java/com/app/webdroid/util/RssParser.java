@@ -79,6 +79,7 @@ public class RssParser {
         String pubDate = null;
         String imageUrl = null;
         String itemSourceName = sourceName;
+        String sourceUrl = null;
 
         while (parser.next() != XmlPullParser.END_TAG) {
             if (parser.getEventType() != XmlPullParser.START_TAG) {
@@ -117,6 +118,10 @@ public class RssParser {
                 }
                 skip(parser); // skip content
             } else if (name.equals("source")) {
+                String sUrl = parser.getAttributeValue(null, "url");
+                if (sUrl != null && !sUrl.trim().isEmpty()) {
+                    sourceUrl = sUrl.trim();
+                }
                 String sName = readText(parser);
                 if (sName != null && !sName.trim().isEmpty()) {
                     itemSourceName = sName.trim();
@@ -137,7 +142,9 @@ public class RssParser {
         }
 
         long pubInMillis = parseRssDateToMillis(pubDate);
-        return new NewsItem(title, description, imageUrl, pubDate, pubInMillis, itemSourceName, link);
+        NewsItem item = new NewsItem(title, description, imageUrl, pubDate, pubInMillis, itemSourceName, link);
+        item.sourceUrl = sourceUrl;
+        return item;
     }
 
     public static long parseRssDateToMillis(String pubDate) {
