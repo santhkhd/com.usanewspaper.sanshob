@@ -66,7 +66,9 @@
             android:id="@+id/toolbar_divider"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="?attr/squircleCardStroke" />
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:background="?attr/squircleCardStroke"
+            android:visibility="gone" />
 
         <!-- Dedicated YouTube Inner Search Bar (Hidden by default) -->
         <LinearLayout
@@ -126,15 +128,21 @@
                 app:tint="@color/color_light_primary" />
         </LinearLayout>
 
-        <!-- State Weather Display, 7-Day Forecast & News Hub -->
-        <!-- KEY SCROLL FEATURE: app:layout_scrollFlags="scroll" ensures weather scrolls up with list -->
-        <include
-            android:id="@+id/include_state_weather_hub"
-            layout="@layout/item_state_weather_hub"
+        <!-- State Weather Display, 7-Day Forecast & News Hub Container -->
+        <!-- Direct FrameLayout child ensures app:layout_scrollFlags="scroll" is natively parsed by AppBarLayout -->
+        <FrameLayout
+            android:id="@+id/layout_state_weather_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll"
-            android:visibility="gone" />
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/include_state_weather_hub"
+                layout="@layout/item_state_weather_hub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </FrameLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -148,6 +156,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:nestedScrollingEnabled="true"
             android:paddingStart="4dp"
             android:paddingEnd="4dp"
             android:paddingTop="4dp"

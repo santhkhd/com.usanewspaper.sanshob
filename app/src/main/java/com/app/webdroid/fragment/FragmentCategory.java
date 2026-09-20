@@ -13,6 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.appbar.AppBarLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -792,8 +794,37 @@ public class FragmentCategory extends Fragment {
             }
         });
         recyclerView.setLayoutManager(glmInitial);
+        recyclerView.setNestedScrollingEnabled(true);
         adapter = new AdapterCategory(getContext(), new ArrayList<>());
         recyclerView.setAdapter(adapter);
+
+        AppBarLayout appBarLayout = view.findViewById(R.id.appbar_category);
+        if (appBarLayout != null) {
+            try {
+                CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams();
+                AppBarLayout.Behavior behavior = (AppBarLayout.Behavior) params.getBehavior();
+                if (behavior == null) {
+                    behavior = new AppBarLayout.Behavior();
+                    params.setBehavior(behavior);
+                }
+                behavior.setDragCallback(new AppBarLayout.Behavior.DragCallback() {
+                    @Override
+                    public boolean canDrag(@NonNull AppBarLayout appBarLayout) {
+                        return true;
+                    }
+                });
+            } catch (Exception ignored) {}
+
+            appBarLayout.addOnOffsetChangedListener((appBar, verticalOffset) -> {
+                if (swipeRefreshLayout != null) {
+                    swipeRefreshLayout.setEnabled(verticalOffset == 0);
+                }
+            });
+        }
+
+        if (swipeRefreshLayout != null) {
+            swipeRefreshLayout.setNestedScrollingEnabled(true);
+        }
 
         setupStateWeatherAndHub(view);
 
@@ -1729,10 +1760,13 @@ public class FragmentCategory extends Fragment {
             toolbar.setNavigationOnClickListener(v -> activity.onBackPressed());
         }
 
+        View toolbarDivider = view.findViewById(R.id.toolbar_divider);
         if (sharedPref.getToolbar()) {
             toolbar.setVisibility(View.VISIBLE);
+            if (toolbarDivider != null) toolbarDivider.setVisibility(View.VISIBLE);
         } else {
             toolbar.setVisibility(View.GONE);
+            if (toolbarDivider != null) toolbarDivider.setVisibility(View.GONE);
         }
 
         boolean isDark = sharedPref.getIsDarkTheme();
@@ -2032,6 +2066,7 @@ public class FragmentCategory extends Fragment {
     }
 
     private void setupStateWeatherAndHub(View rootView) {
+        View weatherContainer = rootView.findViewById(R.id.layout_state_weather_container);
         View hubInclude = rootView.findViewById(R.id.include_state_weather_hub);
         if (hubInclude == null || getContext() == null) return;
 
@@ -2039,10 +2074,19 @@ public class FragmentCategory extends Fragment {
         boolean isSingleState = (jsonUrl != null && jsonUrl.startsWith("states/"));
 
         if (!isStatesMenu && !isSingleState) {
+            if (weatherContainer != null) weatherContainer.setVisibility(View.GONE);
             hubInclude.setVisibility(View.GONE);
             return;
         }
 
+        if (weatherContainer != null) {
+            weatherContainer.setVisibility(View.VISIBLE);
+            if (weatherContainer.getLayoutParams() instanceof AppBarLayout.LayoutParams) {
+                AppBarLayout.LayoutParams lp = (AppBarLayout.LayoutParams) weatherContainer.getLayoutParams();
+                lp.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
+                weatherContainer.setLayoutParams(lp);
+            }
+        }
         hubInclude.setVisibility(View.VISIBLE);
 
         // 1. Search Bar Setup
@@ -2161,6 +2205,7 @@ public class FragmentCategory extends Fragment {
                 updateHubChipSelection(chipAll, chipLocalRss, chipWeatherRss, chipMainUsa);
                 GridLayoutManager glm = new GridLayoutManager(getContext(), 3);
                 recyclerView.setLayoutManager(glm);
+                recyclerView.setNestedScrollingEnabled(true);
                 recyclerView.setAdapter(adapter);
                 if (allItems != null) {
                     adapter.setItems(injectNativeAds(allItems));
@@ -2226,6 +2271,7 @@ public class FragmentCategory extends Fragment {
     private void bindNewsAdapter(List<com.app.webdroid.model.NewsItem> items, String defaultSource) {
         if (getContext() == null || recyclerView == null) return;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setNestedScrollingEnabled(true);
         AdapterNews newsAdapter = new AdapterNews(getContext(), items);
         newsAdapter.setOnItemClickListener((view, newsItem, position) -> {
             if (newsItem == null) return;
@@ -2295,6 +2341,7 @@ public class FragmentCategory extends Fragment {
         if (allItems == null) return;
         if (recyclerView.getAdapter() != adapter) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+            recyclerView.setNestedScrollingEnabled(true);
             recyclerView.setAdapter(adapter);
         }
         if (query.isEmpty()) {
