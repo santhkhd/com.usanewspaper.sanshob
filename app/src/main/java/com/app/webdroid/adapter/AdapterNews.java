@@ -68,6 +68,10 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         notifyDataSetChanged();
     }
 
+    public List<NewsItem> getItems() {
+        return items != null ? items : new ArrayList<>();
+    }
+
     public static final int VIEW_TYPE_CARD_IMAGE = 0;
     public static final int VIEW_TYPE_COMPACT_LIST = 1;
     public static final int VIEW_TYPE_AD = 2;

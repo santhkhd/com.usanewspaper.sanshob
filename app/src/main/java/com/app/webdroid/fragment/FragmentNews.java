@@ -69,6 +69,8 @@ public class FragmentNews extends Fragment {
     private List<NewsItem> allCachedNews = new ArrayList<>();
     private String selectedCategory = "ALL";
     private String initialSourceName = null;
+    private List<String> passedUrls = new ArrayList<>();
+    private String passedUrl = null;
     private String searchQuery = "";
 
     private LinearLayout layoutSearchContainer;
@@ -157,10 +159,18 @@ public class FragmentNews extends Fragment {
             startActivity(intent);
         });
 
-        // Determine initial category from arguments if provided
+        // Determine initial category and URLs from arguments if provided
         String sourceTitle = null;
         if (getArguments() != null) {
             sourceTitle = getArguments().getString("name");
+            passedUrl = getArguments().getString("url");
+            List<String> pUrls = getArguments().getStringArrayList("urls");
+            if (pUrls != null) {
+                passedUrls.addAll(pUrls);
+            }
+            if (passedUrl != null && !passedUrls.contains(passedUrl)) {
+                passedUrls.add(0, passedUrl);
+            }
         }
         initialSourceName = sourceTitle;
 
@@ -372,7 +382,31 @@ public class FragmentNews extends Fragment {
 
         List<NewsItem> categoryFiltered = new ArrayList<>();
 
-        if ("ALL".equalsIgnoreCase(selectedCategory)) {
+        if (!passedUrls.isEmpty()) {
+            for (NewsItem item : allCachedNews) {
+                boolean matchSource = initialSourceName != null && (initialSourceName.equalsIgnoreCase(item.sourceName)
+                        || (item.sourceName != null && item.sourceName.toLowerCase().contains(initialSourceName.toLowerCase())));
+                boolean matchUrl = false;
+                if (item.sourceUrl != null) {
+                    for (String u : passedUrls) {
+                        if (u.equalsIgnoreCase(item.sourceUrl)) {
+                            matchUrl = true;
+                            break;
+                        }
+                    }
+                }
+                if (matchSource || matchUrl) {
+                    categoryFiltered.add(item);
+                }
+            }
+            if (categoryFiltered.isEmpty()) {
+                for (NewsItem item : allCachedNews) {
+                    if (matchesCategory(item, selectedCategory)) {
+                        categoryFiltered.add(item);
+                    }
+                }
+            }
+        } else if ("ALL".equalsIgnoreCase(selectedCategory)) {
             categoryFiltered.addAll(allCachedNews);
         } else if ("SPECIFIC_SOURCE".equalsIgnoreCase(selectedCategory) && initialSourceName != null) {
             for (NewsItem item : allCachedNews) {
@@ -380,9 +414,6 @@ public class FragmentNews extends Fragment {
                         || (item.sourceName != null && item.sourceName.toLowerCase().contains(initialSourceName.toLowerCase()))) {
                     categoryFiltered.add(item);
                 }
-            }
-            if (categoryFiltered.isEmpty()) {
-                categoryFiltered.addAll(allCachedNews);
             }
         } else {
             for (NewsItem item : allCachedNews) {
@@ -443,58 +474,62 @@ public class FragmentNews extends Fragment {
 
     private boolean matchesCategory(NewsItem item, String category) {
         if (item == null) return false;
-        String source = item.sourceName != null ? item.sourceName.toLowerCase() : "";
-        String title = item.title != null ? item.title.toLowerCase() : "";
-        String desc = item.description != null ? item.description.toLowerCase() : "";
+        String itemCat = item.category != null ? item.category.trim().toUpperCase(java.util.Locale.US) : "";
+        if (!itemCat.isEmpty() && itemCat.equalsIgnoreCase(category)) {
+            return true;
+        }
+        String source = item.sourceName != null ? item.sourceName.toLowerCase(java.util.Locale.US) : "";
+        String title = item.title != null ? item.title.toLowerCase(java.util.Locale.US) : "";
+        String desc = item.description != null ? item.description.toLowerCase(java.util.Locale.US) : "";
         String combined = source + " " + title + " " + desc;
 
         switch (category) {
             case "TOP":
-                return source.contains("top") || source.contains("latest") || source.contains("breaking") || source.contains("headline")
+                return "TOP".equals(itemCat) || source.contains("top") || source.contains("latest") || source.contains("breaking") || source.contains("headline")
                         || title.contains("breaking") || title.contains("live") || title.contains("alert");
             case "POLITICS":
-                return source.contains("politico") || source.contains("hill") || source.contains("politic")
+                return "POLITICS".equals(itemCat) || source.contains("politico") || source.contains("hill") || source.contains("politic")
                         || combined.contains("biden") || combined.contains("trump") || combined.contains("congress")
                         || combined.contains("senate") || combined.contains("house") || combined.contains("white house")
                         || combined.contains("democrat") || combined.contains("republican") || combined.contains("supreme court")
                         || combined.contains("election") || combined.contains("capitol") || combined.contains("governor");
             case "BUSINESS":
-                return source.contains("business") || source.contains("market") || source.contains("wsj")
+                return "BUSINESS".equals(itemCat) || source.contains("business") || source.contains("market") || source.contains("wsj")
                         || source.contains("cnbc") || source.contains("bloomberg") || source.contains("finance")
                         || combined.contains("stock") || combined.contains("dow") || combined.contains("nasdaq")
                         || combined.contains("fed") || combined.contains("inflation") || combined.contains("economy")
                         || combined.contains("market") || combined.contains("revenue") || combined.contains("earnings");
             case "TECH":
-                return source.contains("tech") || source.contains("verge") || source.contains("wired")
+                return "TECH".equals(itemCat) || source.contains("tech") || source.contains("verge") || source.contains("wired")
                         || combined.contains("ai") || combined.contains("apple") || combined.contains("google")
                         || combined.contains("microsoft") || combined.contains("meta") || combined.contains("nvidia")
                         || combined.contains("openai") || combined.contains("software") || combined.contains("cyber");
             case "WORLD":
-                return source.contains("world") || source.contains("international") || source.contains("foreign")
+                return "WORLD".equals(itemCat) || source.contains("world") || source.contains("international") || source.contains("foreign")
                         || combined.contains("ukraine") || combined.contains("russia") || combined.contains("china")
                         || combined.contains("middle east") || combined.contains("europe") || combined.contains("israel")
                         || combined.contains("nato") || combined.contains("un ") || combined.contains("global");
             case "SPORTS":
-                return source.contains("sport") || source.contains("espn") || combined.contains("nfl")
+                return "SPORTS".equals(itemCat) || source.contains("sport") || source.contains("espn") || combined.contains("nfl")
                         || combined.contains("nba") || combined.contains("mlb") || combined.contains("nhl")
                         || combined.contains("football") || combined.contains("basketball") || combined.contains("baseball")
                         || combined.contains("super bowl") || combined.contains("championship");
             case "CINEMA":
             case "ENTERTAINMENT":
-                return source.contains("entertainment") || source.contains("variety") || source.contains("hollywood")
+                return "ENTERTAINMENT".equals(itemCat) || "CINEMA".equals(itemCat) || source.contains("entertainment") || source.contains("variety") || source.contains("hollywood")
                         || source.contains("movie") || combined.contains("actor") || combined.contains("box office")
                         || combined.contains("film") || combined.contains("oscar") || combined.contains("celebrity")
                         || combined.contains("music") || combined.contains("series");
             case "SCIENCE":
-                return source.contains("science") || source.contains("space") || source.contains("nasa")
+                return "SCIENCE".equals(itemCat) || source.contains("science") || source.contains("space") || source.contains("nasa")
                         || combined.contains("astronomy") || combined.contains("planet") || combined.contains("telescope")
                         || combined.contains("climate") || combined.contains("spacex") || combined.contains("mars");
             case "HEALTH":
-                return source.contains("health") || source.contains("medical") || combined.contains("fda")
+                return "HEALTH".equals(itemCat) || source.contains("health") || source.contains("medical") || combined.contains("fda")
                         || combined.contains("cdc") || combined.contains("vaccine") || combined.contains("doctor")
                         || combined.contains("hospital") || combined.contains("diet") || combined.contains("treatment");
             default:
-                return true;
+                return false;
         }
     }
 
@@ -563,7 +598,19 @@ public class FragmentNews extends Fragment {
         }
 
         new Thread(() -> {
-            List<AppConfig.RssSource> sources = getUsaRssSources(appContext);
+            List<AppConfig.RssSource> sources = new ArrayList<>();
+            if (!passedUrls.isEmpty()) {
+                for (String u : passedUrls) {
+                    AppConfig.RssSource src = new AppConfig.RssSource();
+                    src.title = initialSourceName != null ? initialSourceName : "News Feed";
+                    src.url = u;
+                    src.category = selectedCategory;
+                    sources.add(src);
+                }
+            } else {
+                sources = getUsaRssSources(appContext);
+            }
+
             if (sources == null || sources.isEmpty()) {
                 if (getActivity() != null) {
                     getActivity().runOnUiThread(() -> {
@@ -593,7 +640,7 @@ public class FragmentNews extends Fragment {
                         Response response = client.newCall(request).execute();
                         if (response.isSuccessful() && response.body() != null) {
                             InputStream stream = response.body().byteStream();
-                            List<NewsItem> items = parser.parseNews(stream, source.title);
+                            List<NewsItem> items = parser.parseNews(stream, source.title, source.category);
                             if (items != null && !items.isEmpty()) {
                                 AppDatabase.getDatabase(appContext).newsDao().insertNews(items);
                             }

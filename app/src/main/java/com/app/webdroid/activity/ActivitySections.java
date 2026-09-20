@@ -96,7 +96,7 @@ public class ActivitySections extends AppCompatActivity {
             holder.ivIcon.setImageResource(meta.iconRes);
 
             View.OnClickListener clickListener = v -> {
-                ActivityCategoryPage.start(ActivitySections.this, meta.key);
+                ActivityCategoryPage.start(ActivitySections.this, meta.key, meta.title);
             };
 
             holder.itemView.setOnClickListener(clickListener);

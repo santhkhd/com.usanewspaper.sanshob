@@ -858,7 +858,7 @@ public class FragmentCategory extends Fragment {
             // High-priority: Handle Category Page / Section Items -> Open ActivityCategoryPage directly
             if ("category_page".equalsIgnoreCase(obj.provider) || "section".equalsIgnoreCase(obj.provider)) {
                 String catKey = (obj.arguments != null && !obj.arguments.isEmpty()) ? obj.arguments.get(0) : obj.title;
-                com.app.webdroid.activity.ActivityCategoryPage.start(getContext(), catKey);
+                com.app.webdroid.activity.ActivityCategoryPage.start(getContext(), catKey, obj.title);
                 return;
             }
 
