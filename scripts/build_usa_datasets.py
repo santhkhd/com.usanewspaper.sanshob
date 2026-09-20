@@ -912,7 +912,7 @@ for rf in rss_feeds:
     })
 
 config_data = {
-    "google_sheet_url": "",
+    "google_sheet_url": "https://script.google.com/macros/s/AKfycbxr9aVKhTdHjlOqUhH0h09IFRtjv-ISu18b2Zabvff8SlDluCNI4Q_n9tWZDQCDKEyp/exec",
     "github_cdn_base_url": "",
     "github_raw_base_url": "",
     "app": {

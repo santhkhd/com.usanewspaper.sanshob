@@ -24,9 +24,9 @@ public class Config {
     public static final String US_NEWS_GITHUB_RAW_URL = "https://raw.githubusercontent.com/santhkhd/com.usanewspaper.sanshob/main/data/us_news.json";
     public static final String US_NEWS_CATEGORIES_RAW_URL = "https://raw.githubusercontent.com/santhkhd/com.usanewspaper.sanshob/main/data/categories.json";
 
-    // Google Sheets / Apps Script WebApp URL for saving News Comments & Opinions
+    // Google Sheets / Apps Script WebApp URL for saving News Comments, Opinions, and Category Followers
     // Paste your deployed Google Apps Script URL here (e.g. "https://script.google.com/macros/s/.../exec")
-    public static final String GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzUVsELXXxwyPZNGxGiglLIgp4C8yGHflkwQB-JIaDMKoKPTR0AgHcdNjoLdnIsyibMOg/exec";
+    public static final String GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxr9aVKhTdHjlOqUhH0h09IFRtjv-ISu18b2Zabvff8SlDluCNI4Q_n9tWZDQCDKEyp/exec";
 
     // RTL Direction for Arabic Language
     public static final boolean ENABLE_RTL_MODE = false;
