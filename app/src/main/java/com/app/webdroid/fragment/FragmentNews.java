@@ -561,6 +561,10 @@ public class FragmentNews extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        MenuItem mainSearch = menu.findItem(R.id.action_search);
+        if (mainSearch != null) {
+            mainSearch.setVisible(false);
+        }
         inflater.inflate(R.menu.menu_news, menu);
         boolean isDark = sharedPref != null && sharedPref.getIsDarkTheme();
         for (int i = 0; i < menu.size(); i++) {

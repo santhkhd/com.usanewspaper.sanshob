@@ -49,6 +49,7 @@ public class FragmentFavorites extends Fragment {
 
     public static final String FILTER_ALL = "ALL";
     public static final String FILTER_HISTORY = "HISTORY";
+    public static final String FILTER_RSS_FEEDS = "RSS_FEEDS";
     public static final String FILTER_CHANNELS = "CHANNELS";
     public static final String FILTER_VIDEOS = "VIDEOS";
     public static final String FILTER_ARTICLES = "ARTICLES";
@@ -327,7 +328,7 @@ public class FragmentFavorites extends Fragment {
                     hasChannels = true;
                 } else if (t.equals("YOUTUBE") || t.equals("VIDEO")) {
                     hasVideos = true;
-                } else if (t.equals("RSS") || t.equals("ARTICLE")) {
+                } else if (t.equals("RSS") || t.equals("ARTICLE") || t.equals("NEWS") || t.equals("RSS_ITEM")) {
                     hasArticles = true;
                 } else if (t.equals("MOVIES") || t.equals("MOVIE")) {
                     hasMovies = true;
@@ -338,7 +339,7 @@ public class FragmentFavorites extends Fragment {
         // Validate currentFilter in case category was emptied
         if (FILTER_CHANNELS.equals(currentFilter) && !hasChannels) currentFilter = FILTER_ALL;
         if (FILTER_VIDEOS.equals(currentFilter) && !hasVideos) currentFilter = FILTER_ALL;
-        if (FILTER_ARTICLES.equals(currentFilter) && !hasArticles) currentFilter = FILTER_ALL;
+        if ((FILTER_ARTICLES.equals(currentFilter) || FILTER_RSS_FEEDS.equals(currentFilter)) && !hasArticles) currentFilter = FILTER_ALL;
         if (FILTER_MOVIES.equals(currentFilter) && !hasMovies) currentFilter = FILTER_ALL;
 
         // "All" and "History" ALWAYS shown by default
@@ -346,14 +347,14 @@ public class FragmentFavorites extends Fragment {
         addChip("Watch History", FILTER_HISTORY, currentFilter.equals(FILTER_HISTORY));
 
         // Rest only shown if user has saved/favorited items in that category
+        if (hasArticles) {
+            addChip("📰 RSS News Feeds", FILTER_RSS_FEEDS, currentFilter.equals(FILTER_RSS_FEEDS) || currentFilter.equals(FILTER_ARTICLES));
+        }
         if (hasChannels) {
             addChip("My Channels", FILTER_CHANNELS, currentFilter.equals(FILTER_CHANNELS));
         }
         if (hasVideos) {
             addChip("Saved Videos", FILTER_VIDEOS, currentFilter.equals(FILTER_VIDEOS));
-        }
-        if (hasArticles) {
-            addChip("Saved Articles", FILTER_ARTICLES, currentFilter.equals(FILTER_ARTICLES));
         }
         if (hasMovies) {
             addChip("Movies", FILTER_MOVIES, currentFilter.equals(FILTER_MOVIES));
@@ -508,8 +509,8 @@ public class FragmentFavorites extends Fragment {
                     || (item.targetUrl != null && item.targetUrl.contains("youtube.com/feeds"));
         } else if (FILTER_VIDEOS.equalsIgnoreCase(filter)) {
             return type.equals("YOUTUBE") || type.equals("VIDEO");
-        } else if (FILTER_ARTICLES.equalsIgnoreCase(filter)) {
-            return type.equals("RSS") || type.equals("ARTICLE");
+        } else if (FILTER_ARTICLES.equalsIgnoreCase(filter) || FILTER_RSS_FEEDS.equalsIgnoreCase(filter)) {
+            return type.equals("RSS") || type.equals("ARTICLE") || type.equals("NEWS") || type.equals("RSS_ITEM");
         } else if (FILTER_MOVIES.equalsIgnoreCase(filter)) {
             return type.equals("MOVIES") || type.equals("MOVIE");
         }
@@ -519,7 +520,7 @@ public class FragmentFavorites extends Fragment {
     private String getFilterLabel(String filter) {
         if (FILTER_CHANNELS.equalsIgnoreCase(filter)) return "channels";
         if (FILTER_VIDEOS.equalsIgnoreCase(filter)) return "videos";
-        if (FILTER_ARTICLES.equalsIgnoreCase(filter)) return "articles";
+        if (FILTER_ARTICLES.equalsIgnoreCase(filter) || FILTER_RSS_FEEDS.equalsIgnoreCase(filter)) return "RSS news feeds";
         if (FILTER_MOVIES.equalsIgnoreCase(filter)) return "movies";
         return "items";
     }
