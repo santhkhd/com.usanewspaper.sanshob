@@ -54,31 +54,95 @@ public class ActivitySections extends AppCompatActivity {
             setSupportActionBar(toolbar);
             if (getSupportActionBar() != null) {
                 getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setDisplayShowTitleEnabled(true);
-                getSupportActionBar().setTitle("SECTIONS");
+                getSupportActionBar().setDisplayShowTitleEnabled(false);
             }
             toolbar.setNavigationOnClickListener(v -> finish());
         }
 
         ImageView btnSearch = findViewById(R.id.btn_section_search);
         if (btnSearch != null) {
-            btnSearch.setOnClickListener(v -> ActivityUsNews.start(this));
+            btnSearch.setOnClickListener(v -> {
+                android.widget.EditText etSearch = findViewById(R.id.et_sections_search);
+                String q = etSearch != null ? etSearch.getText().toString().trim() : "";
+                if (!q.isEmpty()) {
+                    ActivityCategoryPage.start(ActivitySections.this, q, q);
+                } else {
+                    ActivityUsNews.start(ActivitySections.this);
+                }
+            });
         }
 
-        // Setup Sections RecyclerView
+        // Setup Sections RecyclerView & Search Input
         RecyclerView rvSections = findViewById(R.id.rv_sections);
+        List<FollowManager.CategoryMeta> allCategories = FollowManager.getAllCategoryMetas();
+        SectionsAdapter adapter = new SectionsAdapter(allCategories);
+
         if (rvSections != null) {
             rvSections.setLayoutManager(new LinearLayoutManager(this));
-            List<FollowManager.CategoryMeta> categories = FollowManager.getAllCategoryMetas();
-            rvSections.setAdapter(new SectionsAdapter(categories));
+            rvSections.setAdapter(adapter);
+        }
+
+        android.widget.EditText etSectionsSearch = findViewById(R.id.et_sections_search);
+        ImageView btnClear = findViewById(R.id.btn_sections_search_clear);
+
+        if (etSectionsSearch != null) {
+            etSectionsSearch.addTextChangedListener(new android.text.TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    String query = s.toString().trim().toLowerCase(java.util.Locale.US);
+                    if (btnClear != null) {
+                        btnClear.setVisibility(query.isEmpty() ? View.GONE : View.VISIBLE);
+                    }
+                    if (query.isEmpty()) {
+                        adapter.updateList(allCategories);
+                    } else {
+                        List<FollowManager.CategoryMeta> filtered = new java.util.ArrayList<>();
+                        for (FollowManager.CategoryMeta cat : allCategories) {
+                            if ((cat.title != null && cat.title.toLowerCase(java.util.Locale.US).contains(query)) ||
+                                (cat.description != null && cat.description.toLowerCase(java.util.Locale.US).contains(query)) ||
+                                (cat.key != null && cat.key.toLowerCase(java.util.Locale.US).contains(query))) {
+                                filtered.add(cat);
+                            }
+                        }
+                        adapter.updateList(filtered);
+                    }
+                }
+
+                @Override
+                public void afterTextChanged(android.text.Editable s) {}
+            });
+
+            etSectionsSearch.setOnEditorActionListener((v, actionId, event) -> {
+                if (actionId == android.view.inputmethod.EditorInfo.IME_ACTION_SEARCH ||
+                    (event != null && event.getKeyCode() == android.view.KeyEvent.KEYCODE_ENTER)) {
+                    String q = etSectionsSearch.getText().toString().trim();
+                    if (!q.isEmpty()) {
+                        ActivityCategoryPage.start(ActivitySections.this, q, q);
+                        return true;
+                    }
+                }
+                return false;
+            });
+        }
+
+        if (btnClear != null && etSectionsSearch != null) {
+            btnClear.setOnClickListener(v -> etSectionsSearch.setText(""));
         }
     }
 
     private class SectionsAdapter extends RecyclerView.Adapter<SectionsAdapter.ViewHolder> {
-        private final List<FollowManager.CategoryMeta> items;
+        private List<FollowManager.CategoryMeta> items;
 
         public SectionsAdapter(List<FollowManager.CategoryMeta> items) {
-            this.items = items;
+            this.items = items != null ? new java.util.ArrayList<>(items) : new java.util.ArrayList<>();
+        }
+
+        public void updateList(List<FollowManager.CategoryMeta> newItems) {
+            this.items = newItems != null ? new java.util.ArrayList<>(newItems) : new java.util.ArrayList<>();
+            notifyDataSetChanged();
         }
 
         @NonNull

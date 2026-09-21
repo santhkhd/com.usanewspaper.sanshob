@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.app.webdroid.database.AppDatabase;
+import com.app.webdroid.model.FavoriteItem;
 import com.app.webdroid.model.NewsItem;
 import com.app.webdroid.util.FollowManager;
 import com.bumptech.glide.Glide;
@@ -366,11 +368,42 @@ public class AdapterNews extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         });
 
-        // Favorite Heart Click with Tactile Bounce Animation
+        // Favorite Heart Click with Tactile Bounce Animation & Direct Save to Room DB
         myHolder.favorite.setOnClickListener(v -> {
             myHolder.favorite.animate().scaleX(1.25f).scaleY(1.25f).setDuration(120)
                     .withEndAction(() -> myHolder.favorite.animate().scaleX(1.0f).scaleY(1.0f).setDuration(120).start())
                     .start();
+
+            if (item.link != null && !item.link.trim().isEmpty()) {
+                String targetLink = item.link.trim();
+                boolean currentlyFav = favoriteIds.contains(targetLink);
+                AppDatabase db = AppDatabase.getDatabase(context);
+
+                AppDatabase.databaseWriteExecutor.execute(() -> {
+                    if (currentlyFav) {
+                        db.favoriteDao().removeFavoriteComprehensive(targetLink, targetLink, item.title);
+                    } else {
+                        FavoriteItem fav = new FavoriteItem();
+                        fav.itemId = targetLink;
+                        fav.type = "NEWS";
+                        fav.title = item.title != null ? item.title.trim() : "News Article";
+                        fav.subtitle = item.sourceName != null ? item.sourceName.trim() : "Live Feed";
+                        fav.imageUrl = item.imageUrl;
+                        fav.targetUrl = targetLink;
+                        db.favoriteDao().addFavorite(fav);
+                    }
+                });
+
+                if (currentlyFav) {
+                    favoriteIds.remove(targetLink);
+                    Toast.makeText(context, "Removed from Saved", Toast.LENGTH_SHORT).show();
+                } else {
+                    favoriteIds.add(targetLink);
+                    Toast.makeText(context, "Saved to Saved section", Toast.LENGTH_SHORT).show();
+                }
+                notifyItemChanged(position);
+            }
+
             if (onFavoriteClickListener != null) {
                 onFavoriteClickListener.onFavoriteClick(v, item, itemPos);
             }
