@@ -1027,6 +1027,23 @@ public class FragmentCategory extends Fragment {
                             }
                         }).start();
                         return;
+                    }
+
+                    String type = "WEB";
+                    if ("videos".equalsIgnoreCase(obj.provider) || "video".equalsIgnoreCase(obj.provider)) {
+                        type = "VIDEOS";
+                    } else if ("songs".equalsIgnoreCase(obj.provider)) {
+                        type = "SONGS";
+                    } else if ("rss".equalsIgnoreCase(obj.provider)) {
+                        if (targetUrl.contains("youtube.com/feeds")) {
+                            type = "VIDEOS";
+                        } else {
+                            type = "RSS";
+                        }
+                    } else if ("movies".equalsIgnoreCase(obj.provider)) {
+                        type = "MOVIES";
+                    } else if ("overview".equalsIgnoreCase(obj.provider) || "category".equalsIgnoreCase(obj.provider)) {
+                        type = "CATEGORY";
                     } else if ("youtube_playlist".equalsIgnoreCase(obj.provider)) {
                         if (!targetUrl.startsWith("http")) {
                             targetUrl = "https://www.youtube.com/feeds/videos.xml?playlist_id=" + targetUrl;
