@@ -995,13 +995,20 @@ public class FragmentCategory extends Fragment {
                         return;
                     }
 
-                    // Check if it's a live stream link (e.g. /live or provider "live")
-                    if (targetUrl.contains("/live") || "live".equalsIgnoreCase(obj.provider)) {
+                    // Check if it's a channel link or provider (youtube_channel, live) -> Play LIVE STREAM directly!
+                    boolean isChannelOrLive = targetUrl.contains("/live")
+                            || "live".equalsIgnoreCase(obj.provider)
+                            || "youtube_channel".equalsIgnoreCase(obj.provider)
+                            || "youtube_channel_live".equalsIgnoreCase(obj.provider)
+                            || (jsonUrl != null && jsonUrl.contains("channels"))
+                            || targetUrl.startsWith("UC");
+
+                    if (isChannelOrLive) {
                         final String liveTarget = targetUrl;
                         final String title = obj.title;
                         final String thumb = obj.image;
                         android.app.ProgressDialog pd = new android.app.ProgressDialog(getContext());
-                        pd.setMessage("Connecting to " + title + "...");
+                        pd.setMessage("Connecting to " + title + " Live Stream...");
                         pd.setCancelable(true);
                         try { pd.show(); } catch (Exception ignored) {}
 
@@ -1020,32 +1027,6 @@ public class FragmentCategory extends Fragment {
                             }
                         }).start();
                         return;
-                    }
-
-                    String type = "WEB";
-                    if ("videos".equalsIgnoreCase(obj.provider) || "video".equalsIgnoreCase(obj.provider)) {
-                        type = "VIDEOS";
-                    } else if ("songs".equalsIgnoreCase(obj.provider)) {
-                        type = "SONGS";
-                    } else if ("rss".equalsIgnoreCase(obj.provider)) {
-                        if (targetUrl.contains("youtube.com/feeds")) {
-                            type = "VIDEOS";
-                        } else {
-                            type = "RSS";
-                        }
-                    } else if ("movies".equalsIgnoreCase(obj.provider)) {
-                        type = "MOVIES";
-                    } else if ("overview".equalsIgnoreCase(obj.provider) || "category".equalsIgnoreCase(obj.provider)) {
-                        type = "CATEGORY";
-                    } else if ("youtube_channel".equalsIgnoreCase(obj.provider)) {
-                        if (targetUrl.startsWith("UC")) {
-                            targetUrl = "https://www.youtube.com/feeds/videos.xml?channel_id=" + targetUrl;
-                            type = "VIDEOS";
-                        } else if (targetUrl.contains("channel_id=")) {
-                            type = "VIDEOS";
-                        } else {
-                            type = "YOUTUBE";
-                        }
                     } else if ("youtube_playlist".equalsIgnoreCase(obj.provider)) {
                         if (!targetUrl.startsWith("http")) {
                             targetUrl = "https://www.youtube.com/feeds/videos.xml?playlist_id=" + targetUrl;
